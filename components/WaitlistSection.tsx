@@ -20,6 +20,7 @@ import {
 } from "./waitlist/RoleChoiceCards";
 import { MicroLabel } from "./MicroLabel";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 type FormRole = "customer" | "worker";
 type WaitlistStep = "choose" | "questionnaire" | "surprise" | "form" | "done";
@@ -111,14 +112,31 @@ export function WaitlistSection() {
     scrollTop();
   };
 
-  const handleWaitlistSubmit = (e: React.FormEvent) => {
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.info("Waitlist + research", {
-      waitlist: form,
-      path,
-      userAnswers,
-      specialistAnswers,
+  
+    const answers =
+      path === "customer" ? userAnswers : specialistAnswers;
+  
+    const { error } = await supabase.from("submissions").insert({
+      type: "waitlist",
+      role: form.role,
+      waitlist: {
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        area: form.area,
+        trades: form.trades,
+        hearAbout: form.hearAbout,
+      },
+      answers,
     });
+  
+    if (error) {
+      console.error("Supabase error:", error.message);
+      return;
+    }
+  
     setStep("done");
     scrollTop();
   };
