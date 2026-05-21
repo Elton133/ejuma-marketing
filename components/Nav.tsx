@@ -29,9 +29,11 @@ export function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
-        showSolidNav
-          ? "border-b border-white/10 bg-black/90 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent"
+        open
+          ? "border-b border-white/10 bg-black lg:bg-black/90 lg:backdrop-blur-md"
+          : showSolidNav
+            ? "border-b border-white/10 bg-black/90 backdrop-blur-md"
+            : "border-b border-transparent bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">

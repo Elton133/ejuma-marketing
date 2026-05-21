@@ -50,7 +50,7 @@ export const USER_RESEARCH_QUESTIONS: ResearchQuestion[] = [
   {
     id: "would_use_app",
     label:
-      "If there was an app like Uber or Bolt for technicians, would you use it? Why or why not?",
+      "If we offer a solution, a platform to get technicians would you use it? Why or why not?",
     type: "textarea",
   },
   {

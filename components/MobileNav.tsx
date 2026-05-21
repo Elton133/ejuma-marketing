@@ -24,7 +24,6 @@ type MobileNavProps = {
 
 export function MobileNav({ open, onClose }: MobileNavProps) {
   const panelRef = useRef<HTMLDivElement>(null);
-  const backdropRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -74,21 +73,31 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
   return (
     <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal>
       <div
-        ref={backdropRef}
-        className="absolute inset-0 bg-black/70 backdrop-blur-md"
+        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
         aria-hidden
         onClick={onClose}
       />
 
       <div
         ref={panelRef}
-        className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-white/10 bg-black/95 px-8 pb-10 pt-24 shadow-2xl backdrop-blur-xl"
+        className="absolute inset-0 flex flex-col bg-black px-6 pb-10 pt-[4.5rem] shadow-2xl"
       >
-        <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/40">
-          Menu
-        </p>
+        <div className="flex items-center justify-between border-b border-white/10 pb-5">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50">
+            Menu
+          </p>
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-10 items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 text-sm font-medium text-white transition-colors hover:border-white/25 hover:bg-white/15"
+            aria-label="Close menu"
+          >
+            <CloseIcon />
+            Close
+          </button>
+        </div>
 
-        <nav className="mt-10 flex flex-1 flex-col gap-1">
+        <nav className="mt-6 flex flex-1 flex-col gap-1 overflow-y-auto">
           {MOBILE_LINKS.map((link, index) => {
             const num = String(index + 1).padStart(2, "0");
 
@@ -101,7 +110,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                   rel="noopener noreferrer"
                   data-mobile-link
                   onClick={onClose}
-                  className="group flex items-baseline gap-4 border-b border-white/[0.06] py-5 transition-colors hover:border-[#FF5F15]/30"
+                  className="group flex items-baseline gap-4 border-b border-white/6 py-5 transition-colors hover:border-[#FF5F15]/30"
                 >
                   <span className="text-xs font-medium tabular-nums text-[#FF5F15]/70">
                     {num}
@@ -119,7 +128,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 href={link.href}
                 data-mobile-link
                 onClick={onClose}
-                className="group flex items-baseline gap-4 border-b border-white/[0.06] py-5 transition-colors hover:border-[#FF5F15]/30"
+                className="group flex items-baseline gap-4 border-b border-white/6 py-5 transition-colors hover:border-[#FF5F15]/30"
               >
                 <span className="text-xs font-medium tabular-nums text-[#FF5F15]/70">
                   {num}
@@ -132,7 +141,10 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           })}
         </nav>
 
-        <div data-mobile-footer className="mt-auto space-y-3 border-t border-white/10 pt-8">
+        <div
+          data-mobile-footer
+          className="mt-auto shrink-0 space-y-3 border-t border-white/10 pt-8"
+        >
           <Link
             href={INSTALL_PATH}
             onClick={onClose}
@@ -150,5 +162,22 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden
+    >
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
   );
 }
