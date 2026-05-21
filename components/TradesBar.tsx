@@ -5,8 +5,9 @@ export function TradesBar() {
   return (
     <section className="bg-[#fafafa] py-14 text-black md:py-20">
       <div className="mx-auto max-w-[1300px] px-6 md:px-10 lg:px-14">
+        <p className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight text-center">Partners</p>
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:justify-between">
-          <Image src="/White.png" alt="Trades Bar" width={100} height={100} />
+          <Image src="/black.png" alt="Trades Bar" width={100} height={100} />
         </div>
 
         <div className="mt-16 grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16 lg:mt-20">
