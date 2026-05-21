@@ -13,7 +13,7 @@ export function Features() {
         <div className="mx-auto max-w-[1200px]">
           <header className="mb-4 max-w-3xl md:mb-8">
             <MicroLabel light>For customers</MicroLabel>
-            <h2 className="font-heading mt-3 text-[clamp(2rem,4vw,3rem)] tracking-tight">
+            <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
               Get your work done with confidence
             </h2>
           </header>
@@ -46,14 +46,14 @@ export function Features() {
         id="for-workers"
         className="bg-black px-6 py-20 text-white md:py-28"
       >
-        <div className="mx-auto max-w-[1440px]">
+        <div className="mx-auto max-w-[1300px]">
           <MicroLabel>For workers</MicroLabel>
           <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
-            Get verified, get discovered and earn
+            Get <em className="text-[#FF5F15] not-italic">verified</em>, get {" "}<em className="text-[#FF5F15] not-italic">discovered </em> and <em className="text-[#FF5F15] not-italic">earn </em>
           </h2>
           <p className="mt-4 max-w-xl text-white/60">
             Get verified once, get discovered. Dashboard, job alerts, and MoMo
-            payouts — no app store required.
+            payouts - no app store required.
           </p>
 
           <WorkerFeaturesGrid />

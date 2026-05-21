@@ -19,6 +19,7 @@ import {
   type SurveyPath,
 } from "./waitlist/RoleChoiceCards";
 import { MicroLabel } from "./MicroLabel";
+import Link from "next/link";
 
 type FormRole = "customer" | "worker";
 type WaitlistStep = "choose" | "questionnaire" | "surprise" | "form" | "done";
@@ -412,18 +413,18 @@ export function WaitlistSection() {
               />
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-                <a
+                <Link
                   href={INSTALL_PATH}
                   className="inline-flex justify-center rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black"
                 >
                   Install the app
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/"
                   className="inline-flex justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
                 >
                   Back to home
-                </a>
+                </Link>
               </div>
             </div>
           </AnimatedStep>

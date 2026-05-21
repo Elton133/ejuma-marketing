@@ -12,7 +12,7 @@ export function ResearchLanding() {
         </h1>
         <p className="mt-4 max-w-lg text-white/65">
           We&apos;re building a better way to book skilled workers in Ghana.
-          Choose your path — it takes about 5 minutes.
+          Choose your path — it takes less than 5 minutes.
         </p>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2">

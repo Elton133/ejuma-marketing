@@ -5,9 +5,9 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="bg-black px-6 py-20 text-white md:py-28"
+      className="bg-black px-10 py-20 text-white md:py-28"
     >
-      <div className="mx-auto max-w-[1440px] md:px-4 lg:px-0">
+      <div className="mx-auto max-w-[1300px] md:px-4 lg:px-0">
         <div className="max-w-xl">
           <MicroLabel>How it works</MicroLabel>
           <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">

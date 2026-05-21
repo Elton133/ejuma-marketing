@@ -14,9 +14,9 @@ export function Hero() {
               data-hero-animate
               className="text-[clamp(2.5rem,6vw,4.75rem)] font-semibold leading-[1.02] tracking-tight"
             >
-              Your specialist{" "}
-              <em className="text-[#FF5F15] not-italic">on your </em>
-              phone.
+              Your {" "}
+              <em className="text-[#FF5F15] not-italic">specialist </em>
+              on your phone.
             </h1>
 
             <p

@@ -15,10 +15,8 @@ export function AboutSection() {
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-black/85 md:text-lg">
-          We connect homeowners, landlords, and businesses with verified
-          specialists for plumbing, electrical, building, and more — book on your
-          phone, pay a small deposit, track the job, and pay labour separately.
-          Workers get jobs, a professional profile, and MoMo payouts.
+        We connect everyday people with specialists who get the job done - book services from your phone and track job progress in real time.
+        We want you to focus on your daily activities while our specialists take care of your problems.
         </p>
 
         <Link
