@@ -12,20 +12,20 @@ export function ResearchLanding() {
         </h1>
         <p className="mt-4 max-w-lg text-white/65">
           We&apos;re building a better way to book skilled workers in Ghana.
-          Choose your path — it takes less than 5 minutes.
+          Choose your path - it takes less than 5 minutes.
         </p>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           <ChoiceCard
             href={`${RESEARCH_PATH}/user`}
             title="Customer"
-            description="I would want to a Technically skilled worker for my home or business "
+            description="I would want to hire a technically skilled worker for my home or business."
             cta="Customer survey"
           />
           <ChoiceCard
             href={`${RESEARCH_PATH}/specialist`}
             title="Specialist"
-            description="I am a technically skilled worker (Engineering) looking  use my skills to solve problems"
+            description="I am a technically skilled worker, looking to use my skills to solve problems."
             cta="Specialist survey"
           />
         </div>
