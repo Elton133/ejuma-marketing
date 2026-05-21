@@ -9,6 +9,7 @@ import {
   TRADES,
 } from "@/lib/constants";
 import { prefersReducedMotion, registerGsap } from "@/lib/motion/register-gsap";
+import { INSTALL_PATH } from "@/lib/constants";
 import { WAITLIST_PATH } from "@/lib/research-questions";
 import { ResearchQuestionsGroup } from "./research/ResearchQuestionsGroup";
 import { SurveyShareBlock } from "./research/SurveyShareBlock";
@@ -412,7 +413,7 @@ export function WaitlistSection() {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
                 <a
-                  href="/#install"
+                  href={INSTALL_PATH}
                   className="inline-flex justify-center rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black"
                 >
                   Install the app

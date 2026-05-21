@@ -9,11 +9,11 @@ import { MicroLabel } from "./MicroLabel";
 
 const QR_IMAGE = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(INSTALL_URL)}&bgcolor=ffffff&color=000000`;
 
-export function InstallSection() {
+export function InstallSection({ className = "" }: { className?: string }) {
   return (
     <section
       id="install"
-      className="bg-black px-6 py-20 text-white md:py-28"
+      className={`bg-black px-6 py-20 text-white md:py-28 ${className}`.trim()}
     >
       <div className="mx-auto max-w-[1200px]">
         <MicroLabel>Install</MicroLabel>

@@ -1,10 +1,15 @@
 import Link from "next/link";
-import { APP_URL, INSTALL_WORKER, WAITLIST_PATH } from "@/lib/constants";
+import {
+  APP_URL,
+  INSTALL_PATH,
+  INSTALL_WORKER,
+  WAITLIST_PATH,
+} from "@/lib/constants";
 
 const PRODUCT_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Features", href: "/#features" },
-  { label: "Install app", href: "/#install" },
+  { label: "Install app", href: INSTALL_PATH },
   { label: "Join waitlist", href: WAITLIST_PATH },
   { label: "Open app", href: APP_URL, external: true },
 ];

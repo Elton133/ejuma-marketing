@@ -23,9 +23,7 @@ export function Hero() {
               data-hero-animate
               className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:mt-6 md:text-lg"
             >
-              Book plumbers, electricians, masons, and more in Tema, Dawhenya,
-              Prampram and nearby — vetted profiles, secure booking, live job
-              tracking.
+              Relax and find a specialist wherever you stay.
             </p>
 
             <div

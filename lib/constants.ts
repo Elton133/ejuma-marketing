@@ -5,6 +5,7 @@ export const BRAND = {
 } as const;
 
 export const WAITLIST_PATH = "/waitlist";
+export const INSTALL_PATH = "/install";
 
 export const APP_URL = "https://3juma.app";
 export const INSTALL_URL = `${APP_URL}/install`;
@@ -19,7 +20,8 @@ export const HERO_IMAGES = [
 
 export const NAV_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
-  { label: "Features", href: "/#features" }
+  { label: "Features", href: "/#features" },
+  { label: "Install app", href: INSTALL_PATH },
 ] as const;
 
 export const TRADES = [
@@ -109,7 +111,7 @@ export const CUSTOMER_FEATURE_ROWS = [
     title: "Track every step of the job",
     description:
       "Follow live status updates — accepted, en route, arrived, in progress, and completed. Attach up to four scope photos when you book so your specialist knows what to expect.",
-    cta: { label: "Install the app", href: "#install" },
+    cta: { label: "Install the app", href: INSTALL_PATH },
     visualPosition: "right" as const,
     image:
       "https://images.unsplash.com/photo-1587937533522-b2294fd611f5?q=80&w=1200&auto=format&fit=crop",

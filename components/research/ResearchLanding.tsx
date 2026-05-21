@@ -18,14 +18,14 @@ export function ResearchLanding() {
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           <ChoiceCard
             href={`${RESEARCH_PATH}/user`}
-            title="I need a technician"
-            description="Homeowners, landlords, and anyone who hires plumbers, electricians, and more."
+            title="Customer"
+            description="I would want to a Technically skilled worker for my home or business "
             cta="Customer survey"
           />
           <ChoiceCard
             href={`${RESEARCH_PATH}/specialist`}
-            title="I am a technician"
-            description="Artisans and specialists who want more jobs and a professional profile."
+            title="Specialist"
+            description="I am a technically skilled worker (Engineering) looking  use my skills to solve problems"
             cta="Specialist survey"
           />
         </div>

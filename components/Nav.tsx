@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { APP_URL, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
+import { MobileNav } from "./MobileNav";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -13,6 +14,14 @@ export function Nav() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const showSolidNav = scrolled || open;
@@ -26,7 +35,7 @@ export function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
-        <Link href="/" className="flex shrink-0 items-center">
+        <Link href="/" className="flex shrink-0 items-center" onClick={() => setOpen(false)}>
           <span className="text-lg font-semibold tracking-tight text-white md:text-xl">
             Beagine
           </span>
@@ -62,81 +71,45 @@ export function Nav() {
 
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center text-white lg:hidden"
+            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:border-white/25 lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
           >
-            {open ? <CloseIcon /> : <MenuIcon />}
+            <MenuToggleIcon open={open} />
           </button>
         </div>
       </nav>
 
-      {open && (
-        <div className="border-t border-white/10 bg-black px-6 py-4 lg:hidden">
-          <div className="flex flex-col gap-3">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="py-1 text-sm text-white/85"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href={APP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="py-1 text-sm text-white/85"
-            >
-              Open app
-            </Link>
-            <Link
-              href={WAITLIST_PATH}
-              className="mt-2 inline-flex h-11 items-center justify-center rounded-full bg-[#FF5F15] text-sm font-semibold text-black"
-              onClick={() => setOpen(false)}
-            >
-              Join waitlist
-            </Link>
-          </div>
-        </div>
-      )}
+      <MobileNav open={open} onClose={() => setOpen(false)} />
     </header>
   );
 }
 
-function MenuIcon() {
+function MenuToggleIcon({ open }: { open: boolean }) {
   return (
     <svg
-      width="22"
-      height="22"
+      width="20"
+      height="20"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="1.75"
       strokeLinecap="round"
       aria-hidden
+      className="transition-transform duration-300"
     >
-      <path d="M4 7h16M4 12h16M4 17h16" />
-    </svg>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden
-    >
-      <path d="M6 6l12 12M18 6L6 18" />
+      {open ? (
+        <>
+          <path d="M6 6l12 12" className="origin-center" />
+          <path d="M18 6L6 18" />
+        </>
+      ) : (
+        <>
+          <path d="M5 8h14" />
+          <path d="M5 16h14" />
+        </>
+      )}
     </svg>
   );
 }
