@@ -15,8 +15,8 @@ const WORKER_LINKS = [
 ];
 
 const COMPANY_LINKS = [
-  { label: "About Ejuma", href: "/#about" },
-  { label: "Contact support", href: "mailto:support@ejuma.app" },
+  { label: "About Beagine", href: "/#about" },
+  { label: "Contact support", href: "mailto:support@beagine.app" },
 ];
 
 const LEGAL_LINKS = [
@@ -25,9 +25,9 @@ const LEGAL_LINKS = [
 ];
 
 const SOCIAL = [
-  { label: "Facebook", href: "https://facebook.com/ejumaghana" },
-  { label: "X / Twitter", href: "https://twitter.com/ejumaghana" },
-  { label: "Instagram", href: "https://instagram.com/ejumaghana" },
+  { label: "Facebook", href: "https://facebook.com/beagineghana" },
+  { label: "X / Twitter", href: "https://twitter.com/beagineghana" },
+  { label: "Instagram", href: "https://instagram.com/beagineghana" },
 ];
 
 export function Footer() {
@@ -36,7 +36,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <p className="font-heading text-xl font-bold tracking-tight">Ejuma</p>
+            <p className="font-heading text-xl font-bold tracking-tight">Beagine</p>
             <p className="mt-3 max-w-xs text-sm text-white/55">
               Marketplace for skilled trades — find, book, and
               track verified workers on your phone.
@@ -50,7 +50,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-8">
           <p className="text-sm text-white/45">
-            © {new Date().getFullYear()} Ejuma 
+            © {new Date().getFullYear()} Beagine
           </p>
           <div className="flex flex-wrap gap-4">
             {LEGAL_LINKS.map((link) => (

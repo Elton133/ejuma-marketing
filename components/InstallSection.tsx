@@ -18,7 +18,7 @@ export function InstallSection() {
       <div className="mx-auto max-w-[1200px]">
         <MicroLabel>Install</MicroLabel>
         <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
-          Get Ejuma on your phone
+          Get Beagine on your phone
         </h2>
         <p className="mt-4 max-w-xl text-white/60">
           No app store required — install in seconds from your browser. Works

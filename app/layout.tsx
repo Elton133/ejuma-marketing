@@ -16,12 +16,12 @@ const googleSansFlex = Google_Sans_Flex({
 });
 
 export const metadata: Metadata = {
-  title: "Ejuma — Ghana's skilled trades marketplace",
+  title: "Beagine — Ghana's skilled trades marketplace",
   description:
-    "Find, book, and track verified plumbers, electricians, masons, and more in Greater Accra. Join the waitlist or install the 3juma app.",
+    "Find, book, and track verified plumbers, electricians, masons, and more in Greater Accra. Join the waitlist or install the app.",
   themeColor: "#FF5F15",
   openGraph: {
-    title: "Ejuma — The hands-on workforce",
+    title: "Beagine — The hands-on workforce",
     description:
       "Verified tradespeople. Booked in minutes. Tema, Dawhenya, Prampram and nearby.",
     url: "https://3juma.app",

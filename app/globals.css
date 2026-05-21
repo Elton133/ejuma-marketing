@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --ejuma-orange: #ff5f15;
-  --ejuma-black: #000000;
-  --ejuma-off-white: #fafafa;
-  --background: var(--ejuma-black);
+  --beagine-orange: #ff5f15;
+  --beagine-black: #000000;
+  --beagine-off-white: #fafafa;
+  --background: var(--beagine-black);
   --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-ejuma-orange: var(--ejuma-orange);
-  --color-ejuma-black: var(--ejuma-black);
-  --color-ejuma-off-white: var(--ejuma-off-white);
+  --color-beagine-orange: var(--beagine-orange);
+  --color-beagine-black: var(--beagine-black);
+  --color-beagine-off-white: var(--beagine-off-white);
   --font-sans: var(--font-google-sans-flex), system-ui, sans-serif;
   --font-heading: var(--font-big-shoulders), system-ui, sans-serif;
 }

@@ -192,7 +192,7 @@ export function WaitlistSection() {
               </button>
 
               <p className="text-center text-xs text-black/50">
-                By joining you agree to be contacted about Ejuma. We don&apos;t
+                By joining you agree to be contacted about Beagine. We don&apos;t
                 sell your number.
               </p>
             </form>
@@ -244,7 +244,7 @@ export function WaitlistSection() {
               Thanks — you&apos;re fully registered.
             </h2>
             <p className="mt-4 text-black/65">
-              We&apos;ll be in touch when Ejuma opens in your area.
+              We&apos;ll be in touch when Beagine opens in your area.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <a
@@ -254,7 +254,7 @@ export function WaitlistSection() {
                 Install the app
               </a>
               <a
-                href={`https://wa.me/?text=${encodeURIComponent("Join me on Ejuma — Ghana's marketplace for skilled trades. https://3juma.app")}`}
+                href={`https://wa.me/?text=${encodeURIComponent("Join me on Beagine — Ghana's marketplace for skilled trades. https://3juma.app")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex justify-center rounded-full border border-black/15 px-6 py-3 text-sm font-semibold"
@@ -397,7 +397,7 @@ function WorkerQuestionnaire({
       />
 
       <SelectField
-        label="Expected monthly jobs from Ejuma"
+        label="Expected monthly jobs from Beagine"
         value={answers.monthlyJobs}
         onChange={(monthlyJobs) => onChange({ ...answers, monthlyJobs })}
         options={["1–5", "5–20", "20+"]}

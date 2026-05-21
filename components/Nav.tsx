@@ -12,7 +12,7 @@ export function Nav() {
       <nav className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-6 py-4 md:px-10 lg:px-14">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <span className="font-heading text-lg font-bold tracking-tight text-white md:text-xl">
-            Ejuma
+            Beagine
           </span>
         </Link>
 

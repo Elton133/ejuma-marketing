@@ -125,7 +125,7 @@ export const WORKER_FEATURES = [
       "Portfolio, certificates, bio, and rates — build trust before the first booking.",
   },
   {
-    title: "Earn with Ejuma",
+    title: "Earn with Beagine",
     description:
       "Request payouts from your dashboard — usually same day, within 24 hours.",
   },

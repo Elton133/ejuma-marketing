@@ -6,7 +6,7 @@ type TransitionData = {
 };
 
 export const pageTransition = {
-  name: "ejuma-fade",
+  name: "beagine-fade",
   async leave(data: TransitionData) {
     await gsap.to(data.current.container, {
       opacity: 0,
