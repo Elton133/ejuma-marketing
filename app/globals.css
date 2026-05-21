@@ -24,13 +24,19 @@ body {
   font-family: var(--font-google-sans-flex), system-ui, sans-serif;
 }
 
+/* Default: all headings use Google Sans Flex */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-big-shoulders), system-ui, sans-serif;
+  font-family: var(--font-google-sans-flex), system-ui, sans-serif;
+}
+
+/* Big Shoulders — customers features + trades bar headline only */
+.font-heading {
+  font-family: var(--font-big-shoulders), system-ui, sans-serif !important;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
@@ -49,21 +55,20 @@ h6 {
   color: #fff;
 }
 
-/* Hero — dark + orange glow */
-.hero-gradient {
+/* Hero photo slideshow overlay */
+.hero-image-overlay {
   background:
-    radial-gradient(ellipse 70% 55% at 80% 30%, rgb(255 95 21 / 0.35), transparent 55%),
-    radial-gradient(ellipse 45% 35% at 55% 55%, rgb(255 95 21 / 0.12), transparent 50%),
-    linear-gradient(165deg, #0a0a0a 0%, #000 50%, #050505 100%);
-}
-
-.hero-vignette {
-  background: linear-gradient(
-    to top,
-    rgb(0 0 0 / 0.9) 0%,
-    rgb(0 0 0 / 0.4) 50%,
-    rgb(0 0 0 / 0.2) 100%
-  );
+    linear-gradient(
+      to top,
+      rgb(0 0 0 / 0.92) 0%,
+      rgb(0 0 0 / 0.55) 45%,
+      rgb(0 0 0 / 0.35) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgb(0 0 0 / 0.65) 0%,
+      transparent 55%
+    );
 }
 
 .hero-grain {

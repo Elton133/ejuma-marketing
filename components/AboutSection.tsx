@@ -10,7 +10,7 @@ export function AboutSection() {
       <div className="mx-auto max-w-3xl">
         <MicroLabel light>About us</MicroLabel>
 
-        <h2 className="mt-4 text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight">
+        <h2 className="mt-4 text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.08] tracking-tight">
           Learn about us
         </h2>
 

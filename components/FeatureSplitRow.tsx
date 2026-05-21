@@ -1,4 +1,5 @@
 import { HugeiconsIcon } from "@hugeicons/react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   FEATURE_ICONS,
@@ -12,7 +13,8 @@ type FeatureSplitRowProps = {
   cta: { label: string; href: string; external?: boolean };
   icon: FeatureIconKey;
   panelClass?: string;
-  /** Icon panel on the left or right (desktop) */
+  image?: string;
+  imageAlt?: string;
   visualPosition: "left" | "right";
 };
 
@@ -23,6 +25,8 @@ export function FeatureSplitRow({
   cta,
   icon,
   panelClass = "from-[#FF5F15]/10 to-[#fafafa]",
+  image,
+  imageAlt = "",
   visualPosition,
 }: FeatureSplitRowProps) {
   const external = cta.external ?? cta.href.startsWith("http");
@@ -33,7 +37,7 @@ export function FeatureSplitRow({
       <p className="text-[15px] font-medium leading-snug text-black/55">
         {eyebrow}
       </p>
-      <h3 className="mt-4 text-[clamp(1.875rem,3.2vw,2.625rem)] font-bold leading-[1.12] tracking-tight text-black">
+      <h3 className="font-heading mt-4 text-[clamp(1.875rem,3.2vw,2.625rem)] leading-[1.12] text-black">
         {title}
       </h3>
       <p className="mt-5 text-[17px] leading-[1.55] text-black/60">
@@ -61,23 +65,38 @@ export function FeatureSplitRow({
 
   const visual = (
     <div
-      className={`relative flex aspect-[4/5] w-full shrink-0 items-center justify-center overflow-hidden rounded-[1.75rem] bg-gradient-to-br sm:aspect-[5/6] lg:aspect-[4/5] lg:max-h-[480px] lg:min-h-[420px] ${panelClass}`}
+      className={`relative aspect-[4/5] w-full shrink-0 overflow-hidden rounded-[1.75rem] sm:aspect-[5/6] lg:aspect-[4/5] lg:max-h-[480px] lg:min-h-[420px] ${
+        image ? "bg-zinc-900" : `flex items-center justify-center bg-gradient-to-br ${panelClass}`
+      }`}
       aria-hidden
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,95,21,0.12),transparent_55%)]" />
-      <HugeiconsIcon
-        icon={iconData}
-        size={120}
-        color="#FF5F15"
-        strokeWidth={1.25}
-        className="relative z-10"
-      />
-      <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-[#FF5F15]/10 blur-3xl" />
+      {image ? (
+        <>
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 1024px) 100vw, 560px"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,95,21,0.12),transparent_55%)]" />
+          <HugeiconsIcon
+            icon={iconData}
+            size={120}
+            color="#FF5F15"
+            strokeWidth={1.25}
+            className="relative z-10"
+          />
+          <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-[#FF5F15]/10 blur-3xl" />
+        </>
+      )}
     </div>
   );
 
-  // visual right → card left:  content | visual
-  // visual left  → card right: visual | content  (flex-row-reverse on lg)
   const rowDirection =
     visualPosition === "right" ? "lg:flex-row" : "lg:flex-row-reverse";
 

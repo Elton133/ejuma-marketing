@@ -1,17 +1,32 @@
 "use client";
 
-import { useState } from "react";
-import { PILOT_AREAS, TRADES } from "@/lib/constants";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { useEffect, useRef, useState } from "react";
+import {
+  HEAR_ABOUT_OPTIONS,
+  PILOT_AREAS,
+  TRADES,
+} from "@/lib/constants";
+import { prefersReducedMotion, registerGsap } from "@/lib/motion/register-gsap";
+import { WAITLIST_PATH } from "@/lib/research-questions";
+import { ResearchQuestionsGroup } from "./research/ResearchQuestionsGroup";
+import { SurveyShareBlock } from "./research/SurveyShareBlock";
+import { AnimatedStep } from "./waitlist/AnimatedStep";
+import {
+  RoleChoiceCards,
+  type SurveyPath,
+} from "./waitlist/RoleChoiceCards";
 import { MicroLabel } from "./MicroLabel";
 
-type Role = "customer" | "worker" | "both";
-type WaitlistStep = "form" | "questionnaire" | "done";
+type FormRole = "customer" | "worker";
+type WaitlistStep = "choose" | "questionnaire" | "surprise" | "form" | "done";
 
 type WaitlistData = {
   name: string;
   phone: string;
   email: string;
-  role: Role;
+  role: FormRole;
   area: string;
   trades: string[];
   hearAbout: string;
@@ -22,47 +37,139 @@ const emptyForm: WaitlistData = {
   phone: "",
   email: "",
   role: "customer",
-  area: PILOT_AREAS[0],
+  area: "",
   trades: [],
   hearAbout: "",
 };
 
+function pathToFormRole(path: SurveyPath): FormRole {
+  return path === "customer" ? "customer" : "worker";
+}
+
+function pathLabel(path: SurveyPath) {
+  return path === "customer" ? "Customer" : "Specialist";
+}
+
 export function WaitlistSection() {
-  const [step, setStep] = useState<WaitlistStep>("form");
+  const [step, setStep] = useState<WaitlistStep>("choose");
+  const [path, setPath] = useState<SurveyPath | null>(null);
+  const [cardsExiting, setCardsExiting] = useState(false);
   const [form, setForm] = useState<WaitlistData>(emptyForm);
-  const [qRole, setQRole] = useState<Role>("customer");
+  const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
+  const [specialistAnswers, setSpecialistAnswers] = useState<
+    Record<string, string>
+  >({});
 
-  const [customerAnswers, setCustomerAnswers] = useState({
-    frequency: "",
-    struggle: "",
-    lastJob: "",
-    deposit: "",
-    contact: "WhatsApp",
-  });
+  const questionnaireRef = useRef<HTMLDivElement>(null);
+  const surpriseGiftRef = useRef<HTMLParagraphElement>(null);
 
-  const [workerAnswers, setWorkerAnswers] = useState({
-    experience: "",
-    trades: [] as string[],
-    areas: "",
-    smartphone: "",
-    ghanaCard: "",
-    jobsToday: "",
-    monthlyJobs: "",
-  });
+  useEffect(() => {
+    registerGsap();
+  }, []);
 
-  const showTrades = form.role === "worker" || form.role === "both";
+  const showTrades = form.role === "worker";
 
-  const handleWaitlistSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setQRole(form.role);
-    setStep("questionnaire");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const selectPath = (selected: SurveyPath) => {
+    const role = pathToFormRole(selected);
+
+    const go = () => {
+      setPath(selected);
+      setForm((prev) => ({ ...prev, role }));
+      setStep("questionnaire");
+      setCardsExiting(false);
+      scrollTop();
+    };
+
+    if (prefersReducedMotion()) {
+      go();
+      return;
+    }
+
+    setCardsExiting(true);
+    gsap.delayedCall(0.38, go);
+  };
+
+  const backToChoose = () => {
+    setStep("choose");
+    setPath(null);
+    setCardsExiting(false);
+    scrollTop();
   };
 
   const handleQuestionnaireSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStep("done");
+    setStep("surprise");
+    scrollTop();
   };
+
+  const goToWaitlistForm = () => {
+    setStep("form");
+    scrollTop();
+  };
+
+  const handleWaitlistSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.info("Waitlist + research", {
+      waitlist: form,
+      path,
+      userAnswers,
+      specialistAnswers,
+    });
+    setStep("done");
+    scrollTop();
+  };
+
+  useGSAP(
+    () => {
+      if (step !== "questionnaire" || !questionnaireRef.current) return;
+
+      const fields = questionnaireRef.current.querySelectorAll(
+        "[data-question-field]"
+      );
+      if (!fields.length) return;
+
+      if (prefersReducedMotion()) {
+        gsap.set(fields, { opacity: 1, y: 0 });
+        return;
+      }
+
+      gsap.fromTo(
+        fields,
+        { opacity: 0, y: 16 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.45,
+          stagger: 0.04,
+          ease: "power2.out",
+          delay: 0.15,
+        }
+      );
+    },
+    { dependencies: [step, path] }
+  );
+
+  useGSAP(
+    () => {
+      if (step !== "surprise" || !surpriseGiftRef.current) return;
+
+      if (prefersReducedMotion()) return;
+
+      gsap.fromTo(
+        surpriseGiftRef.current,
+        { scale: 0, rotation: -12 },
+        {
+          scale: 1,
+          rotation: 0,
+          duration: 0.7,
+          ease: "back.out(2)",
+        }
+      );
+    },
+    { dependencies: [step] }
+  );
 
   const toggleTrade = (trade: string) => {
     setForm((prev) => ({
@@ -74,16 +181,117 @@ export function WaitlistSection() {
   };
 
   return (
-    <section className="bg-[#fafafa] px-6 pb-20 pt-28 text-black md:pb-28 md:pt-32">
+    <section className="bg-black px-6 pb-20 pt-28 text-white md:pb-28 md:pt-32">
       <div className="mx-auto max-w-2xl">
-        {step === "form" && (
-          <>
-            <MicroLabel light>Waitlist</MicroLabel>
-            <h2 className="mt-3 text-[clamp(2rem,4vw,2.75rem)] font-bold tracking-tight">
-              Join the waitlist
+        {step === "choose" && (
+          <AnimatedStep stepKey="choose">
+            <MicroLabel>Research</MicroLabel>
+            <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
+              Help us solve a problem
             </h2>
-            <p className="mt-3 text-black/65">
-              Be first when we open your area. We&apos;ll text or call you.
+            <p className="mt-4 max-w-lg text-white/65">
+              Pick the path that fits you — we&apos;ll show the right questions.
+              About 5 minutes.
+            </p>
+            <RoleChoiceCards onSelect={selectPath} exiting={cardsExiting} />
+          </AnimatedStep>
+        )}
+
+        {step === "questionnaire" && path && (
+          <AnimatedStep stepKey={`questionnaire-${path}`}>
+            <div id="questionnaire" ref={questionnaireRef}>
+              <button
+                type="button"
+                onClick={backToChoose}
+                className="text-sm text-white/50 transition-colors hover:text-white"
+              >
+                ← Back
+              </button>
+
+              <div className="mt-6">
+                <MicroLabel>{pathLabel(path)} survey</MicroLabel>
+              </div>
+              <h2 className="mt-3 text-[clamp(1.75rem,4vw,2.5rem)] font-semibold tracking-tight">
+                Help us solve a problem
+              </h2>
+              <p className="mt-3 text-white/65">
+                Answer honestly so we can build Beagine for how people actually
+                hire and work in Ghana.
+              </p>
+
+              <form
+                onSubmit={handleQuestionnaireSubmit}
+                className="mt-10 space-y-8"
+              >
+                <div data-question-field>
+                  {path === "customer" ? (
+                    <ResearchQuestionsGroup
+                      role="user"
+                      answers={userAnswers}
+                      onChange={setUserAnswers}
+                      startIndex={1}
+                    />
+                  ) : (
+                    <ResearchQuestionsGroup
+                      role="specialist"
+                      answers={specialistAnswers}
+                      onChange={setSpecialistAnswers}
+                      startIndex={1}
+                    />
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  data-question-field
+                  className="w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+                >
+                  Submit answers
+                </button>
+              </form>
+            </div>
+          </AnimatedStep>
+        )}
+
+        {step === "surprise" && (
+          <AnimatedStep stepKey="surprise">
+            <div className="py-6 text-center md:py-10">
+              <p
+                ref={surpriseGiftRef}
+                className="inline-block text-5xl"
+                aria-hidden
+              >
+                🎁
+              </p>
+              <div className="mt-8">
+                <MicroLabel>One more thing</MicroLabel>
+              </div>
+              <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight tracking-tight">
+                We have a surprise for you
+              </h2>
+              <p className="mx-auto mt-5 max-w-md text-lg leading-relaxed text-white/70">
+                Join the waitlist — don&apos;t miss out on early access when
+                Beagine launches in your area.
+              </p>
+              <button
+                type="button"
+                onClick={goToWaitlistForm}
+                className="mt-10 w-full rounded-full bg-[#FF5F15] py-4 text-sm font-semibold text-black transition-opacity hover:opacity-90 sm:w-auto sm:px-12"
+              >
+                Join the waitlist
+              </button>
+            </div>
+          </AnimatedStep>
+        )}
+
+        {step === "form" && (
+          <AnimatedStep stepKey="form">
+            <MicroLabel>Almost there</MicroLabel>
+            <h2 className="mt-3 text-[clamp(2rem,4vw,2.75rem)] font-semibold tracking-tight">
+              Join the community
+            </h2>
+            <p className="mt-3 text-white/65">
+              Leave your details so we can reach you when Beagine opens near you.
             </p>
 
             <form onSubmit={handleWaitlistSubmit} className="mt-10 space-y-5">
@@ -118,38 +326,22 @@ export function WaitlistSection() {
                 />
               </Field>
 
-              <Field label="I am a…" required>
-                <div className="flex flex-wrap gap-2">
-                  {(["customer", "worker", "both"] as Role[]).map((role) => (
-                    <button
-                      key={role}
-                      type="button"
-                      onClick={() => setForm({ ...form, role })}
-                      className={`rounded-full px-4 py-2 text-sm font-medium capitalize transition-colors ${
-                        form.role === role
-                          ? "bg-black text-white"
-                          : "bg-white text-black ring-1 ring-black/10"
-                      }`}
-                    >
-                      {role}
-                    </button>
-                  ))}
-                </div>
-              </Field>
-
               <Field label="City / area" required>
-                <select
+                <input
                   required
+                  type="text"
                   value={form.area}
                   onChange={(e) => setForm({ ...form, area: e.target.value })}
                   className={inputClass}
-                >
+                  placeholder="e.g. Tema, Dawhenya, Accra"
+                  list="waitlist-areas"
+                  autoComplete="address-level2"
+                />
+                <datalist id="waitlist-areas">
                   {PILOT_AREAS.map((area) => (
-                    <option key={area} value={area}>
-                      {area}
-                    </option>
+                    <option key={area} value={area} />
                   ))}
-                </select>
+                </datalist>
               </Field>
 
               {showTrades && (
@@ -163,7 +355,7 @@ export function WaitlistSection() {
                         className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
                           form.trades.includes(trade)
                             ? "bg-[#FF5F15] text-black"
-                            : "bg-white ring-1 ring-black/10"
+                            : "bg-white/10 text-white ring-1 ring-white/15"
                         }`}
                       >
                         {trade}
@@ -173,16 +365,13 @@ export function WaitlistSection() {
                 </Field>
               )}
 
-              <Field label="How did you hear about us?">
-                <input
-                  value={form.hearAbout}
-                  onChange={(e) =>
-                    setForm({ ...form, hearAbout: e.target.value })
-                  }
-                  className={inputClass}
-                  placeholder="WhatsApp, friend, Facebook…"
-                />
-              </Field>
+              <SelectField
+                label="How did you hear about us?"
+                required
+                value={form.hearAbout}
+                onChange={(hearAbout) => setForm({ ...form, hearAbout })}
+                options={[...HEAR_ABOUT_OPTIONS]}
+              />
 
               <button
                 type="submit"
@@ -191,218 +380,55 @@ export function WaitlistSection() {
                 Join waitlist
               </button>
 
-              <p className="text-center text-xs text-black/50">
+              <p className="text-center text-xs text-white/50">
                 By joining you agree to be contacted about Beagine. We don&apos;t
-                sell your number.
+                sell your data.
               </p>
             </form>
-          </>
-        )}
-
-        {step === "questionnaire" && (
-          <div id="questionnaire">
-            <MicroLabel light>Step 2</MicroLabel>
-            <h2 className="mt-3 text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight">
-              Tell us a bit more (2 min)
-            </h2>
-            <p className="mt-3 text-black/65">
-              You&apos;re on the list. One more step — helps us launch in the
-              right areas with the right specialists.
-            </p>
-
-            <form onSubmit={handleQuestionnaireSubmit} className="mt-10 space-y-5">
-              {(qRole === "customer" || qRole === "both") && (
-                <CustomerQuestionnaire
-                  answers={customerAnswers}
-                  onChange={setCustomerAnswers}
-                />
-              )}
-
-              {(qRole === "worker" || qRole === "both") && (
-                <WorkerQuestionnaire
-                  answers={workerAnswers}
-                  onChange={setWorkerAnswers}
-                />
-              )}
-
-              <button
-                type="submit"
-                className="w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black"
-              >
-                Submit
-              </button>
-            </form>
-          </div>
+          </AnimatedStep>
         )}
 
         {step === "done" && (
-          <div className="text-center">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#FF5F15]/20 text-2xl">
-              ✓
+          <AnimatedStep stepKey="done">
+            <div className="text-center">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#FF5F15]/20 text-2xl text-[#FF5F15]">
+                ✓
+              </div>
+              <div className="mt-6">
+                <MicroLabel>All done</MicroLabel>
+              </div>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+                Thanks — you&apos;re fully registered.
+              </h2>
+              <p className="mt-4 text-white/65">
+                We&apos;ll be in touch when Beagine opens in your area.
+              </p>
+
+              <SurveyShareBlock
+                sharePath={WAITLIST_PATH}
+                title="Share the waitlist"
+                description="Invite friends, neighbours, or colleagues to join and take the survey."
+              />
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                <a
+                  href="/#install"
+                  className="inline-flex justify-center rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black"
+                >
+                  Install the app
+                </a>
+                <a
+                  href="/"
+                  className="inline-flex justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                >
+                  Back to home
+                </a>
+              </div>
             </div>
-            <h2 className="mt-6 text-3xl font-bold tracking-tight">
-              Thanks — you&apos;re fully registered.
-            </h2>
-            <p className="mt-4 text-black/65">
-              We&apos;ll be in touch when Beagine opens in your area.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <a
-                href="/#install"
-                className="inline-flex justify-center rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black"
-              >
-                Install the app
-              </a>
-              <a
-                href={`https://wa.me/?text=${encodeURIComponent("Join me on Beagine — Ghana's marketplace for skilled trades. https://3juma.app")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex justify-center rounded-full border border-black/15 px-6 py-3 text-sm font-semibold"
-              >
-                Share with a friend
-              </a>
-            </div>
-          </div>
+          </AnimatedStep>
         )}
       </div>
     </section>
-  );
-}
-
-function CustomerQuestionnaire({
-  answers,
-  onChange,
-}: {
-  answers: {
-    frequency: string;
-    struggle: string;
-    lastJob: string;
-    deposit: string;
-    contact: string;
-  };
-  onChange: (v: typeof answers) => void;
-}) {
-  return (
-    <fieldset className="space-y-4 rounded-[2rem] bg-white p-6 ring-1 ring-black/5">
-      <legend className="text-sm font-bold">For customers</legend>
-
-      <SelectField
-        label="How often do you need a tradesperson?"
-        value={answers.frequency}
-        onChange={(frequency) => onChange({ ...answers, frequency })}
-        options={[
-          "Rarely",
-          "Few times a year",
-          "Monthly",
-          "Business / ongoing",
-        ]}
-      />
-
-      <SelectField
-        label="What do you usually struggle with?"
-        value={answers.struggle}
-        onChange={(struggle) => onChange({ ...answers, struggle })}
-        options={[
-          "Finding someone",
-          "Price",
-          "Quality",
-          "Showing up",
-          "Trust",
-        ]}
-      />
-
-      <Field label="What's the last job you needed?">
-        <input
-          value={answers.lastJob}
-          onChange={(e) => onChange({ ...answers, lastJob: e.target.value })}
-          className={inputClass}
-        />
-      </Field>
-
-      <SelectField
-        label="Would you pay a small booking deposit?"
-        value={answers.deposit}
-        onChange={(deposit) => onChange({ ...answers, deposit })}
-        options={["Yes", "Maybe", "No"]}
-      />
-
-      <SelectField
-        label="Preferred contact"
-        value={answers.contact}
-        onChange={(contact) => onChange({ ...answers, contact })}
-        options={["WhatsApp", "Phone call", "SMS"]}
-      />
-    </fieldset>
-  );
-}
-
-function WorkerQuestionnaire({
-  answers,
-  onChange,
-}: {
-  answers: {
-    experience: string;
-    trades: string[];
-    areas: string;
-    smartphone: string;
-    ghanaCard: string;
-    jobsToday: string;
-    monthlyJobs: string;
-  };
-  onChange: (v: typeof answers) => void;
-}) {
-  return (
-    <fieldset className="space-y-4 rounded-[2rem] bg-white p-6 ring-1 ring-black/5">
-      <legend className="text-sm font-bold">For workers</legend>
-
-      <Field label="Years of experience">
-        <input
-          value={answers.experience}
-          onChange={(e) =>
-            onChange({ ...answers, experience: e.target.value })
-          }
-          className={inputClass}
-          placeholder="e.g. 5"
-        />
-      </Field>
-
-      <Field label="Areas you can work">
-        <input
-          value={answers.areas}
-          onChange={(e) => onChange({ ...answers, areas: e.target.value })}
-          className={inputClass}
-          placeholder="Tema, Dawhenya, Prampram…"
-        />
-      </Field>
-
-      <SelectField
-        label="Smartphone for mobile data jobs?"
-        value={answers.smartphone}
-        onChange={(smartphone) => onChange({ ...answers, smartphone })}
-        options={["Yes", "No"]}
-      />
-
-      <SelectField
-        label="Ghana Card ready to verify?"
-        value={answers.ghanaCard}
-        onChange={(ghanaCard) => onChange({ ...answers, ghanaCard })}
-        options={["Yes", "Not yet"]}
-      />
-
-      <SelectField
-        label="How do you get jobs today?"
-        value={answers.jobsToday}
-        onChange={(jobsToday) => onChange({ ...answers, jobsToday })}
-        options={["Word of mouth", "Social media", "Other apps", "Other"]}
-      />
-
-      <SelectField
-        label="Expected monthly jobs from Beagine"
-        value={answers.monthlyJobs}
-        onChange={(monthlyJobs) => onChange({ ...answers, monthlyJobs })}
-        options={["1–5", "5–20", "20+"]}
-      />
-    </fieldset>
   );
 }
 
@@ -417,7 +443,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-black/80">
+      <span className="text-sm font-medium text-white/85">
         {label}
         {required && <span className="text-[#FF5F15]"> *</span>}
       </span>
@@ -428,28 +454,30 @@ function Field({
 
 function SelectField({
   label,
+  required,
   value,
   onChange,
   options,
 }: {
   label: string;
+  required?: boolean;
   value: string;
   onChange: (v: string) => void;
   options: string[];
 }) {
   return (
-    <Field label={label}>
+    <Field label={label} required={required}>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={inputClass}
-        required
+        required={required}
       >
         <option value="" disabled>
           Select…
         </option>
         {options.map((opt) => (
-          <option key={opt} value={opt}>
+          <option key={opt} value={opt} className="bg-black text-white">
             {opt}
           </option>
         ))}
@@ -459,4 +487,4 @@ function SelectField({
 }
 
 const inputClass =
-  "w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none transition-shadow focus:ring-2 focus:ring-[#FF5F15]/40";
+  "w-full rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-shadow placeholder:text-white/35 focus:border-[#FF5F15]/50 focus:ring-2 focus:ring-[#FF5F15]/30";

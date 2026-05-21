@@ -36,7 +36,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <p className="font-heading text-xl font-bold tracking-tight">Beagine</p>
+            <p className="text-xl font-semibold tracking-tight">Beagine</p>
             <p className="mt-3 max-w-xs text-sm text-white/55">
               Marketplace for skilled trades — find, book, and
               track verified workers on your phone.

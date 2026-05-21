@@ -13,7 +13,7 @@ export function Features() {
         <div className="mx-auto max-w-[1200px]">
           <header className="mb-4 max-w-3xl md:mb-8">
             <MicroLabel light>For customers</MicroLabel>
-            <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
+            <h2 className="font-heading mt-3 text-[clamp(2rem,4vw,3rem)] tracking-tight">
               Get your work done with confidence
             </h2>
           </header>
@@ -27,8 +27,14 @@ export function Features() {
                   title={feature.title}
                   description={feature.description}
                   cta={feature.cta}
-                  panelClass={feature.panelClass}
                   visualPosition={feature.visualPosition}
+                  panelClass={
+                    "panelClass" in feature ? feature.panelClass : undefined
+                  }
+                  image={"image" in feature ? feature.image : undefined}
+                  imageAlt={
+                    "imageAlt" in feature ? feature.imageAlt : undefined
+                  }
                 />
               </div>
             ))}
@@ -42,7 +48,7 @@ export function Features() {
       >
         <div className="mx-auto max-w-[1440px]">
           <MicroLabel>For workers</MicroLabel>
-          <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
+          <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
             Get verified, get discovered and earn
           </h2>
           <p className="mt-4 max-w-xl text-white/60">

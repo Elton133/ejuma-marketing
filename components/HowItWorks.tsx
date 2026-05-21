@@ -10,7 +10,7 @@ export function HowItWorks() {
       <div className="mx-auto max-w-[1440px] md:px-4 lg:px-0">
         <div className="max-w-xl">
           <MicroLabel>How it works</MicroLabel>
-          <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
+          <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
             Get your  <em className="text-[#FF5F15] not-italic">problem</em> fixed in only four steps
           </h2>
           <p className="mt-4 text-white/65">
@@ -29,7 +29,7 @@ export function HowItWorks() {
               </span>
 
               <div className="relative z-10 pt-14">
-                <h3 className="text-xl font-bold tracking-tight">
+                <h3 className="text-xl font-semibold tracking-tight">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">

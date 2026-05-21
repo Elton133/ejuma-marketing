@@ -11,11 +11,15 @@ export const INSTALL_URL = `${APP_URL}/install`;
 export const INSTALL_CUSTOMER = `${APP_URL}/install?role=customer`;
 export const INSTALL_WORKER = `${APP_URL}/install?role=worker`;
 
+export const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1777130555776-cd7ce5425804?q=80&w=1920&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1596394723269-b2cbca4e6313?q=80&w=1920&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1742900280861-32bed068938b?q=80&w=1920&auto=format&fit=crop",
+] as const;
+
 export const NAV_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
-  { label: "Features", href: "/#features" },
-  { label: "For workers", href: "/#for-workers" },
-  { label: "Install app", href: "/#install" },
+  { label: "Features", href: "/#features" }
 ] as const;
 
 export const TRADES = [
@@ -29,6 +33,17 @@ export const TRADES = [
   "AC Technician",
   "Roofer",
   "Auto Mechanic",
+] as const;
+
+export const HEAR_ABOUT_OPTIONS = [
+  "WhatsApp",
+  "Friend or family",
+  "Facebook",
+  "Instagram",
+  "Twitter / X",
+  "Google search",
+  "Flyer or poster",
+  "Other",
 ] as const;
 
 export const PILOT_AREAS = [
@@ -74,7 +89,9 @@ export const CUSTOMER_FEATURE_ROWS = [
       "Every specialist is verified and has experience in the area you need help with. We take time to get to know every specialist",
     cta: { label: "Join the waitlist", href: WAITLIST_PATH },
     visualPosition: "right" as const,
-    panelClass: "from-[#FF5F15]/15 via-orange-50 to-[#fafafa]",
+    image:
+      "https://images.unsplash.com/photo-1679134015859-6281e4382065?q=80&w=1200&auto=format&fit=crop",
+    imageAlt: "Specialist at work with professional tools",
   },
   {
     icon: "search" as const,
@@ -94,7 +111,9 @@ export const CUSTOMER_FEATURE_ROWS = [
       "Follow live status updates — accepted, en route, arrived, in progress, and completed. Attach up to four scope photos when you book so your specialist knows what to expect.",
     cta: { label: "Install the app", href: "#install" },
     visualPosition: "right" as const,
-    panelClass: "from-zinc-100 via-[#fafafa] to-[#FF5F15]/15",
+    image:
+      "https://images.unsplash.com/photo-1587937533522-b2294fd611f5?q=80&w=1200&auto=format&fit=crop",
+    imageAlt: "Live map tracking a specialist en route",
   },
   // {
   //   icon: "deposit" as const,

@@ -20,7 +20,7 @@ export function TradesBar() {
             Bringing you skilled specialists — verified, bookable, and
             trackable.
           </p>
-          <h2 className="text-[clamp(1.75rem,4vw,3.25rem)] font-bold leading-[1.1] tracking-tight">
+          <h2 className="font-heading text-[clamp(1.75rem,4vw,3.25rem)] leading-[1.1]">
             Access plumbers, electricians, masons, and more — all in one place,
             with flexible booking for how, where, and when you need work done.
           </h2>

@@ -17,7 +17,7 @@ export function InstallSection() {
     >
       <div className="mx-auto max-w-[1200px]">
         <MicroLabel>Install</MicroLabel>
-        <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
+        <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
           Get Beagine on your phone
         </h2>
         <p className="mt-4 max-w-xl text-white/60">
@@ -103,7 +103,7 @@ function InstallCard({
 }) {
   return (
     <div className="flex flex-col rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 md:p-8">
-      <h3 className="text-xl font-bold tracking-tight">{title}</h3>
+      <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">
         {description}
       </p>
