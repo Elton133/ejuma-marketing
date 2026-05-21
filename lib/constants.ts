@@ -4,17 +4,18 @@ export const BRAND = {
   offWhite: "#fafafa",
 } as const;
 
+export const WAITLIST_PATH = "/waitlist";
+
 export const APP_URL = "https://3juma.app";
 export const INSTALL_URL = `${APP_URL}/install`;
 export const INSTALL_CUSTOMER = `${APP_URL}/install?role=customer`;
 export const INSTALL_WORKER = `${APP_URL}/install?role=worker`;
 
 export const NAV_LINKS = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Features", href: "#features" },
-  { label: "For workers", href: "#for-workers" },
-  { label: "Install app", href: "#install" },
-  { label: "Join waitlist", href: "#waitlist" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Features", href: "/#features" },
+  { label: "For workers", href: "/#for-workers" },
+  { label: "Install app", href: "/#install" },
 ] as const;
 
 export const TRADES = [
@@ -37,17 +38,10 @@ export const PILOT_AREAS = [
   "Other",
 ] as const;
 
-export const STATS = [
-  { value: "10", label: "trades" },
-  { value: "✓", label: "Verified with Ghana Card" },
-  { value: "₵", label: "Small secure deposit" },
-  { value: "→", label: "Track every step" },
-] as const;
-
 export const HOW_IT_WORKS = [
   {
     step: "01",
-    title: "Choose trade & area",
+    title: "Choose technical area",
     description: "Tell us what you need and where — Tema, Dawhenya, Prampram and nearby.",
   },
   {
@@ -58,15 +52,15 @@ export const HOW_IT_WORKS = [
   },
   {
     step: "03",
-    title: "Book & pay deposit",
+    title: "Work gets done",
     description:
-      "Describe the job, add up to 4 scope photos. Secure your slot via Paystack — first booking may be free.",
+      "The worker will come to your location and fix the problem.",
   },
   {
     step: "04",
-    title: "Track & review",
+    title: "Pay for service",
     description:
-      "Follow status from accepted to completed. Rate your specialist when the job is done.",
+      "Pay for the service after it is done.",
   },
 ] as const;
 
@@ -75,10 +69,10 @@ export const CUSTOMER_FEATURE_ROWS = [
   {
     icon: "verified" as const,
     eyebrow: "Hire with trust",
-    title: "Verified specialists, reviewed by us",
+    title: "Find verified specialists with experience",
     description:
-      "Every worker is checked with Ghana Card verification and an admin review before they appear in search. Compare skills, certificates, and portfolio photos — then book on the platform, not over the phone.",
-    cta: { label: "Join the waitlist", href: "#waitlist" },
+      "Every specialist is verified and has experience in the area you need help with. We take time to get to know every specialist",
+    cta: { label: "Join the waitlist", href: WAITLIST_PATH },
     visualPosition: "right" as const,
     panelClass: "from-[#FF5F15]/15 via-orange-50 to-[#fafafa]",
   },
@@ -102,36 +96,36 @@ export const CUSTOMER_FEATURE_ROWS = [
     visualPosition: "right" as const,
     panelClass: "from-zinc-100 via-[#fafafa] to-[#FF5F15]/15",
   },
-  {
-    icon: "deposit" as const,
-    eyebrow: "Book with confidence",
-    title: "Secure your slot with a small deposit",
-    description:
-      "Pay a small GHS booking deposit via Paystack to hold your slot. Labour price is agreed with the worker separately — and your first booking may be free during launch.",
-    cta: { label: "Join the waitlist", href: "#waitlist" },
-    visualPosition: "left" as const,
-    panelClass: "from-amber-50 via-[#fafafa] to-stone-100",
-  },
+  // {
+  //   icon: "deposit" as const,
+  //   eyebrow: "Book with confidence",
+  //   title: "Secure your slot with a small deposit",
+  //   description:
+  //     "Pay a small GHS booking deposit via Paystack to hold your slot. Labour price is agreed with the worker separately — and your first booking may be free during launch.",
+  //   cta: { label: "Join the waitlist", href: "#waitlist" },
+  //   visualPosition: "left" as const,
+  //   panelClass: "from-amber-50 via-[#fafafa] to-stone-100",
+  // },
 ] as const;
 
 export const WORKER_FEATURES = [
   {
-    title: "Earn more jobs in your area",
+    title: "Get more jobs",
     description:
       "Get discovered by customers searching your trade and service areas.",
   },
   {
-    title: "Multi-skill & travel areas",
+    title: "Work in new areas",
     description:
       "List several trades and towns — work across the corridor on your terms.",
   },
   {
-    title: "Professional profile",
+    title: "Build your profile",
     description:
       "Portfolio, certificates, bio, and rates — build trust before the first booking.",
   },
   {
-    title: "Fast MoMo payouts",
+    title: "Earn with Ejuma",
     description:
       "Request payouts from your dashboard — usually same day, within 24 hours.",
   },

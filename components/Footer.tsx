@@ -1,20 +1,21 @@
 import Link from "next/link";
-import { APP_URL, INSTALL_WORKER } from "@/lib/constants";
+import { APP_URL, INSTALL_WORKER, WAITLIST_PATH } from "@/lib/constants";
 
 const PRODUCT_LINKS = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Features", href: "#features" },
-  { label: "Install app", href: "#install" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Features", href: "/#features" },
+  { label: "Install app", href: "/#install" },
+  { label: "Join waitlist", href: WAITLIST_PATH },
   { label: "Open app", href: APP_URL, external: true },
 ];
 
 const WORKER_LINKS = [
-  { label: "Join as a worker", href: "#waitlist" },
+  { label: "Join as a worker", href: WAITLIST_PATH },
   { label: "Worker install", href: INSTALL_WORKER, external: true },
 ];
 
 const COMPANY_LINKS = [
-  { label: "About Ejuma", href: "#about" },
+  { label: "About Ejuma", href: "/#about" },
   { label: "Contact support", href: "mailto:support@ejuma.app" },
 ];
 
@@ -35,9 +36,9 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <p className="text-xl font-bold tracking-tight">Ejuma</p>
+            <p className="font-heading text-xl font-bold tracking-tight">Ejuma</p>
             <p className="mt-3 max-w-xs text-sm text-white/55">
-              Ghana&apos;s marketplace for skilled trades — find, book, and
+              Marketplace for skilled trades — find, book, and
               track verified workers on your phone.
             </p>
           </div>
@@ -49,7 +50,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-8">
           <p className="text-sm text-white/45">
-            © {new Date().getFullYear()} Ejuma · Made in Ghana · 🇬🇭
+            © {new Date().getFullYear()} Ejuma 
           </p>
           <div className="flex flex-wrap gap-4">
             {LEGAL_LINKS.map((link) => (

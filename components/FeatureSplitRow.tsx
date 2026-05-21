@@ -12,7 +12,7 @@ type FeatureSplitRowProps = {
   cta: { label: string; href: string; external?: boolean };
   icon: FeatureIconKey;
   panelClass?: string;
-  /** Which side the icon panel sits on desktop */
+  /** Icon panel on the left or right (desktop) */
   visualPosition: "left" | "right";
 };
 
@@ -29,14 +29,14 @@ export function FeatureSplitRow({
   const iconData = FEATURE_ICONS[icon];
 
   const content = (
-    <div className="flex flex-col justify-center lg:px-2 lg:py-8">
+    <div className="flex w-full flex-col justify-start lg:max-w-xl">
       <p className="text-[15px] font-medium leading-snug text-black/55">
         {eyebrow}
       </p>
       <h3 className="mt-4 text-[clamp(1.875rem,3.2vw,2.625rem)] font-bold leading-[1.12] tracking-tight text-black">
         {title}
       </h3>
-      <p className="mt-5 max-w-[28rem] text-[17px] leading-[1.55] text-black/60">
+      <p className="mt-5 text-[17px] leading-[1.55] text-black/60">
         {description}
       </p>
       {external ? (
@@ -61,7 +61,7 @@ export function FeatureSplitRow({
 
   const visual = (
     <div
-      className={`relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-[1.75rem] bg-gradient-to-br sm:aspect-[5/6] lg:aspect-[4/5] lg:min-h-[440px] ${panelClass}`}
+      className={`relative flex aspect-[4/5] w-full shrink-0 items-center justify-center overflow-hidden rounded-[1.75rem] bg-gradient-to-br sm:aspect-[5/6] lg:aspect-[4/5] lg:max-h-[480px] lg:min-h-[420px] ${panelClass}`}
       aria-hidden
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,95,21,0.12),transparent_55%)]" />
@@ -70,23 +70,23 @@ export function FeatureSplitRow({
         size={120}
         color="#FF5F15"
         strokeWidth={1.25}
-        className="relative z-10 lg:!size-[140px]"
+        className="relative z-10"
       />
       <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-[#FF5F15]/10 blur-3xl" />
     </div>
   );
 
-  const visualCol =
-    visualPosition === "left" ? "lg:col-start-1" : "lg:col-start-2";
-  const contentCol =
-    visualPosition === "left" ? "lg:col-start-2" : "lg:col-start-1";
+  // visual right → card left:  content | visual
+  // visual left  → card right: visual | content  (flex-row-reverse on lg)
+  const rowDirection =
+    visualPosition === "right" ? "lg:flex-row" : "lg:flex-row-reverse";
 
   return (
-    <article className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
-      {/* Icon panel — always first on mobile */}
-      <div className={`order-1 ${visualCol}`}>{visual}</div>
-      {/* Text — second on mobile */}
-      <div className={`order-2 ${contentCol}`}>{content}</div>
+    <article
+      className={`flex flex-col items-stretch gap-10 lg:items-start lg:gap-14 xl:gap-20 ${rowDirection}`}
+    >
+      <div className="w-full lg:w-1/2 lg:shrink-0">{content}</div>
+      <div className="w-full lg:w-1/2 lg:shrink-0">{visual}</div>
     </article>
   );
 }

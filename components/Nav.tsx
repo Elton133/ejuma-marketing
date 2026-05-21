@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { APP_URL, NAV_LINKS } from "@/lib/constants";
+import { APP_URL, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -11,7 +11,7 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-black/70 backdrop-blur-md">
       <nav className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-6 py-4 md:px-10 lg:px-14">
         <Link href="/" className="flex shrink-0 items-center gap-2">
-          <span className="text-lg font-bold tracking-tight text-white md:text-xl">
+          <span className="font-heading text-lg font-bold tracking-tight text-white md:text-xl">
             Ejuma
           </span>
         </Link>
@@ -38,7 +38,7 @@ export function Nav() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="#waitlist"
+            href={WAITLIST_PATH}
             className="hidden rounded-full bg-[#FF5F15] px-5 py-2 text-sm font-semibold text-black transition-opacity hover:opacity-90 sm:inline-flex"
           >
             Join waitlist
@@ -78,7 +78,7 @@ export function Nav() {
               Open app
             </Link>
             <Link
-              href="#waitlist"
+              href={WAITLIST_PATH}
               className="mt-2 inline-flex h-11 items-center justify-center rounded-full bg-[#FF5F15] text-sm font-semibold text-black"
               onClick={() => setOpen(false)}
             >

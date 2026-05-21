@@ -56,7 +56,7 @@ export function WaitlistSection() {
     e.preventDefault();
     setQRole(form.role);
     setStep("questionnaire");
-    document.getElementById("questionnaire")?.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleQuestionnaireSubmit = (e: React.FormEvent) => {
@@ -74,7 +74,7 @@ export function WaitlistSection() {
   };
 
   return (
-    <section id="waitlist" className="bg-[#fafafa] px-6 py-20 text-black md:py-28">
+    <section className="bg-[#fafafa] px-6 pb-20 pt-28 text-black md:pb-28 md:pt-32">
       <div className="mx-auto max-w-2xl">
         {step === "form" && (
           <>
@@ -248,7 +248,7 @@ export function WaitlistSection() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <a
-                href="#install"
+                href="/#install"
                 className="inline-flex justify-center rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black"
               >
                 Install the app

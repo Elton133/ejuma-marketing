@@ -11,7 +11,7 @@ export function AboutSection() {
         <MicroLabel light>About us</MicroLabel>
 
         <h2 className="mt-4 text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight">
-          Ejuma is Ghana&apos;s marketplace for skilled trades.
+          Learn about us
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-black/85 md:text-lg">

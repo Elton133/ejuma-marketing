@@ -11,29 +11,31 @@ export function HowItWorks() {
         <div className="max-w-xl">
           <MicroLabel>How it works</MicroLabel>
           <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
-            Hire with confidence in four steps
+            Get your  <em className="text-[#FF5F15] not-italic">problem</em> fixed in only four steps
           </h2>
           <p className="mt-4 text-white/65">
-            Labour price is agreed with the worker; the app deposit holds your
-            booking.
+            Find • Book • Fix
           </p>
         </div>
 
-        <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        <ol className="mt-14 grid gap-12 md:grid-cols-2 md:gap-x-10 md:gap-y-14 lg:grid-cols-4 lg:gap-x-8">
           {HOW_IT_WORKS.map((item) => (
-            <li
-              key={item.step}
-              className="flex flex-col rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-7"
-            >
-              <span className="text-sm font-bold text-[#FF5F15]">
+            <li key={item.step} className="relative min-h-[11rem]">
+              <span
+                className="step-ghost pointer-events-none absolute -left-1 top-0 select-none font-bold leading-none tracking-tighter"
+                aria-hidden
+              >
                 {item.step}
               </span>
-              <h3 className="mt-4 text-xl font-bold tracking-tight">
-                {item.title}
-              </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">
-                {item.description}
-              </p>
+
+              <div className="relative z-10 pt-14">
+                <h3 className="text-xl font-bold tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  {item.description}
+                </p>
+              </div>
             </li>
           ))}
         </ol>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_URL } from "@/lib/constants";
+import { WAITLIST_PATH } from "@/lib/constants";
 
 export function Hero() {
   return (
@@ -14,47 +14,56 @@ export function Hero() {
         <div className="mx-auto w-full max-w-[1440px] px-6 pb-16 md:px-10 md:pb-20 lg:px-14 lg:pb-24">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-end">
             <div className="max-w-2xl">
-              <h1 className="text-[clamp(2.5rem,6vw,4.75rem)] font-bold leading-[1.02] tracking-tight">
-                The hands-on{" "}
-                <em className="text-[#FF5F15] not-italic">workforce</em>, on
-                your phone.
+              <h1
+                data-hero-animate
+                className="text-[clamp(2.5rem,6vw,4.75rem)] font-bold leading-[1.02] tracking-tight"
+              >
+                Your specialist{" "}
+                <em className="text-[#FF5F15] not-italic">on your </em>
+               phone.
               </h1>
 
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/80 md:mt-6 md:text-lg">
+              <p
+                data-hero-animate
+                className="mt-5 max-w-xl text-base leading-relaxed text-white/80 md:mt-6 md:text-lg"
+              >
                 Book plumbers, electricians, masons, and more in Tema,
                 Dawhenya, Prampram and nearby — vetted profiles, secure
                 booking, live job tracking.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3 md:mt-10">
+              <div
+                data-hero-animate
+                className="mt-8 flex flex-wrap gap-3 md:mt-10"
+              >
                 <Link
-                  href="#waitlist"
+                  href={WAITLIST_PATH}
                   className="inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black transition-opacity hover:opacity-90 md:h-[52px] md:px-8 md:text-base"
                 >
                   Join the waitlist
                 </Link>
                 <Link
-                  href="#install"
+                  href="https://3juma.app"
                   className="inline-flex h-12 items-center justify-center rounded-full border border-white/25 bg-white/5 px-7 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 md:h-[52px] md:px-8 md:text-base"
                 >
-                  Install the app
+                  Open app
                 </Link>
               </div>
 
               <p className="mt-6 text-sm text-white/50">
-                Labour price is agreed with your worker ·{" "}
+               Find your specialist ·{" "}
                 <Link
-                  href={APP_URL}
+                  href="https://3juma.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#FF5F15] hover:underline"
                 >
-                  Open 3juma.app →
+                  Open 3juma.app
                 </Link>
               </p>
             </div>
 
-            <div className="hidden justify-end lg:flex">
+            <div data-hero-animate className="hidden justify-end lg:flex">
               <PhoneMockup />
             </div>
           </div>

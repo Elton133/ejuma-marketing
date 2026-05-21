@@ -17,7 +17,7 @@ export function TradesBar() {
 
         <div className="mt-16 grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16 lg:mt-20">
           <p className="max-w-xs text-lg text-black/70">
-            Bringing you Ghana&apos;s skilled trades — verified, bookable, and
+            Bringing you skilled specialists — verified, bookable, and
             trackable.
           </p>
           <h2 className="text-[clamp(1.75rem,4vw,3.25rem)] font-bold leading-[1.1] tracking-tight">

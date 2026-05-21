@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { Instrument_Sans } from "next/font/google";
+import { Big_Shoulders, Google_Sans_Flex } from "next/font/google";
+import { MotionProvider } from "@/providers/MotionProvider";
 import "./globals.css";
 
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
+const bigShoulders = Big_Shoulders({
+  variable: "--font-big-shoulders",
+  subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
+});
+
+const googleSansFlex = Google_Sans_Flex({
+  variable: "--font-google-sans-flex",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -27,9 +34,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GH" className={`${instrumentSans.variable} h-full scroll-smooth`}>
-      <body className="min-h-full flex flex-col bg-black font-sans text-white antialiased">
-        {children}
+    <html
+      lang="en-GH"
+      className={`${bigShoulders.variable} ${googleSansFlex.variable} h-full scroll-smooth`}
+    >
+      <body className="flex min-h-full flex-col bg-black font-sans text-white antialiased">
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

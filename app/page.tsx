@@ -5,25 +5,30 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { InstallSection } from "@/components/InstallSection";
 import { Nav } from "@/components/Nav";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { ServicesSection } from "@/components/ServicesSection";
-import { StatsStrip } from "@/components/StatsStrip";
 import { TradesBar } from "@/components/TradesBar";
-import { WaitlistSection } from "@/components/WaitlistSection";
-
 export default function Home() {
   return (
     <>
       <Nav />
       <main className="bg-black">
         <Hero />
-        <StatsStrip />
-        <HowItWorks />
-        <Features />
-        <ServicesSection />
-        <TradesBar />
-        <AboutSection />
-        <InstallSection />
-        <WaitlistSection />
+        <ScrollReveal>
+          <HowItWorks />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Features />
+        </ScrollReveal>
+        <ScrollReveal>
+          <TradesBar />
+        </ScrollReveal>
+        <ScrollReveal>
+          <AboutSection />
+        </ScrollReveal>
+        <ScrollReveal>
+          <InstallSection />
+        </ScrollReveal>
       </main>
       <Footer />
     </>
