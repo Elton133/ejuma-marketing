@@ -55,7 +55,7 @@ export const USER_RESEARCH_QUESTIONS: ResearchQuestion[] = [
   },
   {
     id: "trust",
-    label: "What would make you trust a technician on an app?",
+    label: "What will make you use our platform?",
     type: "textarea",
   },
   {

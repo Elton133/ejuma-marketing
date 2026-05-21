@@ -82,7 +82,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
         ref={panelRef}
         className="absolute inset-0 flex flex-col bg-black px-6 pb-10 pt-[4.5rem] shadow-2xl"
       >
-        <div className="flex items-center justify-between border-b border-white/10 pb-5">
+        <div className="flex items-center justify-between pb-5">
           <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50">
             Menu
           </p>
@@ -110,7 +110,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                   rel="noopener noreferrer"
                   data-mobile-link
                   onClick={onClose}
-                  className="group flex items-baseline gap-4 border-b border-white/6 py-5 transition-colors hover:border-[#FF5F15]/30"
+                  className="group flex items-baseline gap-4 py-4 transition-colors"
                 >
                   <span className="text-xs font-medium tabular-nums text-[#FF5F15]/70">
                     {num}
@@ -128,7 +128,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 href={link.href}
                 data-mobile-link
                 onClick={onClose}
-                className="group flex items-baseline gap-4 border-b border-white/6 py-5 transition-colors hover:border-[#FF5F15]/30"
+                className="group flex items-baseline gap-4 py-4 transition-colors"
               >
                 <span className="text-xs font-medium tabular-nums text-[#FF5F15]/70">
                   {num}
@@ -143,21 +143,21 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
         <div
           data-mobile-footer
-          className="mt-auto shrink-0 space-y-3 border-t border-white/10 pt-8"
+          className="mt-auto flex shrink-0 gap-3 pt-8"
         >
           <Link
             href={INSTALL_PATH}
             onClick={onClose}
-            className="flex h-12 w-full items-center justify-center rounded-full border border-white/20 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            className="flex h-12 flex-1 items-center justify-center rounded-full border border-white/20 px-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
           >
-            Get the app on your phone
+            Install app
           </Link>
           <Link
             href={WAITLIST_PATH}
             onClick={onClose}
-            className="flex h-12 w-full items-center justify-center rounded-full bg-[#FF5F15] text-sm font-semibold text-black transition-opacity hover:opacity-90"
+            className="flex h-12 flex-1 items-center justify-center rounded-full bg-[#FF5F15] px-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"
           >
-            Join the waitlist
+            Join waitlist
           </Link>
         </div>
       </div>
