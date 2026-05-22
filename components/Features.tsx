@@ -10,17 +10,22 @@ export function Features() {
         id="features"
         className="bg-white px-6 py-16 text-black md:py-24"
       >
-        <div className="mx-auto max-w-[1200px]">
-          <header className="mb-4 max-w-3xl md:mb-8">
+        <div className="mx-auto max-w-300">
+          <header className="mb-4 max-w-3xl md:mb-10">
             <MicroLabel light>For customers</MicroLabel>
             <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
-              Get your work done with confidence
+              Everything you need,{" "}
+              <span className="text-[#FF5F15]">right in your pocket</span>
             </h2>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-black/55 md:text-lg">
+              From finding the right specialist to tracking their arrival —
+              Beagine handles it all so you can focus on what matters.
+            </p>
           </header>
 
-          <div className="divide-y divide-black/[0.06]">
+          <div className="divide-y divide-black/6">
             {CUSTOMER_FEATURE_ROWS.map((feature) => (
-              <div key={feature.title} className="py-14 md:py-20 lg:py-24">
+              <div key={feature.title} className="py-12 md:py-16 lg:py-20">
                 <FeatureSplitRow
                   icon={feature.icon}
                   eyebrow={feature.eyebrow}
@@ -46,14 +51,17 @@ export function Features() {
         id="for-workers"
         className="bg-black px-6 py-20 text-white md:py-28"
       >
-        <div className="mx-auto max-w-[1300px]">
+        <div className="mx-auto max-w-325">
           <MicroLabel>For workers</MicroLabel>
           <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
-            Get <em className="text-[#FF5F15] not-italic">verified</em>, get {" "}<em className="text-[#FF5F15] not-italic">discovered </em> and <em className="text-[#FF5F15] not-italic">earn </em>
+            Get{" "}
+            <em className="text-[#FF5F15] not-italic">verified</em>, get{" "}
+            <em className="text-[#FF5F15] not-italic">discovered</em> and{" "}
+            <em className="text-[#FF5F15] not-italic">earn</em>
           </h2>
           <p className="mt-4 max-w-xl text-white/60">
             Get verified once, get discovered. Dashboard, job alerts, and MoMo
-            payouts - no app store required.
+            payouts — no app store required.
           </p>
 
           <WorkerFeaturesGrid />

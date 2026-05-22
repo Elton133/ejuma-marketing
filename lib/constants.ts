@@ -18,9 +18,43 @@ export const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1742900280861-32bed068938b?q=80&w=1920&auto=format&fit=crop",
 ] as const;
 
+/** Five vertical strip panels shown on desktop hero — one per occupation */
+export const HERO_PANELS = [
+  {
+    trade: "Electrician",
+    image:
+      "https://images.unsplash.com/photo-1555963966-b7ae5404b6ed?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    objectPosition: "center top",
+  },
+  {
+    trade: "Plumber",
+    image:
+      "https://images.unsplash.com/photo-1596394723269-b2cbca4e6313?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    objectPosition: "center 20%",
+  },
+  {
+    trade: "Carpenter",
+    image:
+      "https://images.unsplash.com/photo-1611021061285-16c871740efa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FycGVudGVyfGVufDB8fDB8fHww",
+    objectPosition: "center center",
+  },
+  {
+    trade: "Painter",
+    image:
+      "https://images.unsplash.com/photo-1742900280861-32bed068938b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBhaW50ZXIlMjBhZnJpY2FufGVufDB8fDB8fHww",
+    objectPosition: "center top",
+  },
+  {
+    trade: "Mason",
+    image:
+      "https://images.unsplash.com/photo-1747214300307-541c83c7a5bd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    objectPosition: "center center",
+  },
+] as const;
+
 export const NAV_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
-  { label: "Features", href: "/#features" },
+  { label: "Features", href: "/features" },
   { label: "Install app", href: INSTALL_PATH },
 ] as const;
 
@@ -81,52 +115,64 @@ export const HOW_IT_WORKS = [
   },
 ] as const;
 
-/** Bolt-style alternating split rows — visual alternates left / right */
+/** Alternating split rows — five core customer features */
 export const CUSTOMER_FEATURE_ROWS = [
   {
-    icon: "verified" as const,
-    eyebrow: "Hire with trust",
-    title: "Find verified specialists with experience",
+    icon: "findSpecialist" as const,
+    eyebrow: "Find in seconds",
+    title: "Find a specialist around you instantly",
     description:
-      "Every specialist is verified and has experience in the area you need help with. We take time to get to know every specialist",
+      "Search by trade and location — browse verified workers near you on a map or list. See ratings, distance, and availability before you ever tap Book.",
     cta: { label: "Join the waitlist", href: WAITLIST_PATH },
     visualPosition: "right" as const,
     image:
       "https://images.unsplash.com/photo-1679134015859-6281e4382065?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "Specialist at work with professional tools",
+    imageAlt: "Specialist worker ready for a job",
   },
   {
-    icon: "search" as const,
-    eyebrow: "Find someone nearby",
-    title: "Search by trade and location",
+    icon: "mapTrack" as const,
+    eyebrow: "Live tracking",
+    title: "Map view to track your specialist",
     description:
-      "Pick your trade and area, then browse verified workers on a map or list with distance hints. Worker cards show Book only — no cold calls until the job is done.",
+      "See exactly where your specialist is in real time. Follow status from accepted → en route → arrived → in progress → completed — so you're never left wondering.",
     cta: { label: "Open the app", href: APP_URL, external: true },
     visualPosition: "left" as const,
-    panelClass: "from-sky-50 via-[#fafafa] to-[#FF5F15]/10",
-  },
-  {
-    icon: "tracking" as const,
-    eyebrow: "Know when they're on the way",
-    title: "Track every step of the job",
-    description:
-      "Follow live status updates — accepted, en route, arrived, in progress, and completed. Attach up to four scope photos when you book so your specialist knows what to expect.",
-    cta: { label: "Install the app", href: INSTALL_PATH },
-    visualPosition: "right" as const,
     image:
       "https://images.unsplash.com/photo-1587937533522-b2294fd611f5?q=80&w=1200&auto=format&fit=crop",
     imageAlt: "Live map tracking a specialist en route",
   },
-  // {
-  //   icon: "deposit" as const,
-  //   eyebrow: "Book with confidence",
-  //   title: "Secure your slot with a small deposit",
-  //   description:
-  //     "Pay a small GHS booking deposit via Paystack to hold your slot. Labour price is agreed with the worker separately — and your first booking may be free during launch.",
-  //   cta: { label: "Join the waitlist", href: "#waitlist" },
-  //   visualPosition: "left" as const,
-  //   panelClass: "from-amber-50 via-[#fafafa] to-stone-100",
-  // },
+  {
+    icon: "notification" as const,
+    eyebrow: "Stay in the loop",
+    title: "SMS and email alerts for fast updates",
+    description:
+      "Get instant SMS and email notifications the moment your booking is confirmed, when your specialist is on the way, and when the job is done.",
+    cta: { label: "Join the waitlist", href: WAITLIST_PATH },
+    visualPosition: "right" as const,
+    panelClass: "from-violet-50 via-[#fafafa] to-[#FF5F15]/8",
+  },
+  {
+    icon: "easyUI" as const,
+    eyebrow: "Effortless booking",
+    title: "Easy to use interface",
+    description:
+      "No tech expertise needed. Book a specialist in under two minutes — choose your trade, pick a worker, set a time, and you're done.",
+    cta: { label: "Open the app", href: APP_URL, external: true },
+    visualPosition: "left" as const,
+    panelClass: "from-[#FF5F15]/8 via-amber-50/30 to-[#fafafa]",
+  },
+  {
+    icon: "bio" as const,
+    eyebrow: "Know before you book",
+    title: "Specialist bio for confident reviews",
+    description:
+      "Every specialist has a full profile — bio, portfolio photos, verified trades, experience level, and customer ratings. Make an informed choice before you confirm.",
+    cta: { label: "Join the waitlist", href: WAITLIST_PATH },
+    visualPosition: "right" as const,
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop",
+    imageAlt: "Specialist profile card with bio and ratings",
+  },
 ] as const;
 
 export const WORKER_FEATURES = [

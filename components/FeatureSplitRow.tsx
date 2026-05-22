@@ -65,8 +65,8 @@ export function FeatureSplitRow({
 
   const visual = (
     <div
-      className={`relative aspect-[4/5] w-full shrink-0 overflow-hidden rounded-[1.75rem] sm:aspect-[5/6] lg:aspect-[4/5] lg:max-h-[480px] lg:min-h-[420px] ${
-        image ? "bg-zinc-900" : `flex items-center justify-center bg-gradient-to-br ${panelClass}`
+      className={`relative aspect-4/5 w-full shrink-0 overflow-hidden rounded-[1.75rem] sm:aspect-5/6 lg:aspect-auto lg:h-130 ${
+        image ? "bg-zinc-900" : `flex items-center justify-center bg-linear-to-br ${panelClass}`
       }`}
       aria-hidden
     >
@@ -79,7 +79,7 @@ export function FeatureSplitRow({
             className="object-cover object-center"
             sizes="(max-width: 1024px) 100vw, 560px"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/15 via-transparent to-transparent" />
         </>
       ) : (
         <>
