@@ -7,9 +7,9 @@ import { Nav } from "@/components/Nav";
 import { WAITLIST_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Features — Beagine",
+  title: "Features",
   description:
-    "Find specialists instantly, track them on a map, get SMS and email alerts, and review full bios before booking. See everything Beagine can do.",
+    "Find specialists instantly, track them live on a map, get SMS alerts, and read full profiles before you confirm. See everything Beagine can do.",
 };
 
 export default function FeaturesPage() {
@@ -26,8 +26,8 @@ export default function FeaturesPage() {
               <em className="text-[#FF5F15] not-italic">effortless</em>
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/65">
-              Discover how Beagine connects you to skilled specialists — fast,
-              simple, and reliable.
+              From finding the right person to tracking their arrival — every
+              feature is built for how people in Ghana actually get things done.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link

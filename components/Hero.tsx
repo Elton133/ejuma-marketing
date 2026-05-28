@@ -23,7 +23,7 @@ export function Hero() {
               data-hero-animate
               className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:mt-6 md:text-lg"
             >
-              Relax and find a specialist wherever you stay.
+              Search, book, and track a verified specialist — all from your phone.
             </p>
 
             <div

@@ -92,26 +92,26 @@ export const PILOT_AREAS = [
 export const HOW_IT_WORKS = [
   {
     step: "01",
-    title: "Choose technical area",
-    description: "Tell us what you need and where — Tema, Dawhenya, Prampram and nearby.",
+    title: "Tell us what you need",
+    description: "Pick your trade — plumbing, electrical, tiling, and more — then drop a pin for your location.",
   },
   {
     step: "02",
-    title: "Pick a verified worker",
+    title: "Pick your specialist",
     description:
-      "Compare skills, portfolio photos, rates, and distance on the map or list.",
+      "Compare profiles, portfolio photos, ratings, and distance before you confirm.",
   },
   {
     step: "03",
-    title: "Work gets done",
+    title: "They come to you",
     description:
-      "The worker will come to your location and fix the problem.",
+      "Your specialist arrives at the agreed time and handles everything — start to finish.",
   },
   {
     step: "04",
-    title: "Pay for service",
+    title: "Pay after the job",
     description:
-      "Pay for the service after it is done.",
+      "Confirm the work is done, then pay. No upfront fees, no surprises.",
   },
 ] as const;
 
@@ -164,7 +164,7 @@ export const CUSTOMER_FEATURE_ROWS = [
   {
     icon: "bio" as const,
     eyebrow: "Know before you book",
-    title: "Specialist bio for confident reviews",
+    title: "Full specialist profile before you commit",
     description:
       "Every specialist has a full profile — bio, portfolio photos, verified trades, experience level, and customer ratings. Make an informed choice before you confirm.",
     cta: { label: "Join the waitlist", href: WAITLIST_PATH },

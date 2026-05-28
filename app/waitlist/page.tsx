@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { WaitlistSection } from "@/components/WaitlistSection";
 
 export const metadata: Metadata = {
-  title: "Join the waitlist — Beagine",
+  title: "Join the waitlist",
   description:
     "Be first when Beagine opens in your area. Join the waitlist for early access in Tema, Dawhenya, Prampram and nearby.",
 };

@@ -16,7 +16,7 @@ export function AboutSection() {
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-black/85 md:text-lg">
-          We connect everyday people with specialists who get the job done — book
+          We connect everyday people with specialists who get the job done - book
           services from your phone and track job progress in real time. We want
           you to focus on your daily activities while our specialists take care of
           your problems.

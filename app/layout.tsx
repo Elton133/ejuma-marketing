@@ -16,15 +16,32 @@ const googleSansFlex = Google_Sans_Flex({
 });
 
 export const metadata: Metadata = {
-  title: "Beagine — Ghana's skilled trades marketplace",
+  metadataBase: new URL("https://beagine.com"),
+  title: {
+    default: "Beagine — Ghana's skilled trades marketplace",
+    template: "%s — Beagine",
+  },
   description:
     "Find, book, and track verified plumbers, electricians, masons, and more in Greater Accra. Join the waitlist or install the app.",
-  themeColor: "#FF5F15",
   openGraph: {
     title: "Beagine — The hands-on workforce",
     description:
       "Verified tradespeople. Booked in minutes. Tema, Dawhenya, Prampram and nearby.",
-    url: "https://3juma.app",
+    url: "https://beagine.com",
+    siteName: "Beagine",
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Beagine — The hands-on workforce",
+    description:
+      "Verified tradespeople. Booked in minutes. Tema, Dawhenya, Prampram and nearby.",
+    images: ["/opengraph-image.png"],
+  },
+  alternates: {
+    canonical: "https://beagine.com",
   },
 };
 

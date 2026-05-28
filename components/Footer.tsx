@@ -15,8 +15,8 @@ const PRODUCT_LINKS = [
 ];
 
 const WORKER_LINKS = [
-  { label: "Join as a worker", href: WAITLIST_PATH },
-  { label: "Worker install", href: INSTALL_WORKER, external: true },
+  { label: "Join as a specialist", href: WAITLIST_PATH },
+  { label: "Install as specialist", href: INSTALL_WORKER, external: true },
 ];
 
 const COMPANY_LINKS = [
@@ -37,23 +37,30 @@ const SOCIAL = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black px-6 py-16 text-white md:py-20">
-      <div className="mx-auto max-w-[1440px]">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-black px-6 py-16 text-white md:py-20">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 select-none text-center font-semibold leading-none text-white/[0.04]"
+        style={{ fontSize: "clamp(5rem, 18vw, 16rem)" }}
+      >
+        BEAGINE
+      </span>
+      <div className="relative mx-auto max-w-[1440px]">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <p className="text-xl font-semibold tracking-tight">Beagine</p>
             <p className="mt-3 max-w-xs text-sm text-white/55">
-              Marketplace for skilled trades — find, book, and
-              track verified workers on your phone.
+              Ghana&apos;s app for skilled trades — find, book, and
+              track a verified specialist, right from your phone.
             </p>
           </div>
 
           <FooterColumn title="Product" links={PRODUCT_LINKS} />
-          <FooterColumn title="For workers" links={WORKER_LINKS} />
+          <FooterColumn title="For specialists" links={WORKER_LINKS} />
           <FooterColumn title="Company" links={COMPANY_LINKS} />
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-8">
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-6  pt-8">
           <p className="text-sm text-white/45">
             © {new Date().getFullYear()} Beagine
           </p>

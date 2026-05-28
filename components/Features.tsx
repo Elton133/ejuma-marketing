@@ -52,7 +52,7 @@ export function Features() {
         className="bg-black px-6 py-20 text-white md:py-28"
       >
         <div className="mx-auto max-w-325">
-          <MicroLabel>For workers</MicroLabel>
+          <MicroLabel>For specialists</MicroLabel>
           <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
             Get{" "}
             <em className="text-[#FF5F15] not-italic">verified</em>, get{" "}
@@ -60,8 +60,8 @@ export function Features() {
             <em className="text-[#FF5F15] not-italic">earn</em>
           </h2>
           <p className="mt-4 max-w-xl text-white/60">
-            Get verified once, get discovered. Dashboard, job alerts, and MoMo
-            payouts — no app store required.
+            Set up your profile once and start receiving job requests. Alerts,
+            earnings dashboard, and MoMo payouts — all in one place.
           </p>
 
           <WorkerFeaturesGrid />

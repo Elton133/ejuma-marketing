@@ -108,7 +108,7 @@ export function WorkerFeaturesGrid() {
             Ready to earn?
           </p>
           <h3 className="mt-3 text-xl font-semibold tracking-tight text-black md:text-2xl">
-            Join as a<br />worker today
+            Join as a<br />specialist today
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-black/60">
             Get verified once, start taking jobs.
