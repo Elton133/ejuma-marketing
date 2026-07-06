@@ -14,14 +14,14 @@
   --color-beagine-orange: var(--beagine-orange);
   --color-beagine-black: var(--beagine-black);
   --color-beagine-off-white: var(--beagine-off-white);
-  --font-sans: var(--font-google-sans-flex), system-ui, sans-serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
   --font-heading: var(--font-big-shoulders), system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-google-sans-flex), system-ui, sans-serif;
+  font-family: var(--font-manrope), system-ui, sans-serif;
 }
 
 /* Default: all headings use Google Sans Flex */
@@ -31,7 +31,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-google-sans-flex), system-ui, sans-serif;
+  font-family: var(--font-manrope), system-ui, sans-serif;
 }
 
 /* Big Shoulders — customers features + trades bar headline only */

@@ -102,10 +102,10 @@ export function HeroBackground() {
               src={panel.image}
               alt={panel.trade}
               fill
-              priority={i < 3}
+              priority={i === 0 || panel.trade === "Painter"}
               className="object-cover"
               style={{ objectPosition: panel.objectPosition }}
-              sizes="20vw"
+              sizes="(min-width: 1024px) 20vw, 0px"
             />
           </div>
         ))}
@@ -126,9 +126,9 @@ export function HeroBackground() {
               src={src}
               alt=""
               fill
-              priority={index < 2}
+              priority={index === 0}
               className="object-cover object-center"
-              sizes="100vw"
+              sizes="(max-width: 1023px) 100vw, 0px"
             />
           </div>
         ))}

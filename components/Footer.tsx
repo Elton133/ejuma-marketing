@@ -5,6 +5,7 @@ import {
   INSTALL_WORKER,
   WAITLIST_PATH,
 } from "@/lib/constants";
+import { LEGAL_LINKS } from "@/lib/legal-links";
 
 const PRODUCT_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
@@ -22,17 +23,14 @@ const WORKER_LINKS = [
 const COMPANY_LINKS = [
   { label: "About Beagine", href: "/#about" },
   { label: "Contact support", href: "mailto:support@beagine.app" },
-];
-
-const LEGAL_LINKS = [
-  { label: "Privacy policy", href: "#" },
-  { label: "Terms of service", href: "#" },
+  ...LEGAL_LINKS,
 ];
 
 const SOCIAL = [
   { label: "Facebook", href: "https://facebook.com/beagineghana" },
-  { label: "X / Twitter", href: "https://twitter.com/beagineghana" },
   { label: "Instagram", href: "https://instagram.com/beagineghana" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/beagineghana" },
+  { label: "TikTok", href: "https://tiktok.com/beagineghana" },
 ];
 
 export function Footer() {
@@ -60,7 +58,7 @@ export function Footer() {
           <FooterColumn title="Company" links={COMPANY_LINKS} />
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-6  pt-8">
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-6 pt-8">
           <p className="text-sm text-white/45">
             © {new Date().getFullYear()} Beagine
           </p>
@@ -112,6 +110,13 @@ function FooterColumn({
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-sm text-white/65 hover:text-white"
+              >
+                {link.label}
+              </a>
+            ) : link.href.startsWith("mailto:") ? (
+              <a
+                href={link.href}
                 className="text-sm text-white/65 hover:text-white"
               >
                 {link.label}

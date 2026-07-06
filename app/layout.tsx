@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Big_Shoulders, Google_Sans_Flex } from "next/font/google";
+import { Big_Shoulders, Manrope } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
+import { InitialLoader } from "@/components/InitialLoader";
 import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
   variable: "--font-big-shoulders",
   subsets: ["latin"],
   weight: ["600", "700", "800", "900"],
+  adjustFontFallback: false,
 });
 
-const googleSansFlex = Google_Sans_Flex({
-  variable: "--font-google-sans-flex",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -53,9 +55,11 @@ export default function RootLayout({
   return (
     <html
       lang="en-GH"
-      className={`${bigShoulders.variable} ${googleSansFlex.variable} h-full scroll-smooth`}
+      className={`${bigShoulders.variable} ${manrope.variable} h-full scroll-smooth`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-black font-sans text-white antialiased">
+        <InitialLoader />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

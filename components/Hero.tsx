@@ -12,7 +12,7 @@ export function Hero() {
           <div className="max-w-2xl">
             <h1
               data-hero-animate
-              className="text-[clamp(2.5rem,6vw,4.75rem)] font-semibold leading-[1.02] tracking-tight"
+              className="text-[clamp(2.5rem,6vw,4.75rem)] font-black leading-[1.02] tracking-tight"
             >
               Your {" "}
               <em className="text-[#FF5F15] not-italic">specialist </em>

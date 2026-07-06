@@ -52,10 +52,10 @@ export const HERO_PANELS = [
   },
 ] as const;
 
+export const CONTACT_HREF = "mailto:support@beagine.app";
+
 export const NAV_LINKS = [
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "Features", href: "/features" },
-  { label: "Install app", href: INSTALL_PATH },
+  { label: "Contact", href: CONTACT_HREF, external: true },
 ] as const;
 
 export const TRADES = [
