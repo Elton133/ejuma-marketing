@@ -25,8 +25,9 @@ const COMPANY_LINKS = [
 ];
 
 const LEGAL_LINKS = [
-  { label: "Privacy policy", href: "#" },
-  { label: "Terms of service", href: "#" },
+  { label: "Privacy policy", href: "/privacy-policy" },
+  { label: "Terms of service", href: "/terms-of-service" },
+  { label: "Data deletion", href: "/data-deletion" },
 ];
 
 const SOCIAL = [
