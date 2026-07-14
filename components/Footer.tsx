@@ -32,9 +32,9 @@ const LEGAL_LINKS = [
 ];
 
 const SOCIAL = [
-  { label: "Facebook", href: "https://facebook.com/beagine" },
-  { label: "X / Twitter", href: "https://twitter.com/beagine" },
-  { label: "Instagram", href: "https://instagram.com/beagine" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/beagine-app/" },
+  { label: "Instagram", href: "https://www.instagram.com/beagine.hq?igsh=MWtjNW4zY3kzczZlMQ==" },
+  { label: "TikTok", href: "https://www.tiktok.com/@beagine.hq?_r=1&_t=ZS-9820A2s6kWf" },
 ];
 
 export function Footer() {

@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   },
   description:
     "Find, book, and track verified engineering professionals globally. Join the waitlist or install the app.",
+  keywords: ["engineering", "specialists", "trades", "booking", "Beagine", "home services", "contractors", "verified professionals"],
   openGraph: {
     title: "Beagine — The hands-on workforce",
     description:
