@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Big_Shoulders, Google_Sans_Flex } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
@@ -58,6 +59,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-black font-sans text-white antialiased">
         <MotionProvider>{children}</MotionProvider>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-PLACEHOLDER"} />
       </body>
     </html>
   );
