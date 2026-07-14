@@ -146,13 +146,6 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           className="mt-auto flex shrink-0 gap-3 pt-8"
         >
           <Link
-            href={INSTALL_PATH}
-            onClick={onClose}
-            className="flex h-12 flex-1 items-center justify-center rounded-full border border-white/20 px-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-          >
-            Install app
-          </Link>
-          <Link
             href={WAITLIST_PATH}
             onClick={onClose}
             className="flex h-12 flex-1 items-center justify-center rounded-full bg-[#FF5F15] px-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"

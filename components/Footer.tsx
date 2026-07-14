@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   APP_URL,
   INSTALL_PATH,
@@ -8,7 +9,7 @@ import {
 
 const PRODUCT_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
-  { label: "Features", href: "/#features" },
+  { label: "Features", href: "/features" },
   { label: "Install app", href: INSTALL_PATH },
   { label: "Join waitlist", href: WAITLIST_PATH },
   { label: "Open app", href: APP_URL, external: true },
@@ -31,9 +32,9 @@ const LEGAL_LINKS = [
 ];
 
 const SOCIAL = [
-  { label: "Facebook", href: "https://facebook.com/beagineghana" },
-  { label: "X / Twitter", href: "https://twitter.com/beagineghana" },
-  { label: "Instagram", href: "https://instagram.com/beagineghana" },
+  { label: "Facebook", href: "https://facebook.com/beagine" },
+  { label: "X / Twitter", href: "https://twitter.com/beagine" },
+  { label: "Instagram", href: "https://instagram.com/beagine" },
 ];
 
 export function Footer() {
@@ -49,9 +50,15 @@ export function Footer() {
       <div className="relative mx-auto max-w-[1440px]">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <p className="text-xl font-semibold tracking-tight">Beagine</p>
+            <Image
+              src="/logo1.png"
+              alt="Beagine Logo"
+              width={100}
+              height={28}
+              className="h-auto w-auto max-h-[24px] md:max-h-[28px]"
+            />
             <p className="mt-3 max-w-xs text-sm text-white/55">
-              Ghana&apos;s app for skilled trades — find, book, and
+              The platform for skilled trades — find, book, and
               track a verified specialist, right from your phone.
             </p>
           </div>

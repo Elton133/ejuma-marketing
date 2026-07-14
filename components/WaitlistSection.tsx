@@ -236,7 +236,7 @@ export function WaitlistSection() {
               </h2>
               <p className="mt-3 text-white/65">
                 Answer honestly so we can build Beagine for how people actually
-                hire and work in Ghana.
+                hire and work.
               </p>
 
               <form
@@ -325,14 +325,14 @@ export function WaitlistSection() {
                 />
               </Field>
 
-              <Field label="Phone (Ghana)" required>
+              <Field label="Phone" required>
                 <input
                   required
                   type="tel"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   className={inputClass}
-                  placeholder="024 000 0000 or +233..."
+                  placeholder="e.g. +1 555 123 4567"
                 />
               </Field>
 

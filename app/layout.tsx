@@ -18,26 +18,26 @@ const googleSansFlex = Google_Sans_Flex({
 export const metadata: Metadata = {
   metadataBase: new URL("https://beagine.com"),
   title: {
-    default: "Beagine — Ghana's skilled trades marketplace",
+    default: "Beagine — The globally relevant engineering services platform",
     template: "%s — Beagine",
   },
   description:
-    "Find, book, and track verified plumbers, electricians, masons, and more in Greater Accra. Join the waitlist or install the app.",
+    "Find, book, and track verified engineering professionals globally. Join the waitlist or install the app.",
   openGraph: {
     title: "Beagine — The hands-on workforce",
     description:
-      "Verified tradespeople. Booked in minutes. Tema, Dawhenya, Prampram and nearby.",
+      "Verified engineering professionals. Booked in minutes.",
     url: "https://beagine.com",
     siteName: "Beagine",
     images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-    locale: "en_GH",
+    locale: "en",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Beagine — The hands-on workforce",
     description:
-      "Verified tradespeople. Booked in minutes. Tema, Dawhenya, Prampram and nearby.",
+      "Verified engineering professionals. Booked in minutes.",
     images: ["/opengraph-image.png"],
   },
   alternates: {
@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en-GH"
+      lang="en"
       className={`${bigShoulders.variable} ${googleSansFlex.variable} h-full scroll-smooth`}
     >
       <body className="flex min-h-full flex-col bg-black font-sans text-white antialiased">

@@ -45,7 +45,7 @@ export function ResearchForm({ role }: { role: ResearchRole }) {
           {getResearchTitle(role)}
         </h1>
         <p className="mt-3 text-white/65">
-          Your answers help us build Beagine for Ghana. There are no wrong
+          Your answers help us build Beagine. There are no wrong
           answers — honesty helps most.
         </p>
 

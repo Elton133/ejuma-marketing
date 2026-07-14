@@ -1,13 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  INSTALL_CUSTOMER,
-  INSTALL_URL,
-  INSTALL_WORKER,
-} from "@/lib/constants";
+import { APP_URL } from "@/lib/constants";
 import { MicroLabel } from "./MicroLabel";
 
-const QR_IMAGE = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(INSTALL_URL)}&bgcolor=ffffff&color=000000`;
+const QR_IMAGE = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(APP_URL)}&bgcolor=ffffff&color=000000`;
 
 export function InstallSection({ className = "" }: { className?: string }) {
   return (
@@ -21,8 +17,7 @@ export function InstallSection({ className = "" }: { className?: string }) {
           Get Beagine on your phone
         </h2>
         <p className="mt-4 max-w-xl text-white/60">
-          No app store required — install in seconds from your browser. Works
-          like an app from your home screen.
+          Download the Beagine app for iOS or Android. Available now on the App Store and Google Play.
         </p>
 
         {/* Customer + worker cards */}
@@ -30,14 +25,14 @@ export function InstallSection({ className = "" }: { className?: string }) {
           <InstallCard
             title="For customers"
             description="Book faster, track jobs, and get updates when your specialist is on the way."
-            href={INSTALL_CUSTOMER}
-            cta="Install customer app"
+            appleHref="#"
+            googleHref="#"
           />
           <InstallCard
             title="For workers"
-            description="Dashboard, job alerts, and MoMo payouts — one tap from your home screen."
-            href={INSTALL_WORKER}
-            cta="Install worker app"
+            description="Dashboard, job alerts, and payouts — one tap from your home screen."
+            appleHref="#"
+            googleHref="#"
           />
         </div>
 
@@ -45,43 +40,40 @@ export function InstallSection({ className = "" }: { className?: string }) {
         <div className="mt-6 grid gap-6 lg:mt-8 lg:grid-cols-[minmax(0,1fr)_240px] lg:items-start lg:gap-10">
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8">
             <p className="text-sm font-semibold text-white">
-              Add to home screen
+              Why download the native app?
             </p>
             <ul className="mt-5 space-y-4 text-sm leading-relaxed text-white/65">
               <li>
-                <strong className="text-white">Android —</strong> Open in Chrome,
-                then tap <em>Install</em> or Menu → Add to Home screen.
+                <strong className="text-white">Push Notifications —</strong> Get instant alerts for job updates, messages, and payments.
               </li>
               <li>
-                <strong className="text-white">iPhone —</strong> Open in Safari,
-                tap Share, then Add to Home Screen.
+                <strong className="text-white">Better Performance —</strong> Experience faster loading times and smoother interactions.
+              </li>
+              <li>
+                <strong className="text-white">Native Features —</strong> Enjoy a seamless experience built specifically for your device.
               </li>
             </ul>
-            <p className="mt-5 text-xs text-white/40">
-              Native iOS &amp; Android store apps may come later — today it&apos;s
-              a full web app + PWA.
-            </p>
           </div>
 
           <div className="flex flex-col items-center rounded-[2rem] border border-[#FF5F15]/25 bg-[#FF5F15]/[0.06] p-6 lg:sticky lg:top-28">
             <Image
               src={QR_IMAGE}
-              alt="QR code to open install page"
+              alt="QR code to open download page"
               width={180}
               height={180}
               className="rounded-xl bg-white p-2"
               unoptimized
             />
             <p className="mt-4 text-center text-sm font-medium text-white">
-              Scan to install
+              Scan to download
             </p>
             <Link
-              href={INSTALL_URL}
+              href={APP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 text-sm text-[#FF5F15] hover:underline"
             >
-              3juma.app/install
+              app.beagine.com
             </Link>
           </div>
         </div>
@@ -93,13 +85,13 @@ export function InstallSection({ className = "" }: { className?: string }) {
 function InstallCard({
   title,
   description,
-  href,
-  cta,
+  appleHref,
+  googleHref,
 }: {
   title: string;
   description: string;
-  href: string;
-  cta: string;
+  appleHref: string;
+  googleHref: string;
 }) {
   return (
     <div className="flex flex-col rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 md:p-8">
@@ -107,14 +99,24 @@ function InstallCard({
       <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">
         {description}
       </p>
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 inline-flex w-fit rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"
-      >
-        {cta}
-      </Link>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Link
+          href={appleHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+        >
+          App Store
+        </Link>
+        <Link
+          href={googleHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+        >
+          Google Play
+        </Link>
+      </div>
     </div>
   );
 }

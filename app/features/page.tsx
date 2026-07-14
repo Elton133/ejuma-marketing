@@ -27,7 +27,7 @@ export default function FeaturesPage() {
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/65">
               From finding the right person to tracking their arrival — every
-              feature is built for how people in Ghana actually get things done.
+              feature is built for how people actually get things done.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link

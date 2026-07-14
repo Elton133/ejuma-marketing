@@ -6,7 +6,7 @@ import { Nav } from "@/components/Nav";
 export const metadata: Metadata = {
   title: "Install the app",
   description:
-    "Add Beagine to your home screen in seconds. Install the customer or worker app — no app store required.",
+    "Download the Beagine app for iOS and Android. Available for both customers and specialists on the App Store and Google Play.",
 };
 
 export default function InstallPage() {

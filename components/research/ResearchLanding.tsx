@@ -11,7 +11,7 @@ export function ResearchLanding() {
           Help us solve a problem
         </h1>
         <p className="mt-4 max-w-lg text-white/65">
-          We&apos;re building a better way to book skilled workers in Ghana.
+          We&apos;re building a better way to book skilled workers globally.
           Choose your path - it takes less than 5 minutes.
         </p>
 

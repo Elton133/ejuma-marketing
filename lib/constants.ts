@@ -7,7 +7,7 @@ export const BRAND = {
 export const WAITLIST_PATH = "/waitlist";
 export const INSTALL_PATH = "/install";
 
-export const APP_URL = "https://3juma.app";
+export const APP_URL = "https://app.beagine.com";
 export const INSTALL_URL = `${APP_URL}/install`;
 export const INSTALL_CUSTOMER = `${APP_URL}/install?role=customer`;
 export const INSTALL_WORKER = `${APP_URL}/install?role=worker`;
@@ -55,7 +55,6 @@ export const HERO_PANELS = [
 export const NAV_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Features", href: "/features" },
-  { label: "Install app", href: INSTALL_PATH },
 ] as const;
 
 export const TRADES = [
@@ -91,24 +90,24 @@ export const PILOT_AREAS = [
 
 export const HOW_IT_WORKS = [
   {
-    step: "01",
+    step: "1",
     title: "Tell us what you need",
     description: "Pick your trade — plumbing, electrical, tiling, and more — then drop a pin for your location.",
   },
   {
-    step: "02",
+    step: "2",
     title: "Pick your specialist",
     description:
       "Compare profiles, portfolio photos, ratings, and distance before you confirm.",
   },
   {
-    step: "03",
+    step: "3",
     title: "They come to you",
     description:
       "Your specialist arrives at the agreed time and handles everything — start to finish.",
   },
   {
-    step: "04",
+    step: "4",
     title: "Pay after the job",
     description:
       "Confirm the work is done, then pay. No upfront fees, no surprises.",

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { APP_URL, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
 import { MobileNav } from "./MobileNav";
@@ -38,9 +39,13 @@ export function Nav() {
     >
       <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
         <Link href="/" className="flex shrink-0 items-center" onClick={() => setOpen(false)}>
-          <span className="text-lg font-semibold tracking-tight text-white md:text-xl">
-            Beagine
-          </span>
+          <Image
+            src="/logo1.png"
+            alt="Beagine Logo"
+            width={100}
+            height={28}
+            className="h-auto w-auto max-h-[24px] md:max-h-[28px]"
+          />
         </Link>
 
         <div className="ml-auto flex items-center gap-5 md:gap-8">

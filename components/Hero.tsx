@@ -14,16 +14,16 @@ export function Hero() {
               data-hero-animate
               className="text-[clamp(2.5rem,6vw,4.75rem)] font-semibold leading-[1.02] tracking-tight"
             >
-              Your {" "}
-              <em className="text-[#FF5F15] not-italic">specialist </em>
-              on your phone.
+              The right engineering{" "}
+              <em className="text-[#FF5F15] not-italic">expertise</em>,
+              right when you need it.
             </h1>
 
             <p
               data-hero-animate
               className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:mt-6 md:text-lg"
             >
-              Search, book, and track a verified specialist — all from your phone.
+              Find, book and manage trusted engineering professionals — all in one place.
             </p>
 
             <div

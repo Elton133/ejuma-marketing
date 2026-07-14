@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { Nav } from "@/components/Nav";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TradesBar } from "@/components/TradesBar";
+import { TrustSection } from "@/components/TrustSection";
 
 export default function Home() {
   return (
@@ -17,6 +18,9 @@ export default function Home() {
         </ScrollReveal>
         <ScrollReveal>
           <TradesBar />
+        </ScrollReveal>
+        <ScrollReveal>
+          <TrustSection />
         </ScrollReveal>
         <ScrollReveal>
           <AboutSection />
