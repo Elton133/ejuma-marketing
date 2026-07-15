@@ -48,14 +48,14 @@ export function FeatureSplitRow({
           href={cta.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-9 inline-flex w-fit rounded-[10px] bg-[#FF5F15] px-7 py-3.5 text-[15px] font-semibold text-black transition-opacity hover:opacity-90"
+          className="btn-premium mt-9 inline-flex w-fit rounded-[10px] bg-[#FF5F15] px-7 py-3.5 text-[15px] font-semibold text-black hover:bg-[#FF7335]"
         >
           {cta.label}
         </a>
       ) : (
         <Link
           href={cta.href}
-          className="mt-9 inline-flex w-fit rounded-[10px] bg-[#FF5F15] px-7 py-3.5 text-[15px] font-semibold text-black transition-opacity hover:opacity-90"
+          className="btn-premium mt-9 inline-flex w-fit rounded-[10px] bg-[#FF5F15] px-7 py-3.5 text-[15px] font-semibold text-black hover:bg-[#FF7335]"
         >
           {cta.label}
         </Link>
@@ -102,6 +102,7 @@ export function FeatureSplitRow({
 
   return (
     <article
+      data-reveal
       className={`flex flex-col items-stretch gap-10 lg:items-start lg:gap-14 xl:gap-20 ${rowDirection}`}
     >
       <div className="w-full lg:w-1/2 lg:shrink-0">{content}</div>

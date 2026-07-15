@@ -32,7 +32,7 @@ export function Hero() {
             >
               <Link
                 href={WAITLIST_PATH}
-                className="inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black transition-opacity hover:opacity-90 md:h-[52px] md:px-8 md:text-base"
+                className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
                 Join the waitlist
               </Link>
@@ -40,7 +40,7 @@ export function Hero() {
                 href={APP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/15 md:h-[52px] md:px-8 md:text-base"
+                className="btn-premium inline-flex h-12 items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/15 md:h-[52px] md:px-8 md:text-base"
               >
                 Open app
               </Link>

@@ -21,18 +21,24 @@ export default function FeaturesPage() {
         <section className="bg-black px-6 pb-20 pt-36 text-white md:pb-24 md:pt-40">
           <div className="mx-auto max-w-[1200px]">
             <MicroLabel>Platform features</MicroLabel>
-            <h1 className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight">
+            <h1
+              data-hero-animate
+              className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight"
+            >
               Built to make finding help{" "}
               <em className="text-[#FF5F15] not-italic">effortless</em>
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/65">
+            <p
+              data-hero-animate
+              className="mt-5 max-w-xl text-lg leading-relaxed text-white/65"
+            >
               From finding the right person to tracking their arrival — every
               feature is built for how people actually get things done.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
               <Link
                 href={WAITLIST_PATH}
-                className="inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black transition-opacity hover:opacity-90 md:h-[52px] md:px-8 md:text-base"
+                className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
                 Join the waitlist
               </Link>

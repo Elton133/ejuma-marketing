@@ -11,13 +11,13 @@ export function Features() {
         className="bg-white px-6 py-16 text-black md:py-24"
       >
         <div className="mx-auto max-w-300">
-          <header className="mb-4 max-w-3xl md:mb-10">
+          <header className="mb-4 max-w-3xl md:mb-10" data-reveal-stagger>
             <MicroLabel light>For customers</MicroLabel>
-            <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
+            <h2 data-reveal-item className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
               Everything you need,{" "}
               <span className="text-[#FF5F15]">right in your pocket</span>
             </h2>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-black/55 md:text-lg">
+            <p data-reveal-item className="mt-4 max-w-xl text-base leading-relaxed text-black/55 md:text-lg">
               From finding the right specialist to tracking their arrival —
               Beagine handles it all so you can focus on what matters.
             </p>
@@ -53,13 +53,13 @@ export function Features() {
       >
         <div className="mx-auto max-w-325">
           <MicroLabel>For specialists</MicroLabel>
-          <h2 className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
+          <h2 data-reveal className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
             Get{" "}
             <em className="text-[#FF5F15] not-italic">verified</em>, get{" "}
             <em className="text-[#FF5F15] not-italic">discovered</em> and{" "}
             <em className="text-[#FF5F15] not-italic">earn</em>
           </h2>
-          <p className="mt-4 max-w-xl text-white/60">
+          <p data-reveal className="mt-4 max-w-xl text-white/60">
             Set up your profile once and start receiving job requests. Alerts,
             earnings dashboard, and MoMo payouts — all in one place.
           </p>

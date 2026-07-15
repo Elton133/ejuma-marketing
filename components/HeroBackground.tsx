@@ -81,7 +81,7 @@ export function HeroBackground() {
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0" aria-hidden>
+    <div ref={containerRef} className="absolute inset-[-15%] h-[130%]" aria-hidden data-hero-parallax>
       {/* Desktop: 5 vertical occupation panels */}
       <div className="absolute inset-0 hidden lg:flex">
         {HERO_PANELS.map((panel, i) => (

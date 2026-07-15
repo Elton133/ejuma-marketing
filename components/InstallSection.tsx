@@ -94,7 +94,7 @@ function InstallCard({
   googleHref: string;
 }) {
   return (
-    <div className="flex flex-col rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 md:p-8">
+    <div className="glass-panel flex flex-col rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 md:p-8">
       <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">
         {description}
@@ -104,7 +104,7 @@ function InstallCard({
           href={appleHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+          className="btn-premium inline-flex rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
         >
           App Store
         </Link>
@@ -112,7 +112,7 @@ function InstallCard({
           href={googleHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+          className="btn-premium inline-flex rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black hover:bg-[#FF7335]"
         >
           Google Play
         </Link>

@@ -11,10 +11,10 @@ import { WAITLIST_PATH } from "@/lib/constants";
 
 export function WorkerFeaturesGrid() {
   return (
-    <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
 
       {/* ── Wide: Get more jobs ─────────────────────────────── */}
-      <article className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:col-span-2 md:p-10 lg:col-span-2">
+      <article data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:col-span-2 md:p-10 lg:col-span-2">
         <div className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full bg-[#FF5F15]/20 blur-3xl" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgba(255,95,21,0.10),transparent_55%)]" />
         <div className="relative">
@@ -38,7 +38,7 @@ export function WorkerFeaturesGrid() {
       </article>
 
       {/* ── Build your profile ──────────────────────────────── */}
-      <article className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-9">
+      <article data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-9">
         <HugeiconsIcon
           icon={UserStar01Icon}
           size={42}
@@ -58,7 +58,7 @@ export function WorkerFeaturesGrid() {
       </article>
 
       {/* ── Work in new areas ───────────────────────────────── */}
-      <article className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-9">
+      <article data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-9">
         <HugeiconsIcon
           icon={Compass01Icon}
           size={42}
@@ -78,7 +78,7 @@ export function WorkerFeaturesGrid() {
       </article>
 
       {/* ── Wide: Earn with Beagine ─────────────────────────── */}
-      <article className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:col-span-2 md:p-10 lg:col-span-2">
+      <article data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:col-span-2 md:p-10 lg:col-span-2">
         <div className="pointer-events-none absolute -bottom-10 -left-10 h-56 w-56 rounded-full bg-[#FF5F15]/15 blur-3xl" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_90%,rgba(255,95,21,0.10),transparent_55%)]" />
         <div className="relative">
@@ -102,7 +102,7 @@ export function WorkerFeaturesGrid() {
       </article>
 
       {/* ── CTA card ────────────────────────────────────────── */}
-      <article className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-[#FF5F15] p-8 md:p-9">
+      <article data-reveal-item className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-[#FF5F15] p-8 md:p-9">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/50">
             Ready to earn?
@@ -116,7 +116,7 @@ export function WorkerFeaturesGrid() {
         </div>
         <Link
           href={WAITLIST_PATH}
-          className="mt-8 inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-80"
+          className="btn-premium mt-8 inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-zinc-800"
         >
           Sign up
         </Link>

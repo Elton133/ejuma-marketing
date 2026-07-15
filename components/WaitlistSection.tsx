@@ -264,7 +264,7 @@ export function WaitlistSection() {
                 <button
                   type="submit"
                   data-question-field
-                  className="w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+                  className="btn-premium w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black hover:bg-[#FF7335]"
                 >
                   Submit answers
                 </button>
@@ -296,7 +296,7 @@ export function WaitlistSection() {
               <button
                 type="button"
                 onClick={goToWaitlistForm}
-                className="mt-10 w-full rounded-full bg-[#FF5F15] py-4 text-sm font-semibold text-black transition-opacity hover:opacity-90 sm:w-auto sm:px-12"
+                className="btn-premium mt-10 w-full rounded-full bg-[#FF5F15] py-4 text-sm font-semibold text-black hover:bg-[#FF7335] sm:w-auto sm:px-12"
               >
                 Join the waitlist
               </button>
@@ -395,7 +395,7 @@ export function WaitlistSection() {
 
               <button
                 type="submit"
-                className="w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+                className="btn-premium w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black hover:bg-[#FF7335]"
               >
                 Join waitlist
               </button>
