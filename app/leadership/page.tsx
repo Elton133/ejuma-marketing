@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { TeamGrid } from "@/components/TeamGrid";
+import { HERO_IMAGES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Leadership - Beagine",
@@ -16,21 +18,27 @@ export default function LeadershipPage() {
       <main className="flex min-h-screen flex-col bg-black pt-16">
         
         {/* 1. Hero Section (Dark) */}
-        <section className="relative bg-[#0a0f0d] px-6 py-24 md:px-14 lg:px-24 xl:py-32">
-          {/* Subtle Grain & Gradient */}
+        <section className="relative flex min-h-[50vh] flex-col justify-end bg-black px-6 pb-20 pt-36 md:px-14 md:pb-24 md:pt-40 lg:px-24 text-left">
+          {/* Cinematic Background */}
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#1a221f,transparent_70%)] opacity-40" />
-            <div className="hero-grain absolute inset-0 pointer-events-none opacity-30" />
+            <Image 
+              src={HERO_IMAGES[4]} 
+              alt="" 
+              fill 
+              className="object-cover opacity-[0.25] mix-blend-luminosity" 
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
+            <div className="hero-grain absolute inset-0 pointer-events-none opacity-50" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-7xl" data-reveal-stagger>
-            <div data-reveal-item className="mb-6 flex items-center space-x-2 text-sm font-medium text-white/60">
-              <Link href="/about" className="transition-colors hover:text-white">About Beagine</Link>
-              <span>›</span>
-              <span className="text-white">Leadership</span>
+          <div className="relative z-10 mx-auto w-full max-w-[1200px]" data-reveal-stagger>
+            <div data-reveal-item className="mb-4 flex items-center space-x-2 text-sm font-medium text-[#FF5F15]">
+              <Link href="/about" className="transition-colors hover:text-white uppercase tracking-wider">About Us</Link>
             </div>
             
-            <h1 data-reveal-item className="text-[clamp(3.5rem,8vw,5.5rem)] font-bold leading-none tracking-tight text-white">
+            <h1 data-reveal-item className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-white">
               Meet our leaders
             </h1>
           </div>

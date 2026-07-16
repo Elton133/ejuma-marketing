@@ -28,7 +28,7 @@ export function Features() {
               <div
                 key={feature.title}
                 data-reveal
-                className="sticky overflow-hidden rounded-[2.5rem] border border-black/5 bg-white p-6 shadow-xl shadow-black/5 md:p-10 lg:p-14"
+                className="sticky overflow-hidden rounded-[2.5rem] border border-black/5 bg-white p-4 shadow-md shadow-black/5 md:p-8 lg:p-10"
                 style={{ top: `calc(12vh + ${index * 2}rem)` }}
               >
                 <FeatureSplitRow

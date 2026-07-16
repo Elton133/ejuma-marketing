@@ -18,7 +18,7 @@ export default function AboutPage() {
       <main className="flex min-h-screen flex-col bg-black">
 
         {/* ── Hero Section ────────────────────────────────────── */}
-        <section className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-20 text-center">
+        <section className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden px-6 pt-24 pb-20 text-left">
           {/* Cinematic Background */}
           <div className="absolute inset-0 z-0">
             <Image 
@@ -33,14 +33,14 @@ export default function AboutPage() {
             <div className="hero-grain absolute inset-0 opacity-50 pointer-events-none" />
           </div>
 
-          <div className="relative z-10 w-full max-w-4xl" data-reveal-stagger>
+          <div className="relative z-10 w-full mx-auto max-w-[1440px] md:px-10 lg:px-14" data-reveal-stagger>
             <p data-reveal-item className="mb-4 text-sm font-semibold tracking-wider text-[#FF5F15] uppercase">
               About Us
             </p>
-            <h1 data-reveal-item className="mt-6 text-[clamp(3.5rem,7vw,5.5rem)] font-bold leading-none tracking-tight text-white">
+            <h1 data-reveal-item className="mt-6 text-[clamp(2.5rem,5vw,3.75rem)] font-bold leading-none tracking-tight text-white">
               About Beagine
             </h1>
-            <p data-reveal-item className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-white/70 md:text-2xl">
+            <p data-reveal-item className="mt-8 max-w-3xl text-xl leading-relaxed text-white/70 md:text-2xl">
               Beagine is a globally relevant engineering services platform connecting skilled tradespeople, merchants, and customers with fast, reliable service across local towns and major cities.
             </p>
           </div>
