@@ -1,23 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  APP_URL,
-  INSTALL_PATH,
-  INSTALL_WORKER,
-  WAITLIST_PATH,
-} from "@/lib/constants";
+import { COMING_SOON_PATH, INSTALL_PATH } from "@/lib/constants";
+import { WAITLIST_PATH } from "@/lib/constants";
 
 const PRODUCT_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Features", href: "/features" },
   { label: "Install app", href: INSTALL_PATH },
   { label: "Join waitlist", href: WAITLIST_PATH },
-  { label: "Open app", href: APP_URL, external: true },
+  { label: "Open app", href: COMING_SOON_PATH },
 ];
 
 const WORKER_LINKS = [
   { label: "Join as a specialist", href: WAITLIST_PATH },
-  { label: "Install as specialist", href: INSTALL_WORKER, external: true },
+  { label: "Install as specialist", href: COMING_SOON_PATH },
 ];
 
 const COMPANY_LINKS = [

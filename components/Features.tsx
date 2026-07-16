@@ -60,8 +60,8 @@ export function Features() {
             <em className="text-[#FF5F15] not-italic">earn</em>
           </h2>
           <p data-reveal className="mt-4 max-w-xl text-white/60">
-            Set up your profile once and start receiving job requests. Alerts,
-            earnings dashboard, and MoMo payouts — all in one place.
+          Set up your profile once, join the ecosystem and start earning. 
+          Welcome to the Engineering Ecosystem
           </p>
 
           <WorkerFeaturesGrid />

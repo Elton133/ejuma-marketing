@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { APP_URL, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
+import { APP_URL, COMING_SOON_PATH, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
 import { MobileNav } from "./MobileNav";
 
 export function Nav() {
@@ -60,9 +60,7 @@ export function Nav() {
               </Link>
             ))}
             <Link
-              href={APP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={COMING_SOON_PATH}
               className="text-sm text-white/80 transition-colors hover:text-white"
             >
               Open app

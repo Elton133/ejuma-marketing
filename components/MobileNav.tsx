@@ -5,7 +5,7 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import {
-  APP_URL,
+  COMING_SOON_PATH,
   INSTALL_PATH,
   NAV_LINKS,
   WAITLIST_PATH,
@@ -14,7 +14,7 @@ import { prefersReducedMotion } from "@/lib/motion/register-gsap";
 
 const MOBILE_LINKS = [
   ...NAV_LINKS,
-  { label: "Open app", href: APP_URL, external: true as const },
+  { label: "Open app", href: COMING_SOON_PATH },
 ];
 
 type MobileNavProps = {

@@ -6,6 +6,7 @@ export const BRAND = {
 
 export const WAITLIST_PATH = "/waitlist";
 export const INSTALL_PATH = "/install";
+export const COMING_SOON_PATH = "/coming-soon";
 
 export const APP_URL = "https://app.beagine.com";
 export const INSTALL_URL = `${APP_URL}/install`;
@@ -16,6 +17,9 @@ export const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1777130555776-cd7ce5425804?q=80&w=1920&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1596394723269-b2cbca4e6313?q=80&w=1920&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1742900280861-32bed068938b?q=80&w=1920&auto=format&fit=crop",
+  "https://imgs.search.brave.com/e5r9dzxjoyqjHa81mj8OWRLwXEp3lwTxYVyF_LcSQIA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/bWFnbmlmaWMuY29t/L3ByZW1pdW0tcGhv/dG8vZWxlY3RyaWNh/bC1lbmdpbmVlci13/b3JraW5nLXBvd2Vy/LWVuZ2luZWVyaW5n/LWluZHVzdHJ5XzEy/ODg2NTctNDgwLmpw/Zz9zZW10PWFpc190/ZXN0X2Imdz03NDAm/cT04MA",
+  "https://imgs.search.brave.com/weVjg0Vk3q49saOhX1x46t-jbjhLRJNR2XGaCVC6S4Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4Lzk1LzMwLzM3/LzM2MF9GXzg5NTMw/MzcxM19iU0tyeENR/MEQ2UmxlYm5QUlhG/cndLYTF6Z0IyMllN/ZC5qcGc",
+  "https://imgs.search.brave.com/wzXGgWwPctoU9kvMYXI8Jz-29YoKXW34XTrCA6qQDg8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE4/MzkxOTY1NC9waG90/by93YWxraW5nLXVw/LXRoZS1sYWRkZXIt/eW91bmctYWZyaWNh/bi1hbWVyaWNhbi13/b3JrZXItaW4tdGhl/LWJsdWUtdW5pZm9y/bS1oYXZlLXNvbWUt/am9iLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1fcl9TcUM5/WUMyMmlLMEtJbm5X/QUdqYVR0SGFGRS1w/RUx3eDM2cDZOMWdr/PQ",
 ] as const;
 
 /** Five vertical strip panels shown on desktop hero — one per occupation */
@@ -168,9 +172,7 @@ export const CUSTOMER_FEATURE_ROWS = [
       "Every specialist has a full profile — bio, portfolio photos, verified trades, experience level, and customer ratings. Make an informed choice before you confirm.",
     cta: { label: "Join the waitlist", href: WAITLIST_PATH },
     visualPosition: "right" as const,
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop",
-    imageAlt: "Specialist profile card with bio and ratings",
+    panelClass: "from-[#FF5F15]/8 via-amber-50/30 to-[#fafafa]",
   },
 ] as const;
 

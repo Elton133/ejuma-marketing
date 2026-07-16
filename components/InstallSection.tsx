@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { APP_URL } from "@/lib/constants";
+import { APP_URL, COMING_SOON_PATH } from "@/lib/constants";
 import { MicroLabel } from "./MicroLabel";
 
 const QR_IMAGE = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(APP_URL)}&bgcolor=ffffff&color=000000`;
@@ -25,14 +25,14 @@ export function InstallSection({ className = "" }: { className?: string }) {
           <InstallCard
             title="For customers"
             description="Book faster, track jobs, and get updates when your specialist is on the way."
-            appleHref="#"
-            googleHref="#"
+            appleHref={COMING_SOON_PATH}
+            googleHref={COMING_SOON_PATH}
           />
           <InstallCard
             title="For workers"
             description="Dashboard, job alerts, and payouts — one tap from your home screen."
-            appleHref="#"
-            googleHref="#"
+            appleHref={COMING_SOON_PATH}
+            googleHref={COMING_SOON_PATH}
           />
         </div>
 
@@ -68,12 +68,10 @@ export function InstallSection({ className = "" }: { className?: string }) {
               Scan to download
             </p>
             <Link
-              href={APP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={COMING_SOON_PATH}
               className="mt-2 text-sm text-[#FF5F15] hover:underline"
             >
-              app.beagine.com
+              Scan to install
             </Link>
           </div>
         </div>
@@ -102,16 +100,12 @@ function InstallCard({
       <div className="mt-6 flex flex-wrap gap-3">
         <Link
           href={appleHref}
-          target="_blank"
-          rel="noopener noreferrer"
           className="btn-premium inline-flex rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
         >
           App Store
         </Link>
         <Link
           href={googleHref}
-          target="_blank"
-          rel="noopener noreferrer"
           className="btn-premium inline-flex rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black hover:bg-[#FF7335]"
         >
           Google Play

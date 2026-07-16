@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { WAITLIST_PATH } from "@/lib/constants";
+import { WAITLIST_PATH, COMING_SOON_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Links - Beagine",
@@ -28,13 +28,13 @@ export default function LinksPage() {
 
         <div className="mt-10 flex flex-col gap-4">
           <Link
-            href="#"
+            href={COMING_SOON_PATH}
             className="flex w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-white/10"
           >
             Download on the App Store
           </Link>
           <Link
-            href="#"
+            href={COMING_SOON_PATH}
             className="flex w-full items-center justify-center rounded-full border border-[#FF5F15]/50 bg-[#FF5F15]/10 px-6 py-4 text-sm font-semibold text-[#FF5F15] transition-colors hover:bg-[#FF5F15]/20"
           >
             Get it on Google Play
