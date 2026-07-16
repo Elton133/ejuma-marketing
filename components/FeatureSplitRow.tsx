@@ -102,8 +102,7 @@ export function FeatureSplitRow({
 
   return (
     <article
-      data-reveal
-      className={`flex flex-col items-stretch gap-10 lg:items-start lg:gap-14 xl:gap-20 ${rowDirection}`}
+      className={`flex flex-col items-center gap-10 lg:gap-14 xl:gap-20 ${rowDirection}`}
     >
       <div className="w-full lg:w-1/2 lg:shrink-0">{content}</div>
       <div className="w-full lg:w-1/2 lg:shrink-0">{visual}</div>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { APP_URL, COMING_SOON_PATH, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
 import { MobileNav } from "./MobileNav";
+import { Logo } from "./Logo";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -38,15 +39,9 @@ export function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
-        <Link href="/" className="flex shrink-0 items-center" onClick={() => setOpen(false)}>
-          <Image
-            src="/logo1.png"
-            alt="Beagine Logo"
-            width={100}
-            height={28}
-            className="h-auto w-auto max-h-[24px] md:max-h-[28px]"
-          />
-        </Link>
+        <div className="flex shrink-0 items-center" onClick={() => setOpen(false)}>
+          <Logo size="md" />
+        </div>
 
         <div className="ml-auto flex items-center gap-5 md:gap-8">
           <div className="hidden items-center gap-6 lg:flex">

@@ -32,9 +32,6 @@ export function WorkerFeaturesGrid() {
             The more complete your profile, the higher you show up.
           </p>
         </div>
-        <span className="pointer-events-none absolute -bottom-4 right-8 select-none text-[8rem] font-black leading-none tracking-tighter text-white/[0.04]">
-          01
-        </span>
       </article>
 
       {/* ── Build your profile ──────────────────────────────── */}
@@ -52,9 +49,6 @@ export function WorkerFeaturesGrid() {
           Portfolio photos, certificates, bio, and rates — build trust before
           the first booking.
         </p>
-        <span className="pointer-events-none absolute -bottom-4 right-6 select-none text-[8rem] font-black leading-none tracking-tighter text-white/[0.04]">
-          02
-        </span>
       </article>
 
       {/* ── Work in new areas ───────────────────────────────── */}
@@ -72,9 +66,6 @@ export function WorkerFeaturesGrid() {
           List several trades and towns — work across the corridor on your own
           terms.
         </p>
-        <span className="pointer-events-none absolute -bottom-4 right-6 select-none text-[8rem] font-black leading-none tracking-tighter text-white/[0.04]">
-          03
-        </span>
       </article>
 
       {/* ── Wide: Earn with Beagine ─────────────────────────── */}
@@ -96,9 +87,6 @@ export function WorkerFeaturesGrid() {
             hours. No hidden cuts, no delays.
           </p>
         </div>
-        <span className="pointer-events-none absolute -bottom-4 right-8 select-none text-[8rem] font-black leading-none tracking-tighter text-white/[0.04]">
-          04
-        </span>
       </article>
 
       {/* ── CTA card ────────────────────────────────────────── */}

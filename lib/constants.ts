@@ -57,8 +57,20 @@ export const HERO_PANELS = [
 ] as const;
 
 export const NAV_LINKS = [
-  { label: "How it works", href: "/#how-it-works" },
+  { label: "About", href: "/about" },
   { label: "Features", href: "/features" },
+] as const;
+
+export const COMPANY_LINKS = [
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Leadership", href: "/leadership" },
+      { label: "Careers", href: WAITLIST_PATH },
+      { label: "Blog", href: WAITLIST_PATH },
+    ],
+  },
 ] as const;
 
 export const TRADES = [

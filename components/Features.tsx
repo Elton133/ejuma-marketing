@@ -8,7 +8,7 @@ export function Features() {
     <>
       <section
         id="features"
-        className="bg-white px-6 py-16 text-black md:py-24"
+        className="bg-[#fafafa] px-6 py-16 text-black md:py-24"
       >
         <div className="mx-auto max-w-300">
           <header className="mb-4 max-w-3xl md:mb-10" data-reveal-stagger>
@@ -23,9 +23,14 @@ export function Features() {
             </p>
           </header>
 
-          <div className="divide-y divide-black/6">
-            {CUSTOMER_FEATURE_ROWS.map((feature) => (
-              <div key={feature.title} className="py-12 md:py-16 lg:py-20">
+          <div className="mt-16 flex flex-col gap-6 md:gap-8 pb-32">
+            {CUSTOMER_FEATURE_ROWS.map((feature, index) => (
+              <div
+                key={feature.title}
+                data-reveal
+                className="sticky overflow-hidden rounded-[2.5rem] border border-black/5 bg-white p-6 shadow-xl shadow-black/5 md:p-10 lg:p-14"
+                style={{ top: `calc(12vh + ${index * 2}rem)` }}
+              >
                 <FeatureSplitRow
                   icon={feature.icon}
                   eyebrow={feature.eyebrow}

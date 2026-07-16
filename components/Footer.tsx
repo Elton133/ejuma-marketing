@@ -2,9 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { COMING_SOON_PATH, INSTALL_PATH } from "@/lib/constants";
 import { WAITLIST_PATH } from "@/lib/constants";
+import { Logo } from "./Logo";
 
 const PRODUCT_LINKS = [
-  { label: "How it works", href: "/#how-it-works" },
+  { label: "About", href: "/about" },
   { label: "Features", href: "/features" },
   { label: "Install app", href: INSTALL_PATH },
   { label: "Join waitlist", href: WAITLIST_PATH },
@@ -46,13 +47,7 @@ export function Footer() {
       <div className="relative mx-auto max-w-[1440px]">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Image
-              src="/logo1.png"
-              alt="Beagine Logo"
-              width={100}
-              height={28}
-              className="h-auto w-auto max-h-[24px] md:max-h-[28px]"
-            />
+            <Logo size="lg" withBeaver={false} />
             <p className="mt-3 max-w-xs text-sm text-white/55">
               The platform for skilled trades — find, book, and
               track a verified specialist, right from your phone.

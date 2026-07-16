@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 import { WAITLIST_PATH, COMING_SOON_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -12,16 +13,9 @@ export default function LinksPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-black px-6 py-20 text-white">
       <div className="w-full max-w-md text-center">
-        <Link href="/" className="inline-block">
-          <Image
-            src="/beaver.png"
-            alt="Beagine Beaver Logo"
-            width={80}
-            height={80}
-            className="mx-auto rounded-full bg-white/5 p-2"
-          />
-        </Link>
-        <h1 className="mt-6 text-2xl font-bold tracking-tight">Beagine</h1>
+        <div className="flex justify-center">
+          <Logo size="xl" />
+        </div>
         <p className="mt-2 text-sm text-white/60">
           The globally relevant engineering services platform.
         </p>

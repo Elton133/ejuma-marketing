@@ -21,12 +21,7 @@ export function HowItWorks() {
         <ol className="mt-14 grid gap-12 md:grid-cols-2 md:gap-x-10 md:gap-y-14 lg:grid-cols-4 lg:gap-x-8">
           {HOW_IT_WORKS.map((item) => (
             <li key={item.step} className="relative min-h-[11rem]">
-              <span
-                className="step-ghost pointer-events-none absolute -left-1 top-0 select-none font-bold leading-none tracking-tighter"
-                aria-hidden
-              >
-                {item.step}
-              </span>
+
 
               <div className="relative z-10 pt-14">
                 <h3 className="text-xl font-semibold tracking-tight">
