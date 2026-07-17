@@ -36,13 +36,18 @@ export function Logo({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M 0 10 Q 25 10 50 10 T 100 10"
               stroke="currentColor"
               strokeWidth="4"
               strokeLinecap="round"
               vectorEffect="non-scaling-stroke"
-              className="logo-underline-path"
-            />
+            >
+              <animate
+                attributeName="d"
+                dur="4s"
+                repeatCount="indefinite"
+                values="M 0 10 Q 25 10 50 10 T 100 10; M 0 10 Q 25 -5 50 10 T 100 10; M 0 10 Q 25 10 50 10 T 100 10; M 0 10 Q 25 25 50 10 T 100 10; M 0 10 Q 25 10 50 10 T 100 10"
+              />
+            </path>
           </svg>
         </span>
       </span>

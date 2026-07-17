@@ -23,10 +23,10 @@ export function AboutSection() {
         </p>
 
         <Link
-          href="#how-it-works"
+          href="/about"
           className="mt-10 inline-flex rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
         >
-          How it works
+          About Beagine
         </Link>
       </div>
 

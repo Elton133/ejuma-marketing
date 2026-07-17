@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Big_Shoulders, Google_Sans_Flex } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -15,6 +15,14 @@ const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://beagine.com"),

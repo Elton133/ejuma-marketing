@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { HERO_IMAGES, WAITLIST_PATH } from "@/lib/constants";
+import { MicroLabel } from "@/components/MicroLabel";
 
 export const metadata: Metadata = {
   title: "About Us - Beagine",
@@ -34,13 +35,11 @@ export default function AboutPage() {
           </div>
 
           <div className="relative z-10 w-full mx-auto max-w-[1440px] md:px-10 lg:px-14" data-reveal-stagger>
-            <p data-reveal-item className="mb-4 text-sm font-semibold tracking-wider text-[#FF5F15] uppercase">
-              About Us
-            </p>
-            <h1 data-reveal-item className="mt-6 text-[clamp(2.5rem,5vw,3.75rem)] font-bold leading-none tracking-tight text-white">
-              About Beagine
+          <MicroLabel>About Us</MicroLabel>
+            <h1 data-reveal-item className="mt-6 text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-none tracking-tight text-white">
+              About <span className="text-[#FF5F15]">Beagine</span>
             </h1>
-            <p data-reveal-item className="mt-8 max-w-3xl text-xl leading-relaxed text-white/70 md:text-2xl">
+            <p data-reveal-item className="mt-8 max-w-3xl text-lg leading-relaxed text-white/65">
               Beagine is a globally relevant engineering services platform connecting skilled tradespeople, merchants, and customers with fast, reliable service across local towns and major cities.
             </p>
           </div>
@@ -73,7 +72,7 @@ export default function AboutPage() {
             }}
           />
           <Image
-            src={HERO_IMAGES[4]} 
+            src={HERO_IMAGES[0]} 
             alt="Beagine specialists"
             fill
             className="object-cover object-[center_35%] opacity-80"
@@ -89,9 +88,14 @@ export default function AboutPage() {
               <p className="mt-6 text-xl font-medium leading-snug md:text-2xl">
                 We're building infrastructure for reliable trades, not endless searching — <span className="text-white/60">with verified skills, faster arrivals, and complete peace of mind.</span>
               </p>
-              <Link href={WAITLIST_PATH} className="mt-8 font-semibold text-[#FF5F15] hover:underline">
+               <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href={WAITLIST_PATH}
+                className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
+              >
                 Join our mission
               </Link>
+            </div>
             </div>
             
             <div data-reveal-item className="flex flex-col">
@@ -121,9 +125,14 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="relative z-10 flex flex-col items-start">
                   <h3 className="mb-4 text-2xl font-bold tracking-tight">Leadership</h3>
-                  <Link href={WAITLIST_PATH} className="inline-block rounded-md bg-[#e3f8eb] px-4 py-2 text-[15px] font-semibold text-[#0a2516] transition-colors hover:bg-white">
-                    Beagine leadership team
-                  </Link>
+                  <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/leadership"
+                className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
+              >
+                Join the waitlist
+              </Link>
+            </div>
                 </div>
               </div>
 
@@ -145,9 +154,14 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="relative z-10 flex flex-col items-start">
                   <h3 className="mb-4 text-2xl font-bold tracking-tight">Safety</h3>
-                  <Link href={WAITLIST_PATH} className="inline-block rounded-md bg-[#e3f8eb] px-4 py-2 text-[15px] font-semibold text-[#0a2516] transition-colors hover:bg-white">
-                    Safety at Beagine
-                  </Link>
+                  <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href={WAITLIST_PATH}
+                className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
+              >
+                Safety at Beagine
+              </Link>
+            </div>
                 </div>
               </div>
 
@@ -157,9 +171,14 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="relative z-10 flex flex-col items-start">
                   <h3 className="mb-4 text-2xl font-bold tracking-tight">Community</h3>
-                  <Link href={WAITLIST_PATH} className="inline-block rounded-md bg-[#e3f8eb] px-4 py-2 text-[15px] font-semibold text-[#0a2516] transition-colors hover:bg-white">
-                    Community
-                  </Link>
+                  <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href={WAITLIST_PATH}
+                className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
+              >
+                Community
+              </Link>
+            </div>
                 </div>
               </div>
 

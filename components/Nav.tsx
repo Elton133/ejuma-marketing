@@ -30,7 +30,7 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 pt-[env(safe-area-inset-top)] ${
         open
           ? "border-b border-white/10 bg-black lg:bg-black/90 lg:backdrop-blur-md"
           : showSolidNav
