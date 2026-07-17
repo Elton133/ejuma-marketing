@@ -29,34 +29,26 @@ export function Nav() {
   const showSolidNav = scrolled || open;
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 pt-[env(safe-area-inset-top)] ${
-        open
-          ? "border-b border-white/10 bg-black lg:bg-black/90 lg:backdrop-blur-md"
-          : showSolidNav
-            ? "border-b border-white/10 bg-black/90 backdrop-blur-md"
-            : "border-b border-transparent bg-transparent"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)]">
       <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
-        <div className="flex shrink-0 items-center" onClick={() => setOpen(false)}>
+        <div className="flex shrink-0 items-center mix-blend-difference text-white" onClick={() => setOpen(false)}>
           <Logo size="md" />
         </div>
 
         <div className="ml-auto flex items-center gap-5 md:gap-8">
-          <div className="hidden items-center gap-6 lg:flex">
+          <div className="hidden items-center gap-6 lg:flex mix-blend-difference text-white">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-white/80 transition-colors hover:text-white"
+                className="text-sm font-medium transition-opacity hover:opacity-70"
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href={COMING_SOON_PATH}
-              className="text-sm text-white/80 transition-colors hover:text-white"
+              className="text-sm font-medium transition-opacity hover:opacity-70"
             >
               Open app
             </Link>
@@ -71,7 +63,7 @@ export function Nav() {
 
           <button
             type="button"
-            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:border-white/25 lg:hidden"
+            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-transparent text-white mix-blend-difference transition-opacity hover:opacity-70 lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
