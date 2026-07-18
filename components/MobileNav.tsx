@@ -71,16 +71,16 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal>
+    <div className="fixed inset-0 z-40 h-[100dvh] w-screen lg:hidden" role="dialog" aria-modal>
       <div
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        className="absolute inset-0 h-[100dvh] w-screen bg-black/80 backdrop-blur-sm"
         aria-hidden
         onClick={onClose}
       />
 
       <div
         ref={panelRef}
-        className="absolute inset-0 flex flex-col bg-black px-6 pb-10 pt-[4.5rem] shadow-2xl"
+        className="absolute inset-0 h-[100dvh] w-screen flex flex-col bg-black px-6 pb-10 pt-[4.5rem] shadow-2xl"
       >
         <div className="flex items-center justify-between pb-5">
           <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50">

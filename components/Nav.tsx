@@ -29,6 +29,7 @@ export function Nav() {
   const showSolidNav = scrolled || open;
 
   return (
+    <>
     <header className="fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)]">
       <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
         <div className="flex shrink-0 items-center mix-blend-difference text-white" onClick={() => setOpen(false)}>
@@ -72,9 +73,9 @@ export function Nav() {
           </button>
         </div>
       </nav>
-
-      <MobileNav open={open} onClose={() => setOpen(false)} />
     </header>
+    <MobileNav open={open} onClose={() => setOpen(false)} />
+    </>
   );
 }
 
