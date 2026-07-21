@@ -18,13 +18,15 @@ const WORKER_LINKS = [
 ];
 
 const COMPANY_LINKS = [
-  { label: "About Beagine", href: "/#about" },
-  { label: "Contact support", href: "mailto:support@beagine.app" },
+  { label: "About Beagine", href: "/about" },
+  { label: "Community Q&A", href: "/faqs" },
+  { label: "Contact support", href: "mailto:support@beagine.com" },
 ];
 
 const LEGAL_LINKS = [
   { label: "Privacy policy", href: "/privacy-policy" },
   { label: "Terms of service", href: "/terms-of-service" },
+  { label: "Terms of use", href: "/terms-of-use" },
   { label: "Data deletion", href: "/data-deletion" },
 ];
 

@@ -36,7 +36,7 @@ export function TrustSection() {
               Our support team is here when you need them. From booking questions to dispute resolution, we stand by our process to keep you protected.
             </p>
             <div className="mt-6">
-              <Link href="mailto:support@beagine.app" className="text-sm font-semibold text-[#FF5F15] hover:underline">
+              <Link href="mailto:support@beagine.com" className="text-sm font-semibold text-[#FF5F15] hover:underline">
                 Contact Support &rarr;
               </Link>
             </div>

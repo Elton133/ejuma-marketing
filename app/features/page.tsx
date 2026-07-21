@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import { MicroLabel } from "@/components/MicroLabel";
 import { Nav } from "@/components/Nav";
-import { WAITLIST_PATH } from "@/lib/constants";
+import { HERO_IMAGES, WAITLIST_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Features",
@@ -18,8 +19,22 @@ export default function FeaturesPage() {
       <Nav />
       <main>
         {/* Page hero */}
-        <section className="bg-black px-6 pb-20 pt-36 text-white md:pb-24 md:pt-40">
-          <div className="mx-auto max-w-[1200px]">
+        <section className="relative overflow-hidden bg-black px-6 pb-20 pt-36 text-white md:pb-24 md:pt-40">
+          {/* Cinematic Background */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={HERO_IMAGES[4]}
+              alt=""
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+            <div className="hero-image-overlay absolute inset-0" />
+            <div className="hero-grain absolute inset-0 pointer-events-none opacity-30" />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-[1200px]">
             <MicroLabel>Platform features</MicroLabel>
             <h1
               data-hero-animate

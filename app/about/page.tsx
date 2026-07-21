@@ -8,7 +8,7 @@ import { MicroLabel } from "@/components/MicroLabel";
 
 export const metadata: Metadata = {
   title: "About Us - Beagine",
-  description: "Beagine is a globally relevant engineering services platform connecting skilled tradespeople with customers instantly.",
+  description: "Beagine is a technology-enabled engineering marketplace that connects people, businesses, and organizations with the right engineering professionals.",
 };
 
 export default function AboutPage() {
@@ -40,22 +40,22 @@ export default function AboutPage() {
               About <span className="text-[#FF5F15]">Beagine</span>
             </h1>
             <p data-reveal-item className="mt-8 max-w-3xl text-lg leading-relaxed text-white/65">
-              Beagine is a globally relevant engineering services platform connecting skilled tradespeople, merchants, and customers with fast, reliable service across local towns and major cities.
+              Beagine is a technology-enabled engineering marketplace that connects people, businesses, and organizations with the right engineering professionals — to solve their everyday technical problems.
             </p>
           </div>
         </section>
 
-        {/* 2. Fast Facts (Light/White) */}
+        {/* 2. Who We Are (Light/White) */}
         <section id="about" className="bg-[#fafafa] px-6 py-24 text-black md:px-14 md:py-32 lg:px-24">
           <div className="mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:gap-24" data-reveal-stagger>
             <div data-reveal-item className="flex-1">
               <p className="text-xl font-medium leading-relaxed md:text-2xl">
-                Beagine empowers <strong className="font-bold">thousands of verified specialists</strong>, with local hubs forming rapidly across our pilot areas to serve demand.
+                Beagine is a <strong className="font-bold">technology-enabled engineering marketplace</strong> that connects people, businesses, and organizations with the right engineering professionals, to solve their everyday technical problems.
               </p>
             </div>
             <div data-reveal-item className="flex-1">
               <p className="text-lg leading-relaxed text-black/70">
-                The Beagine platform connects customers to convenient, reliable engineering services while supporting flexible, high-earning opportunities for skilled tradespeople, merchants, and engineers.
+                We coordinate trust, communication, execution, payments, quality assurance, and accountability. We are not simply a marketplace — we are an execution platform, creating a structured environment where customers can access trusted engineering professionals quickly, efficiently, and confidently.
               </p>
             </div>
           </div>
@@ -80,13 +80,30 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent" />
         </section>
 
-        {/* 4. Our Mission (Dark) */}
+        {/* 4. Our Vision (Light/White) */}
+        <section id="vision" className="bg-[#fafafa] px-6 py-24 text-black md:px-14 md:py-32 lg:px-24">
+          <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:gap-24" data-reveal-stagger>
+            <div data-reveal-item className="flex-1">
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Our vision</h2>
+              <p className="mt-6 text-xl font-medium leading-snug md:text-2xl">
+                Our vision is to become the go-to platform to connect with the right professional — <span className="text-black/60">where access to engineering expertise is simple, reliable, and available to everyone.</span>
+              </p>
+            </div>
+            <div data-reveal-item className="flex-1">
+              <p className="text-lg leading-relaxed text-black/70">
+                Customers should be able to solve engineering challenges without unnecessary friction. Professionals should be able to access meaningful opportunities. Communities should benefit from stronger access to technical expertise. As we grow, we aim to become foundational infrastructure within the engineering services ecosystem.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Our Mission (Dark) */}
         <section id="mission" className="bg-[#000000] px-6 py-24 text-white md:px-14 md:py-32 lg:px-24">
           <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-3 md:gap-16" data-reveal-stagger>
             <div data-reveal-item className="flex flex-col">
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Our mission</h2>
               <p className="mt-6 text-xl font-medium leading-snug md:text-2xl">
-                We're building infrastructure for reliable trades, not endless searching — <span className="text-white/60">with verified skills, faster arrivals, and complete peace of mind.</span>
+                To connect demand and engineering expertise through systems that create <span className="text-white/60">reliability, trust, efficiency, and measurable outcomes.</span>
               </p>
                <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -97,16 +114,16 @@ export default function AboutPage() {
               </Link>
             </div>
             </div>
-            
+
             <div data-reveal-item className="flex flex-col">
               <p className="text-lg leading-relaxed text-white/70">
-                Beagine's mission is to help people find skilled workers in ways that make hiring work better for everyone. That means reducing the friction of finding a plumber, electrician, or mason, and offering a shared platform that is efficient, accessible, and highly sustainable.
+                Every interaction within Beagine follows a structured cycle: demand is identified, professionals are matched, projects are coordinated, and work is delivered.
               </p>
             </div>
 
             <div data-reveal-item className="flex flex-col">
               <p className="text-lg leading-relaxed text-white/70">
-                Every Beagine booking helps lower stress, build local trust, and give people back their time, money, and peace of mind when dealing with home and commercial projects.
+                Payments are processed, outcomes are verified, and data is collected so our systems improve. This continuous loop strengthens the platform over time.
               </p>
             </div>
           </div>
@@ -130,7 +147,7 @@ export default function AboutPage() {
                 href="/leadership"
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
-                Join the waitlist
+                Leadership
               </Link>
             </div>
                 </div>

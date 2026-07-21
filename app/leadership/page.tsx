@@ -15,22 +15,22 @@ export default function LeadershipPage() {
   return (
     <>
       <Nav />
-      <main className="flex min-h-screen flex-col bg-black pt-16">
+      <main className="flex min-h-screen flex-col">
         
         {/* 1. Hero Section (Dark) */}
         <section className="relative flex min-h-[50vh] flex-col justify-end bg-black px-6 pb-20 pt-36 md:px-14 md:pb-24 md:pt-40 lg:px-24 text-left">
           {/* Cinematic Background */}
           <div className="absolute inset-0 z-0">
-            <Image 
-              src={HERO_IMAGES[4]} 
-              alt="" 
-              fill 
-              className="object-cover opacity-[0.25] mix-blend-luminosity" 
+            <Image
+              src={HERO_IMAGES[4]}
+              alt=""
+              fill
+              className="object-cover"
               priority
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
-            <div className="hero-grain absolute inset-0 pointer-events-none opacity-50" />
+            <div className="hero-image-overlay absolute inset-0" />
+            <div className="hero-grain absolute inset-0 pointer-events-none opacity-30" />
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-[1200px]" data-reveal-stagger>

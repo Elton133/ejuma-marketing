@@ -60,10 +60,10 @@ export default function DataDeletion() {
                 <li>
                   Send an email to{" "}
                   <a
-                    href="mailto:support@beagine.app"
+                    href="mailto:support@beagine.com"
                     className="text-[#FF5F15] hover:underline"
                   >
-                    support@beagine.app
+                    support@beagine.com
                   </a>{" "}
                   from the email address associated with your Beagine account.
                 </li>
