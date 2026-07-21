@@ -18,8 +18,8 @@ const WORKER_LINKS = [
 ];
 
 const COMPANY_LINKS = [
+  { label: "Community Connect", href: "/faqs" },
   { label: "About Beagine", href: "/about" },
-  { label: "Community Q&A", href: "/faqs" },
   { label: "Contact support", href: "mailto:support@beagine.com" },
 ];
 

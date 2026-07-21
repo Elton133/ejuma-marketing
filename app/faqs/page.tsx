@@ -7,7 +7,7 @@ import { HERO_IMAGES } from "@/lib/constants";
 import { supabase } from "@/lib/supabase";
 
 export const metadata: Metadata = {
-  title: "Community Q&A - Beagine",
+  title: "Community Connect - Beagine",
   description: "Browse frequently asked questions from the Beagine community and submit your own.",
 };
 
@@ -48,7 +48,7 @@ export default async function FAQsPage() {
 
           <div className="relative z-10 mx-auto w-full max-w-[800px]" data-reveal-stagger>
             <p data-reveal-item className="mb-4 text-sm font-semibold tracking-wider text-[#FF5F15] uppercase">
-              Community Q&A
+              Community Connect
             </p>
             <h1 data-reveal-item className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-white">
               You ask, we answer.

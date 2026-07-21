@@ -39,7 +39,7 @@ export default function LeadershipPage() {
             </div>
             
             <h1 data-reveal-item className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-white">
-              Meet our leaders
+              Meet the team
             </h1>
           </div>
         </section>

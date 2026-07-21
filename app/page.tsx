@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/AboutSection";
+import { CommunitySection } from "@/components/CommunitySection";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -43,6 +44,9 @@ export default function Home() {
         <ScrollReveal>
           <TrustSection />
         </ScrollReveal>
+        {/* <ScrollReveal>
+          <CommunitySection />
+        </ScrollReveal> */}
         <ScrollReveal>
           <AboutSection />
         </ScrollReveal>

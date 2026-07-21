@@ -190,10 +190,10 @@ export default function AboutPage() {
                   <h3 className="mb-4 text-2xl font-bold tracking-tight">Community</h3>
                   <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
               <Link
-                href={WAITLIST_PATH}
+                href="/faqs"
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
-                Community
+                Community Connect
               </Link>
             </div>
                 </div>
