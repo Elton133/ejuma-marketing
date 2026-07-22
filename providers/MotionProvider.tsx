@@ -139,6 +139,36 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
         });
       });
 
+      gsap.utils.toArray<HTMLElement>("[data-image-expand]").forEach((el) => {
+        const img = el.querySelector("img");
+        if (!img) return;
+
+        gsap.set(el, { clipPath: "inset(15% 15% 15% 15% round 32px)" });
+        gsap.set(img, { scale: 1.25 });
+
+        gsap.to(el, {
+          clipPath: "inset(0% 0% 0% 0% round 24px)",
+          duration: 1.5,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+        
+        gsap.to(img, {
+          scale: 1,
+          duration: 1.5,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+
       gsap.utils.toArray<HTMLElement>("[data-hero-parallax]").forEach((el) => {
         gsap.to(el, {
           y: "30%",

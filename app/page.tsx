@@ -44,9 +44,6 @@ export default function Home() {
         <ScrollReveal>
           <TrustSection />
         </ScrollReveal>
-        {/* <ScrollReveal>
-          <CommunitySection />
-        </ScrollReveal> */}
         <ScrollReveal>
           <AboutSection />
         </ScrollReveal>

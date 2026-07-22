@@ -72,7 +72,7 @@ export default function AboutPage() {
             }}
           />
           <Image
-            src={HERO_IMAGES[0]} 
+            src={HERO_IMAGES[4]} 
             alt="Beagine specialists"
             fill
             className="object-cover object-[center_35%] opacity-80"

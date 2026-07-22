@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Big_Shoulders, Google_Sans_Flex } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
+import { CustomCursor } from "@/components/CustomCursor";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
@@ -66,6 +67,7 @@ export default function RootLayout({
       className={`${bigShoulders.variable} ${googleSansFlex.variable} h-full scroll-smooth`}
     >
       <body className="flex min-h-full flex-col bg-black font-sans text-white antialiased">
+        <CustomCursor />
         <MotionProvider>{children}</MotionProvider>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-PLACEHOLDER"} />
       </body>

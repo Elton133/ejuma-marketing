@@ -14,44 +14,42 @@ export const INSTALL_CUSTOMER = `${APP_URL}/install?role=customer`;
 export const INSTALL_WORKER = `${APP_URL}/install?role=worker`;
 
 export const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1777130555776-cd7ce5425804?q=80&w=1920&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1596394723269-b2cbca4e6313?q=80&w=1920&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1742900280861-32bed068938b?q=80&w=1920&auto=format&fit=crop",
-  "https://imgs.search.brave.com/e5r9dzxjoyqjHa81mj8OWRLwXEp3lwTxYVyF_LcSQIA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/bWFnbmlmaWMuY29t/L3ByZW1pdW0tcGhv/dG8vZWxlY3RyaWNh/bC1lbmdpbmVlci13/b3JraW5nLXBvd2Vy/LWVuZ2luZWVyaW5n/LWluZHVzdHJ5XzEy/ODg2NTctNDgwLmpw/Zz9zZW10PWFpc190/ZXN0X2Imdz03NDAm/cT04MA",
-  "https://imgs.search.brave.com/weVjg0Vk3q49saOhX1x46t-jbjhLRJNR2XGaCVC6S4Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4Lzk1LzMwLzM3/LzM2MF9GXzg5NTMw/MzcxM19iU0tyeENR/MEQ2UmxlYm5QUlhG/cndLYTF6Z0IyMllN/ZC5qcGc",
-  "https://imgs.search.brave.com/wzXGgWwPctoU9kvMYXI8Jz-29YoKXW34XTrCA6qQDg8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE4/MzkxOTY1NC9waG90/by93YWxraW5nLXVw/LXRoZS1sYWRkZXIt/eW91bmctYWZyaWNh/bi1hbWVyaWNhbi13/b3JrZXItaW4tdGhl/LWJsdWUtdW5pZm9y/bS1oYXZlLXNvbWUt/am9iLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1fcl9TcUM5/WUMyMmlLMEtJbm5X/QUdqYVR0SGFGRS1w/RUx3eDM2cDZOMWdr/PQ",
+  "/landing1.png",
+  "/landing2.png",
+  "/landing3.png",
+  "/landing4.png",
+  "/landing5.png",
+  "/landing6.png",
+  "/landing7.png",
+  "/landing8.png",
+  "/landing9.png",
 ] as const;
 
 /** Five vertical strip panels shown on desktop hero — one per occupation */
 export const HERO_PANELS = [
   {
     trade: "Electrician",
-    image:
-      "https://images.unsplash.com/photo-1555963966-b7ae5404b6ed?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/landing7.png",
     objectPosition: "center top",
   },
   {
     trade: "Plumber",
-    image:
-      "https://images.unsplash.com/photo-1596394723269-b2cbca4e6313?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/landing8.png",
     objectPosition: "center 20%",
   },
   {
     trade: "Carpenter",
-    image:
-      "https://images.unsplash.com/photo-1611021061285-16c871740efa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FycGVudGVyfGVufDB8fDB8fHww",
+    image: "/landing9.png",
     objectPosition: "center center",
   },
   {
     trade: "Painter",
-    image:
-      "https://images.unsplash.com/photo-1742900280861-32bed068938b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBhaW50ZXIlMjBhZnJpY2FufGVufDB8fDB8fHww",
+    image: "/landing1.png",
     objectPosition: "center top",
   },
   {
     trade: "Mason",
-    image:
-      "https://images.unsplash.com/photo-1747214300307-541c83c7a5bd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/landing2.png",
     objectPosition: "center center",
   },
 ] as const;
@@ -140,8 +138,7 @@ export const CUSTOMER_FEATURE_ROWS = [
       "Search by trade and location — browse verified workers near you on a map or list. See ratings, distance, and availability before you ever tap Book.",
     cta: { label: "Join the waitlist", href: WAITLIST_PATH },
     visualPosition: "right" as const,
-    image:
-      "https://images.unsplash.com/photo-1679134015859-6281e4382065?q=80&w=1200&auto=format&fit=crop",
+    image: "/landing3.png",
     imageAlt: "Specialist worker ready for a job",
   },
   {
@@ -152,8 +149,7 @@ export const CUSTOMER_FEATURE_ROWS = [
       "See exactly where your specialist is in real time. Follow status from accepted → en route → arrived → in progress → completed — so you're never left wondering.",
     cta: { label: "Open the app", href: APP_URL, external: true },
     visualPosition: "left" as const,
-    image:
-      "https://images.unsplash.com/photo-1587937533522-b2294fd611f5?q=80&w=1200&auto=format&fit=crop",
+    image: "/landing4.png",
     imageAlt: "Live map tracking a specialist en route",
   },
   {

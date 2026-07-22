@@ -8,16 +8,17 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { WAITLIST_PATH } from "@/lib/constants";
+import { TiltCard } from "./TiltCard";
 
 export function WorkerFeaturesGrid() {
   return (
     <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
 
       {/* ── Wide: Get more jobs ─────────────────────────────── */}
-      <article data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:col-span-2 md:p-10 lg:col-span-2">
+      <TiltCard data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:col-span-2 md:p-10 lg:col-span-2">
         <div className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full bg-[#FF5F15]/20 blur-3xl" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgba(255,95,21,0.10),transparent_55%)]" />
-        <div className="relative">
+        <div className="relative pointer-events-none">
           <HugeiconsIcon
             icon={Briefcase01Icon}
             size={46}
@@ -32,10 +33,10 @@ export function WorkerFeaturesGrid() {
             The more complete your profile, the higher you show up.
           </p>
         </div>
-      </article>
+      </TiltCard>
 
       {/* ── Build your profile ──────────────────────────────── */}
-      <article data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-9">
+      <TiltCard data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-9 pointer-events-none">
         <HugeiconsIcon
           icon={UserStar01Icon}
           size={42}
@@ -49,10 +50,10 @@ export function WorkerFeaturesGrid() {
           Portfolio photos, certificates, bio, and rates — build trust before
           the first booking.
         </p>
-      </article>
+      </TiltCard>
 
       {/* ── Work in new areas ───────────────────────────────── */}
-      <article data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-9">
+      <TiltCard data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-9 pointer-events-none">
         <HugeiconsIcon
           icon={Compass01Icon}
           size={42}
@@ -66,13 +67,13 @@ export function WorkerFeaturesGrid() {
           List several trades and towns — work across the corridor on your own
           terms.
         </p>
-      </article>
+      </TiltCard>
 
       {/* ── Wide: Earn with Beagine ─────────────────────────── */}
-      <article data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:col-span-2 md:p-10 lg:col-span-2">
+      <TiltCard data-reveal-item className="glass-panel relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:col-span-2 md:p-10 lg:col-span-2">
         <div className="pointer-events-none absolute -bottom-10 -left-10 h-56 w-56 rounded-full bg-[#FF5F15]/15 blur-3xl" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_90%,rgba(255,95,21,0.10),transparent_55%)]" />
-        <div className="relative">
+        <div className="relative pointer-events-none">
           <HugeiconsIcon
             icon={Wallet01Icon}
             size={46}
@@ -87,11 +88,11 @@ export function WorkerFeaturesGrid() {
             hours. No hidden cuts, no delays.
           </p>
         </div>
-      </article>
+      </TiltCard>
 
       {/* ── CTA card ────────────────────────────────────────── */}
-      <article data-reveal-item className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-[#FF5F15] p-8 md:p-9">
-        <div>
+      <TiltCard data-reveal-item className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-[#FF5F15] p-8 md:p-9">
+        <div className="pointer-events-none">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/50">
             Ready to earn?
           </p>
@@ -102,12 +103,14 @@ export function WorkerFeaturesGrid() {
             Get verified once, start taking jobs.
           </p>
         </div>
-        <Link
-          href={WAITLIST_PATH}
-          className="btn-premium mt-8 inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-zinc-800"
-        >
-          Sign up
-        </Link>
+        <div className="z-10 w-fit">
+          <Link
+            href={WAITLIST_PATH}
+            className="btn-premium mt-8 inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-zinc-800"
+          >
+            Sign up
+          </Link>
+        </div>
         <Image
           src="/beaver.png"
           alt=""
@@ -116,7 +119,7 @@ export function WorkerFeaturesGrid() {
           height={160}
           className="pointer-events-none absolute -bottom-4 -right-4 select-none opacity-[0.14]"
         />
-      </article>
+      </TiltCard>
 
     </div>
   );
