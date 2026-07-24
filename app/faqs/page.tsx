@@ -46,14 +46,14 @@ export default async function FAQsPage() {
             <div className="hero-grain absolute inset-0 pointer-events-none opacity-50" />
           </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-[800px]" data-reveal-stagger>
-            <p data-reveal-item className="mb-4 text-sm font-semibold tracking-wider text-[#FF5F15] uppercase">
+          <div className="relative z-10 mx-auto w-full max-w-[800px]">
+            <p className="mb-4 text-sm font-semibold tracking-wider text-[#FF5F15] uppercase">
               Community Connect
             </p>
-            <h1 data-reveal-item className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-white">
+            <h1 data-split-words className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-white">
               You ask, we answer.
             </h1>
-            <p data-reveal-item className="mt-6 text-lg leading-relaxed text-white/60 md:text-xl">
+            <p data-split-words className="mt-6 text-lg leading-relaxed text-white/60 md:text-xl">
               Everything you need to know about how Beagine is revolutionizing the skilled trades industry. If you don't see your question, ask it below!
             </p>
           </div>

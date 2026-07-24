@@ -25,7 +25,7 @@ export function LegalLayout({
           )}
 
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[220px_1fr]">
-            <aside className="lg:sticky lg:top-32 lg:self-start">
+            <aside className="lg:self-start">
               <LegalToc />
             </aside>
             <div id="legal-content" className="max-w-3xl text-base text-white/70">

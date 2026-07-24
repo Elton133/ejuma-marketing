@@ -32,12 +32,13 @@ export function AboutSection() {
 
       {/* Beaver mascot — subtle watermark, bottom-right */}
       <Image
+        data-slide-right
         src="/beaver.png"
         alt=""
         aria-hidden
         width={260}
         height={260}
-        className="pointer-events-none absolute -bottom-6 right-4 select-none opacity-[0.10] md:right-10 md:w-[320px]"
+        className="pointer-events-none absolute -bottom-6 right-4 select-none opacity-10 md:right-10 md:w-[320px]"
       />
     </section>
   );

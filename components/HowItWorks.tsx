@@ -18,12 +18,11 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <ol className="mt-14 grid gap-12 md:grid-cols-2 md:gap-x-10 md:gap-y-14 lg:grid-cols-4 lg:gap-x-8">
+        <ol data-stagger-cards className="mt-14 grid gap-12 md:grid-cols-2 md:gap-x-10 md:gap-y-14 lg:grid-cols-4 lg:gap-x-8">
           {HOW_IT_WORKS.map((item) => (
-            <li key={item.step} className="relative min-h-[11rem]">
-
-
-              <div className="relative z-10 pt-14">
+            <li key={item.step} className="relative">
+              <span className="block h-px w-10 bg-[#FF5F15]" />
+              <div className="relative z-10 pt-6">
                 <h3 className="text-xl font-semibold tracking-tight">
                   {item.title}
                 </h3>

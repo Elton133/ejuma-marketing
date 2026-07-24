@@ -38,7 +38,7 @@ export default function LeadershipPage() {
               <Link href="/about" className="transition-colors hover:text-white uppercase tracking-wider">About Us</Link>
             </div>
             
-            <h1 data-reveal-item className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-white">
+            <h1 data-split-words className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight text-white">
               Meet the team
             </h1>
           </div>
@@ -46,14 +46,14 @@ export default function LeadershipPage() {
 
         {/* 2. Intro Statement (Light) */}
         <section className="bg-[#fafafa] px-6 py-24 text-black md:px-14 md:py-32 lg:px-24">
-          <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:gap-24" data-reveal-stagger>
-            <div data-reveal-item className="flex-1">
-              <p className="text-2xl font-bold leading-snug md:text-3xl">
+          <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:gap-24">
+            <div className="flex-1">
+              <p data-split-words className="text-2xl font-bold leading-snug md:text-3xl">
                 Beagine's leadership team brings together bold thinkers, builders, and problem-solvers from around the world.
               </p>
             </div>
-            <div data-reveal-item className="flex-1">
-              <p className="text-lg leading-relaxed text-black/70 md:text-xl">
+            <div className="flex-1">
+              <p data-split-words className="text-lg leading-relaxed text-black/70 md:text-xl">
                 With deep experience spanning technology, trades, operations, and product, they're united by one mission — to build the infrastructure that makes finding and hiring skilled specialists effortless. They lead teams worldwide in transforming how millions of people manage local engineering services and commercial projects.
               </p>
             </div>

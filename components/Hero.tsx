@@ -11,7 +11,7 @@ export function Hero() {
         <div className="mx-auto w-full max-w-[1440px] px-6 pb-16 md:px-10 md:pb-20 lg:px-14 lg:pb-24">
           <div className="max-w-2xl">
             <h1
-              data-hero-animate
+              data-split-text-hero
               className="text-[clamp(2.5rem,6vw,4.75rem)] font-semibold leading-[1.02] tracking-tight"
             >
               The right engineering{" "}

@@ -10,7 +10,8 @@ import { FEATURE_ICONS } from "@/lib/feature-icons";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { prefersReducedMotion } from "@/lib/motion/register-gsap";
+import { SplitText } from "gsap/SplitText";
+import { prefersReducedMotion, registerGsap } from "@/lib/motion/register-gsap";
 
 export function Features() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -18,34 +19,76 @@ export function Features() {
   const rightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    registerGsap();
     if (prefersReducedMotion() || typeof window === "undefined") return;
 
-    // Use ScrollTrigger to fade images in and out based on left-side text sections
-    const sections = gsap.utils.toArray<HTMLElement>(".feature-text-section");
-    const images = gsap.utils.toArray<HTMLElement>(".feature-visual");
+    let ctx: gsap.Context | undefined;
+    let mm: gsap.MatchMedia | undefined;
 
-    sections.forEach((sec, i) => {
-      ScrollTrigger.create({
-        trigger: sec,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => {
-          gsap.to(images, { opacity: 0, scale: 0.95, duration: 0.5, ease: "power2.out" });
-          gsap.to(images[i], { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" });
-        },
-        onEnterBack: () => {
-          gsap.to(images, { opacity: 0, scale: 0.95, duration: 0.5, ease: "power2.out" });
-          gsap.to(images[i], { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" });
-        }
+    // Delay init so ScrollSmoother (created in the parent MotionProvider) exists first
+    const timeout = setTimeout(() => {
+      // Heading reveals — all breakpoints
+      ctx = gsap.context(() => {
+        const heads = gsap.utils.toArray<HTMLElement>(
+          ".feature-text-section h3, #features h2, #for-workers h2"
+        );
+        heads.forEach((h) => {
+          const split = new SplitText(h, { type: "words,chars" });
+          gsap.from(split.chars, {
+            scrollTrigger: { trigger: h, start: "top 85%" },
+            opacity: 0,
+            y: 15,
+            duration: 0.5,
+            stagger: 0.02,
+            ease: "back.out(1.4)",
+          });
+        });
       });
-    });
+
+      // Desktop only: pin the visual column (via ScrollTrigger, since CSS sticky
+      // breaks inside ScrollSmoother) and crossfade images as the text scrolls
+      mm = gsap.matchMedia();
+      mm.add("(min-width: 1024px)", () => {
+        const sections = gsap.utils.toArray<HTMLElement>(".feature-text-section");
+        const images = gsap.utils.toArray<HTMLElement>(".feature-visual");
+
+        if (containerRef.current && rightRef.current) {
+          ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom bottom",
+            pin: rightRef.current,
+            pinSpacing: false,
+            // Force transform-based pinning — "fixed" (the default) is broken by
+            // ScrollSmoother's transformed #smooth-content ancestor, so the visual
+            // would scroll away instead of staying pinned.
+            pinType: "transform",
+          });
+        }
+
+        const showImage = (i: number) => {
+          gsap.to(images, { opacity: 0, scale: 0.95, duration: 0.5, ease: "power2.out", overwrite: true });
+          gsap.to(images[i], { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out", overwrite: true });
+        };
+
+        sections.forEach((sec, i) => {
+          ScrollTrigger.create({
+            trigger: sec,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => showImage(i),
+            onEnterBack: () => showImage(i),
+          });
+        });
+      });
+
+      ScrollTrigger.refresh();
+    }, 200);
 
     return () => {
-      ScrollTrigger.getAll().forEach(st => {
-        if (st.trigger && (st.trigger as HTMLElement).classList.contains("feature-text-section")) {
-          st.kill();
-        }
-      });
+      clearTimeout(timeout);
+      mm?.revert();
+      ctx?.revert();
     };
   }, []);
 
@@ -71,7 +114,7 @@ export function Features() {
           <div className="relative flex flex-col items-start gap-10 lg:flex-row lg:gap-20" ref={containerRef}>
             {/* Left side: Scrolling Text */}
             <div className="flex w-full flex-col lg:w-1/2 lg:pb-[30vh]" ref={leftRef}>
-              {CUSTOMER_FEATURE_ROWS.map((feature, index) => (
+              {CUSTOMER_FEATURE_ROWS.map((feature) => (
                 <div
                   key={feature.title}
                   className="feature-text-section flex min-h-[50vh] flex-col justify-center py-20 lg:min-h-[80vh] lg:py-0"
@@ -112,18 +155,21 @@ export function Features() {
               ))}
             </div>
 
-            {/* Right side: Sticky Visuals */}
-            <div className="hidden h-screen w-full lg:sticky lg:top-0 lg:flex lg:w-1/2 lg:items-center" ref={rightRef}>
-              <div className="relative h-[75vh] w-full overflow-hidden rounded-[2.5rem] bg-zinc-900 shadow-2xl">
-                {CUSTOMER_FEATURE_ROWS.map((feature, index) => (
-                  <div
-                    key={feature.title}
-                    className="feature-visual absolute inset-0 opacity-0 transform scale-95"
-                    style={{ opacity: index === 0 ? 1 : 0, transform: index === 0 ? "scale(1)" : "scale(0.95)" }}
-                  >
-                    <FeatureVisual feature={feature} />
-                  </div>
-                ))}
+            {/* Right side: Pinned Visuals (pinned via ScrollTrigger, not CSS sticky —
+                CSS sticky breaks inside ScrollSmoother's transformed content) */}
+            <div className="hidden w-full lg:block lg:w-1/2">
+              <div ref={rightRef} className="flex h-screen items-center">
+                <div className="relative h-[75vh] w-full overflow-hidden rounded-[2.5rem] bg-zinc-900 shadow-2xl">
+                  {CUSTOMER_FEATURE_ROWS.map((feature, index) => (
+                    <div
+                      key={feature.title}
+                      className="feature-visual absolute inset-0 opacity-0 transform scale-95"
+                      style={{ opacity: index === 0 ? 1 : 0, transform: index === 0 ? "scale(1)" : "scale(0.95)" }}
+                    >
+                      <FeatureVisual feature={feature} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -154,13 +200,16 @@ export function Features() {
   );
 }
 
-function FeatureVisual({ feature }: { feature: any }) {
-  if (feature.image) {
+function FeatureVisual({ feature }: { feature: (typeof CUSTOMER_FEATURE_ROWS)[number] }) {
+  const image = "image" in feature ? feature.image : undefined;
+  const imageAlt = "imageAlt" in feature ? feature.imageAlt : "";
+
+  if (image) {
     return (
       <div className="relative h-full w-full">
         <Image
-          src={feature.image}
-          alt={feature.imageAlt || ""}
+          src={image}
+          alt={imageAlt || ""}
           fill
           className="object-cover object-center"
           sizes="(max-width: 1024px) 100vw, 560px"
@@ -171,7 +220,7 @@ function FeatureVisual({ feature }: { feature: any }) {
   }
 
   const iconData = FEATURE_ICONS[feature.icon as keyof typeof FEATURE_ICONS];
-  const panelClass = feature.panelClass || "from-[#FF5F15]/10 to-[#fafafa]";
+  const panelClass = ("panelClass" in feature && feature.panelClass) || "from-[#FF5F15]/10 to-[#fafafa]";
 
   return (
     <div className={`relative flex h-full w-full items-center justify-center bg-linear-to-br ${panelClass}`}>

@@ -37,14 +37,14 @@ export default function FeaturesPage() {
           <div className="relative z-10 mx-auto max-w-[1200px]">
             <MicroLabel>Platform features</MicroLabel>
             <h1
-              data-hero-animate
+              data-split-words
               className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight"
             >
               Built to make finding help{" "}
               <em className="text-[#FF5F15] not-italic">effortless</em>
             </h1>
             <p
-              data-hero-animate
+              data-split-words
               className="mt-5 max-w-xl text-lg leading-relaxed text-white/65"
             >
               From finding the right person to tracking their arrival — every

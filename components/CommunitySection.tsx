@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { MicroLabel } from "./MicroLabel";
+import { TiltCard } from "./TiltCard";
 
 export function CommunitySection() {
   return (
     <section className="bg-black px-6 py-20 text-white md:py-28">
       <div className="mx-auto max-w-[1200px]">
-        <div className="glass-panel flex flex-col items-center gap-6 rounded-3xl border border-white/10 bg-white/[0.02] px-6 py-16 text-center md:px-16">
+        <TiltCard
+          maxRotation={4}
+          data-reveal
+          className="glass-panel flex flex-col items-center gap-6 rounded-3xl border border-white/10 bg-white/[0.02] px-6 py-16 text-center md:px-16"
+        >
           <MicroLabel>Community Connect</MicroLabel>
           <h2 className="max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
             Got a question? The community has answers.
@@ -19,7 +24,7 @@ export function CommunitySection() {
           >
             Visit Community Connect
           </Link>
-        </div>
+        </TiltCard>
       </div>
     </section>
   );

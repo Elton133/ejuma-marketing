@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { HERO_IMAGES, WAITLIST_PATH } from "@/lib/constants";
 import { MicroLabel } from "@/components/MicroLabel";
+import { TiltCard } from "@/components/TiltCard";
 
 export const metadata: Metadata = {
   title: "About Us - Beagine",
@@ -34,12 +35,12 @@ export default function AboutPage() {
             <div className="hero-grain absolute inset-0 opacity-50 pointer-events-none" />
           </div>
 
-          <div className="relative z-10 w-full mx-auto max-w-[1440px] md:px-10 lg:px-14" data-reveal-stagger>
+          <div className="relative z-10 w-full mx-auto max-w-[1440px] md:px-10 lg:px-14">
           <MicroLabel>About Us</MicroLabel>
-            <h1 data-reveal-item className="mt-6 text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-none tracking-tight text-white">
+            <h1 data-split-lines className="mt-6 text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-none tracking-tight text-white">
               About <span className="text-[#FF5F15]">Beagine</span>
             </h1>
-            <p data-reveal-item className="mt-8 max-w-3xl text-lg leading-relaxed text-white/65">
+            <p data-split-lines className="mt-8 max-w-3xl text-lg leading-relaxed text-white/65">
               Beagine is a technology-enabled engineering marketplace that connects people, businesses, and organizations with the right engineering professionals — to solve their everyday technical problems.
             </p>
           </div>
@@ -47,14 +48,14 @@ export default function AboutPage() {
 
         {/* 2. Who We Are (Light/White) */}
         <section id="about" className="bg-[#fafafa] px-6 py-24 text-black md:px-14 md:py-32 lg:px-24">
-          <div className="mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:gap-24" data-reveal-stagger>
-            <div data-reveal-item className="flex-1">
-              <p className="text-xl font-medium leading-relaxed md:text-2xl">
+          <div className="mx-auto flex max-w-6xl flex-col gap-12 md:flex-row md:gap-24">
+            <div className="flex-1">
+              <p data-split-lines className="text-xl font-medium leading-relaxed md:text-2xl">
                 Beagine is a <strong className="font-bold">technology-enabled engineering marketplace</strong> that connects people, businesses, and organizations with the right engineering professionals, to solve their everyday technical problems.
               </p>
             </div>
-            <div data-reveal-item className="flex-1">
-              <p className="text-lg leading-relaxed text-black/70">
+            <div className="flex-1">
+              <p data-split-lines className="text-lg leading-relaxed text-black/70">
                 We coordinate trust, communication, execution, payments, quality assurance, and accountability. We are not simply a marketplace — we are an execution platform, creating a structured environment where customers can access trusted engineering professionals quickly, efficiently, and confidently.
               </p>
             </div>
@@ -71,26 +72,28 @@ export default function AboutPage() {
               backgroundSize: "contain",
             }}
           />
-          <Image
-            src={HERO_IMAGES[4]} 
-            alt="Beagine specialists"
-            fill
-            className="object-cover object-[center_35%] opacity-80"
-          />
+          <div data-image-expand className="absolute inset-0 overflow-hidden">
+            <Image
+              src={HERO_IMAGES[4]}
+              alt="Beagine specialists"
+              fill
+              className="object-cover object-[center_35%] opacity-80"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent" />
         </section>
 
         {/* 4. Our Vision (Light/White) */}
         <section id="vision" className="bg-[#fafafa] px-6 py-24 text-black md:px-14 md:py-32 lg:px-24">
-          <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:gap-24" data-reveal-stagger>
-            <div data-reveal-item className="flex-1">
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Our vision</h2>
-              <p className="mt-6 text-xl font-medium leading-snug md:text-2xl">
+          <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:gap-24">
+            <div className="flex-1">
+              <h2 data-split-lines className="text-3xl font-bold tracking-tight md:text-4xl">Our vision</h2>
+              <p data-split-lines className="mt-6 text-xl font-medium leading-snug md:text-2xl">
                 Our vision is to become the go-to platform to connect with the right professional — <span className="text-black/60">where access to engineering expertise is simple, reliable, and available to everyone.</span>
               </p>
             </div>
-            <div data-reveal-item className="flex-1">
-              <p className="text-lg leading-relaxed text-black/70">
+            <div className="flex-1">
+              <p data-split-lines className="text-lg leading-relaxed text-black/70">
                 Customers should be able to solve engineering challenges without unnecessary friction. Professionals should be able to access meaningful opportunities. Communities should benefit from stronger access to technical expertise. As we grow, we aim to become foundational infrastructure within the engineering services ecosystem.
               </p>
             </div>
@@ -99,10 +102,10 @@ export default function AboutPage() {
 
         {/* 5. Our Mission (Dark) */}
         <section id="mission" className="bg-[#000000] px-6 py-24 text-white md:px-14 md:py-32 lg:px-24">
-          <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-3 md:gap-16" data-reveal-stagger>
-            <div data-reveal-item className="flex flex-col">
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Our mission</h2>
-              <p className="mt-6 text-xl font-medium leading-snug md:text-2xl">
+          <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-3 md:gap-16">
+            <div className="flex flex-col">
+              <h2 data-split-lines className="text-3xl font-bold tracking-tight md:text-4xl">Our mission</h2>
+              <p data-split-lines className="mt-6 text-xl font-medium leading-snug md:text-2xl">
                 To connect demand and engineering expertise through systems that create <span className="text-white/60">reliability, trust, efficiency, and measurable outcomes.</span>
               </p>
                <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
@@ -115,14 +118,14 @@ export default function AboutPage() {
             </div>
             </div>
 
-            <div data-reveal-item className="flex flex-col">
-              <p className="text-lg leading-relaxed text-white/70">
+            <div className="flex flex-col">
+              <p data-split-lines className="text-lg leading-relaxed text-white/70">
                 Every interaction within Beagine follows a structured cycle: demand is identified, professionals are matched, projects are coordinated, and work is delivered.
               </p>
             </div>
 
-            <div data-reveal-item className="flex flex-col">
-              <p className="text-lg leading-relaxed text-white/70">
+            <div className="flex flex-col">
+              <p data-split-lines className="text-lg leading-relaxed text-white/70">
                 Payments are processed, outcomes are verified, and data is collected so our systems improve. This continuous loop strengthens the platform over time.
               </p>
             </div>
@@ -137,8 +140,10 @@ export default function AboutPage() {
             <div className="flex flex-wrap justify-center gap-6 lg:justify-start" data-reveal-stagger>
               
               {/* Card 1 */}
-              <div data-reveal-item className="group relative flex h-[480px] w-full max-w-[350px] flex-col justify-end overflow-hidden rounded-2xl bg-zinc-900 p-6 text-white md:h-[500px]">
-                <Image src={HERO_IMAGES[3]} alt="Leadership" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <TiltCard data-reveal-item maxRotation={6} className="group relative flex h-[480px] w-full max-w-[350px] flex-col justify-end overflow-hidden rounded-2xl bg-zinc-900 p-6 text-white md:h-[500px]">
+                <div data-image-expand className="absolute inset-0 overflow-hidden">
+                  <Image src={HERO_IMAGES[3]} alt="Leadership" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="relative z-10 flex flex-col items-start">
                   <h3 className="mb-4 text-2xl font-bold tracking-tight">Leadership</h3>
@@ -151,7 +156,7 @@ export default function AboutPage() {
               </Link>
             </div>
                 </div>
-              </div>
+              </TiltCard>
 
               {/* Card 2 */}
               {/* <div data-reveal-item className="group relative flex h-[480px] w-full max-w-[350px] flex-col justify-end overflow-hidden rounded-2xl bg-zinc-900 p-6 text-white md:h-[500px]">
@@ -166,8 +171,10 @@ export default function AboutPage() {
               </div> */}
 
               {/* Card 3 */}
-              <div data-reveal-item className="group relative flex h-[480px] w-full max-w-[350px] flex-col justify-end overflow-hidden rounded-2xl bg-zinc-900 p-6 text-white md:h-[500px]">
-                <Image src={HERO_IMAGES[2]} alt="Trust & Safety" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <TiltCard data-reveal-item maxRotation={6} className="group relative flex h-[480px] w-full max-w-[350px] flex-col justify-end overflow-hidden rounded-2xl bg-zinc-900 p-6 text-white md:h-[500px]">
+                <div data-image-expand className="absolute inset-0 overflow-hidden">
+                  <Image src={HERO_IMAGES[2]} alt="Trust & Safety" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="relative z-10 flex flex-col items-start">
                   <h3 className="mb-4 text-2xl font-bold tracking-tight">Safety</h3>
@@ -180,11 +187,13 @@ export default function AboutPage() {
               </Link>
             </div>
                 </div>
-              </div>
+              </TiltCard>
 
               {/* Card 4 */}
-              <div data-reveal-item id="community" className="group relative flex h-[480px] w-full max-w-[350px] flex-col justify-end overflow-hidden rounded-2xl bg-zinc-900 p-6 text-white md:h-[500px]">
-                <Image src={HERO_IMAGES[5]} alt="Community" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <TiltCard data-reveal-item maxRotation={6} id="community" className="group relative flex h-[480px] w-full max-w-[350px] flex-col justify-end overflow-hidden rounded-2xl bg-zinc-900 p-6 text-white md:h-[500px]">
+                <div data-image-expand className="absolute inset-0 overflow-hidden">
+                  <Image src={HERO_IMAGES[5]} alt="Community" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="relative z-10 flex flex-col items-start">
                   <h3 className="mb-4 text-2xl font-bold tracking-tight">Community</h3>
@@ -197,7 +206,7 @@ export default function AboutPage() {
               </Link>
             </div>
                 </div>
-              </div>
+              </TiltCard>
 
             </div>
           </div>

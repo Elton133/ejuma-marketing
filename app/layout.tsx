@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Big_Shoulders, Google_Sans_Flex } from "next/font/google";
+import { Big_Shoulders, Google_Sans_Flex, Imperial_Script } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
 import { CustomCursor } from "@/components/CustomCursor";
+import { Loader } from "@/components/Loader";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
@@ -15,6 +16,12 @@ const googleSansFlex = Google_Sans_Flex({
   variable: "--font-google-sans-flex",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const imperialScript = Imperial_Script({
+  variable: "--font-imperial-script",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const viewport: Viewport = {
@@ -64,9 +71,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bigShoulders.variable} ${googleSansFlex.variable} h-full scroll-smooth`}
+      className={`${bigShoulders.variable} ${googleSansFlex.variable} ${imperialScript.variable}`}
     >
-      <body className="flex min-h-full flex-col bg-black font-sans text-white antialiased">
+      <body className="bg-black font-sans text-white antialiased">
+        <Loader />
         <CustomCursor />
         <MotionProvider>{children}</MotionProvider>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-PLACEHOLDER"} />

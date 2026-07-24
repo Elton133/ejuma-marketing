@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { TiltCard } from "./TiltCard";
 
 type Leader = {
   id: string;
@@ -86,22 +87,27 @@ export function TeamGrid() {
             {/* Avatar Grid (Slightly overlapping circles) */}
             <div data-reveal-item className="flex flex-wrap gap-y-4 -space-x-3">
               {LEADERS.map((leader) => (
-                <button
+                <TiltCard
                   key={leader.id}
-                  onClick={() => setActiveId(leader.id)}
-                  className={`group relative h-20 w-20 shrink-0 overflow-hidden rounded-full border-4 border-[#fafafa] bg-zinc-200 transition-all duration-300 md:h-24 md:w-24 ${
-                    activeId === leader.id 
-                      ? "z-20 ring-2 ring-[#FF5F15] ring-offset-2 ring-offset-[#fafafa]" 
-                      : "z-10 hover:z-20 hover:-translate-y-2 hover:shadow-xl"
-                  }`}
+                  maxRotation={16}
+                  className="h-20 w-20 shrink-0 md:h-24 md:w-24"
                 >
-                  <Image
-                    src={leader.imageUrl}
-                    alt={leader.name}
-                    fill
-                    className="object-cover"
-                  />
-                </button>
+                  <button
+                    onClick={() => setActiveId(leader.id)}
+                    className={`group relative h-full w-full overflow-hidden rounded-full border-4 border-[#fafafa] bg-zinc-200 transition-all duration-300 ${
+                      activeId === leader.id
+                        ? "z-20 ring-2 ring-[#FF5F15] ring-offset-2 ring-offset-[#fafafa]"
+                        : "z-10 hover:z-20 hover:-translate-y-2 hover:shadow-xl"
+                    }`}
+                  >
+                    <Image
+                      src={leader.imageUrl}
+                      alt={leader.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                </TiltCard>
               ))}
             </div>
 
