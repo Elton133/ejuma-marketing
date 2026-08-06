@@ -19,7 +19,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
 
   // ScrollSmoother Smooth Scroll
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion() || pathname === "/") return;
     
     const smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -62,6 +62,22 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
 
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>("[data-split-text-hero]").forEach((el) => {
+        if (pathname === "/") {
+          gsap.fromTo(
+            el,
+            { y: 24, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+              delay: 0.1,
+              clearProps: "transform,opacity",
+            },
+          );
+          return;
+        }
+
         const split = new SplitText(el, { type: "words,chars" });
         gsap.from(split.chars, {
           y: 36,
@@ -74,11 +90,12 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
         });
       });
 
-      gsap.set("[data-hero-animate]", { y: 36, opacity: 0, filter: "blur(8px)" });
+      const revealFilter = pathname === "/" ? "none" : "blur(8px)";
+      gsap.set("[data-hero-animate]", { y: 36, opacity: 0, filter: revealFilter });
       gsap.to("[data-hero-animate]", {
         y: 0,
         opacity: 1,
-        filter: "blur(0px)",
+        filter: "none",
         duration: 1.1,
         stagger: 0.15,
         ease: "power3.out",
@@ -86,7 +103,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       });
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        gsap.set(el, { y: 44, opacity: 0, filter: "blur(8px)" });
+        gsap.set(el, { y: 44, opacity: 0, filter: revealFilter });
         gsap.to(el, {
           scrollTrigger: {
             trigger: el,
@@ -95,7 +112,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
           },
           y: 0,
           opacity: 1,
-          filter: "blur(0px)",
+          filter: "none",
           duration: 0.85,
           ease: "power3.out",
         });
@@ -104,7 +121,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       gsap.utils.toArray<HTMLElement>("[data-reveal-stagger]").forEach((container) => {
         const children = container.querySelectorAll("[data-reveal-item]");
         if (!children.length) return;
-        gsap.set(children, { y: 44, opacity: 0, filter: "blur(8px)" });
+        gsap.set(children, { y: 44, opacity: 0, filter: revealFilter });
         gsap.to(children, {
           scrollTrigger: {
             trigger: container,
@@ -113,7 +130,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
           },
           y: 0,
           opacity: 1,
-          filter: "blur(0px)",
+          filter: "none",
           duration: 0.8,
           stagger: 0.12,
           ease: "power3.out",

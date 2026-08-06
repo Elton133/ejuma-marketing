@@ -1,5 +1,4 @@
 import { AboutSection } from "@/components/AboutSection";
-import { CommunitySection } from "@/components/CommunitySection";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -33,7 +32,7 @@ export default function Home() {
       />
       <main className="bg-black">
         <Hero />
-        <ScrollReveal stacked className="relative z-10 bg-black">
+        <ScrollReveal className="relative z-10 bg-black">
           <HowItWorks />
         </ScrollReveal>
         <ScrollReveal className="relative z-20 bg-[#fafafa] shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">

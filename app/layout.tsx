@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Big_Shoulders, Google_Sans_Flex, Imperial_Script } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
 import { CustomCursor } from "@/components/CustomCursor";
-import { Loader } from "@/components/Loader";
 import { Nav } from "@/components/Nav";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
@@ -75,7 +74,6 @@ export default function RootLayout({
       className={`${bigShoulders.variable} ${googleSansFlex.variable} ${imperialScript.variable}`}
     >
       <body className="bg-black font-sans text-white antialiased">
-        <Loader />
         <CustomCursor />
         <Nav />
         <MotionProvider>{children}</MotionProvider>
