@@ -1,22 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { APP_URL, COMING_SOON_PATH, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
+import { COMING_SOON_PATH, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
 import { MobileNav } from "./MobileNav";
 import { Logo } from "./Logo";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -26,11 +17,10 @@ export function Nav() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const showSolidNav = scrolled || open;
 
   return (
     <>
-    <header className="fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)]">
+    <header className="fixed inset-x-0 top-0 z-50 bg-transparent pt-[env(safe-area-inset-top)]">
       <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
         <div className="flex shrink-0 items-center mix-blend-difference text-white" onClick={() => setOpen(false)}>
           <Logo size="md" />

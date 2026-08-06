@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import { MicroLabel } from "@/components/MicroLabel";
-import { Nav } from "@/components/Nav";
 import { HERO_IMAGES, WAITLIST_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -16,20 +15,21 @@ export const metadata: Metadata = {
 export default function FeaturesPage() {
   return (
     <>
-      <Nav />
       <main>
         {/* Page hero */}
         <section className="relative overflow-hidden bg-black px-6 pb-20 pt-36 text-white md:pb-24 md:pt-40">
           {/* Cinematic Background */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={HERO_IMAGES[4]}
-              alt=""
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <div data-speed="auto" className="absolute inset-x-0 top-[-20%] h-[140%]">
+              <Image
+                src={HERO_IMAGES[4]}
+                alt=""
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
+            </div>
             <div className="hero-image-overlay absolute inset-0" />
             <div className="hero-grain absolute inset-0 pointer-events-none opacity-30" />
           </div>

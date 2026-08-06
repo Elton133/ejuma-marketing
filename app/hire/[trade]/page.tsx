@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { TRADES } from "@/lib/constants";
-import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { WaitlistSection } from "@/components/WaitlistSection";
 import { TrustSection } from "@/components/TrustSection";
@@ -49,7 +48,6 @@ export default async function TradeLandingPage({
 
   return (
     <>
-      <Nav />
       <main className="bg-black">
         {/* Hero Section */}
         <section className="relative overflow-hidden px-6 pt-32 pb-20 text-white md:pt-40 md:pb-28">

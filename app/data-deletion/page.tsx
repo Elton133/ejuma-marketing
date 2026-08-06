@@ -1,4 +1,3 @@
-import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import type { Metadata } from "next";
 
@@ -10,7 +9,6 @@ export const metadata: Metadata = {
 export default function DataDeletion() {
   return (
     <>
-      <Nav />
       <main className="min-h-screen bg-black pt-32 pb-24">
         <div className="mx-auto max-w-3xl px-6 lg:px-8 text-white/70">
           <h1 className="mb-8 text-4xl font-bold tracking-tight text-white sm:text-5xl">

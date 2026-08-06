@@ -11,7 +11,7 @@ export function TrustSection() {
       <div className="mx-auto max-w-[1200px] relative z-10">
         <div className="text-center">
           <MicroLabel>Trust & Accountability</MicroLabel>
-          <h2 data-typewriter className="mt-4 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight min-h-[1.5em]">
+          <h2 data-split-words-up className="mt-4 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
             More than just a marketplace
           </h2>
           <p data-reveal className="mx-auto mt-4 max-w-2xl text-lg text-white/65">

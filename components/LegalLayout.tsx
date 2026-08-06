@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { LegalToc } from "@/components/LegalToc";
 
@@ -14,7 +13,6 @@ export function LegalLayout({
 }) {
   return (
     <>
-      <Nav />
       <main className="min-h-screen bg-black pt-32 pb-24">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">

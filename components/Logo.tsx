@@ -36,6 +36,8 @@ export function Logo({
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
+              d="M 0 10 Q 25 10 50 10 T 100 10"
+              className="logo-underline-path"
               stroke="currentColor"
               strokeWidth="4"
               strokeLinecap="round"

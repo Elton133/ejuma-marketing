@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { SplitText } from "gsap/SplitText";
-import { pageTransition } from "@/lib/motion/barba-transitions";
 import { prefersReducedMotion, registerGsap } from "@/lib/motion/register-gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 
@@ -16,33 +15,6 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     registerGsap();
-
-    let destroyed = false;
-
-    import("@barba/core").then(({ default: barba }) => {
-      if (destroyed) return;
-
-      barba.init({
-        prevent: ({ el }) => {
-          const href = el?.getAttribute?.("href") ?? "";
-          if (!href || href.startsWith("#")) return true;
-          if (el?.getAttribute?.("target") === "_blank") return true;
-          if (
-            href.startsWith("http") &&
-            !href.includes(window.location.host)
-          ) {
-            return true;
-          }
-          return true;
-        },
-        transitions: [pageTransition],
-      });
-    });
-
-    return () => {
-      destroyed = true;
-      import("@barba/core").then(({ default: barba }) => barba.destroy());
-    };
   }, []);
 
   // ScrollSmoother Smooth Scroll
@@ -53,7 +25,9 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
       smooth: 1.5,
-      effects: true,
+      smoothTouch: 0.1, // gentle smoothing on touch devices (fixes jumpy mobile)
+      effects: true, // enables data-speed (parallax) and data-lag on elements
+      normalizeScroll: true,
     });
 
     return () => {
@@ -256,6 +230,16 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
         });
       });
 
+      // Stacked Sections Pinning
+      gsap.utils.toArray<HTMLElement>("[data-stacked-section]").forEach((panel) => {
+        ScrollTrigger.create({
+          trigger: panel,
+          start: "top top",
+          pin: true,
+          pinSpacing: false,
+        });
+      });
+
     }, containerRef);
 
     // Line-by-line reveal: each line rises up from behind a mask, staggered.
@@ -308,6 +292,30 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       splits.push(split);
     });
 
+    // Word rise-from-mask: each word slides up from behind a clip, staggered
+    // (crisp, punchy reveal — distinct from the softer word cascade above).
+    gsap.utils.toArray<HTMLElement>("[data-split-words-up]").forEach((el) => {
+      const split = new SplitText(el, {
+        type: "words",
+        mask: "words",
+        autoSplit: true,
+        wordsClass: "split-word",
+        onSplit: (self: SplitText) =>
+          gsap.from(self.words, {
+            yPercent: 120,
+            duration: 0.7,
+            stagger: 0.07,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true,
+            },
+          }),
+      });
+      splits.push(split);
+    });
+
     return () => {
       ctx.revert();
       splits.forEach((s) => s.revert());
@@ -315,16 +323,12 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     };
   }, [pathname]);
 
-  const namespace = pathname === "/" ? "home" : pathname.slice(1);
-
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        <div data-barba="wrapper" className="flex min-h-screen flex-1 flex-col">
+        <div className="flex min-h-screen flex-1 flex-col">
           <div
             ref={containerRef}
-            data-barba="container"
-            data-barba-namespace={namespace}
             className="flex flex-1 flex-col"
           >
             {children}

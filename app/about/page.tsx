@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
-import { Nav } from "@/components/Nav";
 import { HERO_IMAGES, WAITLIST_PATH } from "@/lib/constants";
 import { MicroLabel } from "@/components/MicroLabel";
 import { TiltCard } from "@/components/TiltCard";
@@ -15,7 +14,6 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Nav />
       {/* Ensure main starts under nav, nav is fixed */}
       <main className="flex min-h-screen flex-col bg-black">
 
@@ -23,14 +21,16 @@ export default function AboutPage() {
         <section className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden px-6 pt-24 pb-20 text-left">
           {/* Cinematic Background */}
           <div className="absolute inset-0 z-0">
-            <Image 
-              src={HERO_IMAGES[4]} 
-              alt="" 
-              fill 
-              className="object-cover opacity-[0.25] mix-blend-luminosity" 
-              priority
-              sizes="100vw"
-            />
+            <div data-speed="auto" className="absolute inset-x-0 top-[-20%] h-[140%]">
+              <Image
+                src={HERO_IMAGES[4]}
+                alt=""
+                fill
+                className="object-cover opacity-[0.25] mix-blend-luminosity"
+                priority
+                sizes="100vw"
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
             <div className="hero-grain absolute inset-0 opacity-50 pointer-events-none" />
           </div>

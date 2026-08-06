@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Footer } from "@/components/Footer";
-import { Nav } from "@/components/Nav";
 import { FAQForm } from "@/components/FAQForm";
 import { HERO_IMAGES } from "@/lib/constants";
 import { supabase } from "@/lib/supabase";
@@ -27,21 +26,22 @@ export default async function FAQsPage() {
 
   return (
     <>
-      <Nav />
       <main className="flex min-h-screen flex-col">
         
         {/* Hero Section */}
         <section className="relative flex min-h-[50vh] flex-col justify-end bg-black px-6 pb-20 pt-36 md:px-14 md:pb-24 md:pt-40 lg:px-24 text-left">
           {/* Cinematic Background */}
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src={HERO_IMAGES[1]} 
-              alt="" 
-              fill 
-              className="object-cover opacity-[0.25] mix-blend-luminosity" 
-              priority
-              sizes="100vw"
-            />
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <div data-speed="auto" className="absolute inset-x-0 top-[-20%] h-[140%]">
+              <Image
+                src={HERO_IMAGES[1]}
+                alt=""
+                fill
+                className="object-cover opacity-[0.25] mix-blend-luminosity"
+                priority
+                sizes="100vw"
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
             <div className="hero-grain absolute inset-0 pointer-events-none opacity-50" />
           </div>

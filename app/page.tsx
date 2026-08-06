@@ -3,7 +3,6 @@ import { CommunitySection } from "@/components/CommunitySection";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Nav } from "@/components/Nav";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TradesBar } from "@/components/TradesBar";
 import { TrustSection } from "@/components/TrustSection";
@@ -32,19 +31,18 @@ export default function Home() {
           }),
         }}
       />
-      <Nav />
       <main className="bg-black">
         <Hero />
-        <ScrollReveal>
+        <ScrollReveal stacked className="relative z-10 bg-black">
           <HowItWorks />
         </ScrollReveal>
-        <ScrollReveal>
+        <ScrollReveal className="relative z-20 bg-[#fafafa] shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
           <TradesBar />
         </ScrollReveal>
-        <ScrollReveal>
+        <ScrollReveal className="relative z-30 bg-black">
           <TrustSection />
         </ScrollReveal>
-        <ScrollReveal>
+        <ScrollReveal className="relative z-40 bg-black">
           <AboutSection />
         </ScrollReveal>
       </main>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Footer } from "@/components/Footer";
-import { Nav } from "@/components/Nav";
 import { MicroLabel } from "@/components/MicroLabel";
 import { WAITLIST_PATH, HERO_IMAGES } from "@/lib/constants";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
 export default function ComingSoonPage() {
   return (
     <>
-      <Nav />
       <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-6 pb-20 pt-24 text-white">
         
         {/* Premium Background */}

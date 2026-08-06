@@ -5,6 +5,7 @@ type ScrollRevealProps = {
   className?: string;
   as?: "section" | "div";
   stagger?: boolean;
+  stacked?: boolean;
 };
 
 export function ScrollReveal({
@@ -12,11 +13,13 @@ export function ScrollReveal({
   className = "",
   as: Tag = "div",
   stagger = false,
+  stacked = false,
 }: ScrollRevealProps) {
   const attr = stagger ? { "data-reveal-stagger": true } : { "data-reveal": true };
+  const stackedAttr = stacked ? { "data-stacked-section": true } : {};
 
   return (
-    <Tag className={className} {...attr}>
+    <Tag className={className} {...attr} {...stackedAttr}>
       {children}
     </Tag>
   );

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
-import { Nav } from "@/components/Nav";
 import { WaitlistSection } from "@/components/WaitlistSection";
 
 export const metadata: Metadata = {
@@ -12,7 +11,6 @@ export const metadata: Metadata = {
 export default function WaitlistPage() {
   return (
     <>
-      <Nav />
       <main>
         <WaitlistSection />
       </main>

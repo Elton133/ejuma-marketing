@@ -41,6 +41,7 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-white/10 bg-black px-6 py-16 text-white md:py-20">
       <span
         aria-hidden
+        data-lag="0.3"
         className="pointer-events-none absolute inset-x-0 bottom-0 select-none text-center font-semibold leading-none text-white/[0.04]"
         style={{ fontSize: "clamp(5rem, 18vw, 16rem)" }}
       >
