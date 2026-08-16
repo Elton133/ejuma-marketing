@@ -43,9 +43,7 @@ export function HowItWorks() {
               className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-5 transition-colors hover:border-[#FF5F15]/35 md:p-6"
             >
               <div className="relative h-56 overflow-hidden rounded-[1.4rem] bg-white/[0.035]">
-                <span className="absolute left-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#FF5F15] text-xs font-bold text-black">
-                  {item.step}
-                </span>
+        
                 <Image
                   src={STEP_ASSETS[index].src}
                   alt={STEP_ASSETS[index].alt}
