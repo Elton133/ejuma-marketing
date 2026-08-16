@@ -17,10 +17,28 @@ const inputClass =
 export function ResearchForm({ role }: { role: ResearchRole }) {
   const router = useRouter();
   const questions = getResearchQuestions(role);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [answers, setAnswers] = useState<
+    Record<string, string | { answer: "Other"; other: string }>
+  >({});
+  const [otherValues, setOtherValues] = useState<Record<string, string>>({});
 
   const setAnswer = (id: string, value: string) => {
+    if (value === "Other") {
+      setAnswers((prev) => ({
+        ...prev,
+        [id]: { answer: "Other", other: otherValues[id] ?? "" },
+      }));
+      return;
+    }
     setAnswers((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const setOther = (id: string, value: string) => {
+    setOtherValues((prev) => ({ ...prev, [id]: value }));
+    setAnswers((prev) => ({
+      ...prev,
+      [id]: { answer: "Other", other: value },
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -50,33 +68,50 @@ export function ResearchForm({ role }: { role: ResearchRole }) {
         </p>
 
         <form onSubmit={handleSubmit} className="mt-10 space-y-8">
-          {questions.map((q, index) => (
+          {questions.map((q, index) => {
+            const value = answers[q.id];
+            const isOther = typeof value === "object" && value.answer === "Other";
+
+            return (
             <label key={q.id} className="block">
               <span className="text-sm font-medium leading-snug text-white/90">
                 <span className="text-[#FF5F15]">{index + 1}.</span> {q.label}
               </span>
               <div className="mt-2">
                 {q.type === "select" && q.options ? (
-                  <select
-                    required
-                    value={answers[q.id] ?? ""}
-                    onChange={(e) => setAnswer(q.id, e.target.value)}
-                    className={inputClass}
-                  >
-                    <option value="" disabled>
-                      Select…
-                    </option>
-                    {q.options.map((opt) => (
-                      <option key={opt} value={opt} className="bg-black text-white">
-                        {opt}
+                  <>
+                    <select
+                      required
+                      value={typeof value === "object" ? value.answer : value ?? ""}
+                      onChange={(e) => setAnswer(q.id, e.target.value)}
+                      className={inputClass}
+                    >
+                      <option value="" disabled>
+                        Select…
                       </option>
-                    ))}
-                  </select>
+                      {q.options.map((opt) => (
+                        <option key={opt} value={opt} className="bg-black text-white">
+                          {opt}
+                        </option>
+                      ))}
+                      {q.allowOther && <option value="Other">Other</option>}
+                    </select>
+                    {isOther && (
+                      <input
+                        required
+                        type="text"
+                        value={otherValues[q.id] ?? ""}
+                        onChange={(e) => setOther(q.id, e.target.value)}
+                        className={`${inputClass} mt-3`}
+                        placeholder="Please specify"
+                      />
+                    )}
+                  </>
                 ) : q.type === "textarea" ? (
                   <textarea
                     required
                     rows={4}
-                    value={answers[q.id] ?? ""}
+                    value={typeof value === "string" ? value : ""}
                     onChange={(e) => setAnswer(q.id, e.target.value)}
                     className={`${inputClass} resize-y min-h-[100px]`}
                     placeholder={q.placeholder}
@@ -85,7 +120,7 @@ export function ResearchForm({ role }: { role: ResearchRole }) {
                   <input
                     required
                     type="text"
-                    value={answers[q.id] ?? ""}
+                    value={typeof value === "string" ? value : ""}
                     onChange={(e) => setAnswer(q.id, e.target.value)}
                     className={inputClass}
                     placeholder={q.placeholder}
@@ -93,7 +128,8 @@ export function ResearchForm({ role }: { role: ResearchRole }) {
                 )}
               </div>
             </label>
-          ))}
+            );
+          })}
 
           <button
             type="submit"

@@ -14,269 +14,168 @@ export type ResearchQuestion = {
 
 export const USER_RESEARCH_QUESTIONS: ResearchQuestion[] = [
   {
-    id: "last_need",
-    label: "When did you last need a technician?",
+    id: "hired_professional",
+    label: "Have you ever hired an engineering or technical professional?",
     type: "select",
-    options: [
-      "Within the last 7 days",
-      "1–4 weeks ago",
-      "1–3 months ago",
-      "More than 3 months ago",
-      "Can’t remember",
-    ],
+    options: ["Yes", "No"],
   },
-
   {
-    id: "issue_type",
-    label: "What type of problem was it?",
+    id: "service_required",
+    label: "What type of service did you require?",
     type: "select",
     options: [
       "Plumbing",
       "Electrical",
+      "Construction / masonry",
+      "Carpentry",
+      "Welding / fabrication",
       "Appliance repair",
-      "Car / mechanic issue",
-      "Construction / carpentry",
-      "Other",
+      "Automotive / mechanical",
+      "Air conditioning / refrigeration",
     ],
     allowOther: true,
   },
-
   {
-    id: "how_found",
-    label: "How did you find the technician?",
+    id: "service_frequency",
+    label: "How often do you require these services?",
     type: "select",
     options: [
-      "Word of mouth (friends/family)",
+      "More than once a month",
+      "Every 1–3 months",
+      "Every 4–6 months",
+      "Once or twice a year",
+      "Less than once a year",
+      "Only in emergencies",
+    ],
+  },
+  {
+    id: "how_find_technicians",
+    label: "How do you currently find technicians?",
+    type: "select",
+    options: [
+      "Friends or family referrals",
       "WhatsApp groups",
       "Facebook / Instagram",
-      "Walked around nearby",
-      "Already known person",
-      "Online platform",
+      "Google or online search",
+      "A technician I already know",
+      "Nearby shops or local area",
+      "An online service platform",
     ],
     allowOther: true,
   },
-
   {
-    id: "time_to_solve",
-    label: "How long did it take to fix the issue?",
+    id: "ease_finding_qualified",
+    label: "How easy is it to find qualified technicians?",
+    type: "select",
+    options: ["Very easy", "Easy", "Neither easy nor difficult", "Difficult", "Very difficult"],
+  },
+  {
+    id: "hiring_challenges",
+    label: "What challenges do you face when hiring technicians?",
+    type: "textarea",
+    placeholder: "Tell us about trust, pricing, availability, quality, communication, or anything else.",
+  },
+  {
+    id: "service_dissatisfaction",
+    label: "Have you ever been dissatisfied with a technician's service?",
+    type: "select",
+    options: ["Yes", "No", "Not sure"],
+  },
+  {
+    id: "would_use_verified_platform",
+    label: "Would you use a platform that connects you with verified technicians?",
+    type: "select",
+    options: ["Yes, definitely", "Probably", "Not sure", "Probably not", "No"],
+  },
+  {
+    id: "recommend_likelihood",
+    label: "How likely are you to recommend such a platform to others?",
     type: "select",
     options: [
-      "Same day",
-      "1–2 days",
-      "3–5 days",
-      "More than a week",
-      "Still not solved",
+      "10 — Extremely likely",
+      "9",
+      "8",
+      "7",
+      "6",
+      "5 — Neutral",
+      "4",
+      "3",
+      "2",
+      "1",
+      "0 — Not at all likely",
     ],
   },
-
   {
-    id: "frustration",
-    label: "What was the biggest challenge?",
-    type: "select",
-    options: [
-      "Finding a trusted technician",
-      "High or unclear pricing",
-      "Long waiting time",
-      "Poor quality work",
-      "No challenges (smooth experience)",
-    ],
-    allowOther: true,
-  },
-
-  {
-    id: "bad_experience",
-    label: "Have you had a bad experience before?",
-    type: "select",
-    options: [
-      "Yes — poor quality work",
-      "Yes — overcharged",
-      "Yes — no-show / delay",
-      "Yes — other issue",
-      "No",
-    ],
-  },
-
-  {
-    id: "would_use_app",
-    label: "Would you use a platform to find trusted technicians?",
-    type: "select",
-    options: [
-      "Yes, definitely",
-      "Maybe, depends on trust",
-      "Not sure",
-      "No",
-    ],
-  },
-
-  {
-    id: "trust_factor",
-    label: "What would make you trust the platform?",
-    type: "select",
-    options: [
-      "Verified technicians",
-      "Customer reviews",
-      "Fixed transparent pricing",
-      "Fast response time",
-      "Payment protection",
-      "All of the above",
-    ],
-  },
-
-  {
-    id: "pricing_preference",
-    label: "How should pricing work?",
-    type: "select",
-    options: [
-      "Fixed prices only",
-      "Negotiation allowed",
-      "Depends on job type",
-    ],
-  },
-
-  {
-    id: "paid_priority",
-    label: "Would you pay extra for faster verified service?",
-    type: "select",
-    options: ["Yes", "Maybe", "No"],
-  },
-
-  {
-    id: "avoid_reason",
-    label: "What would stop you from using such an app?",
-    type: "select",
-    options: [
-      "Don’t trust online platforms",
-      "Prefer personal contacts",
-      "Too expensive",
-      "Slow service",
-      "No need for such an app",
-    ],
-    allowOther: true,
+    id: "platform_barriers",
+    label: "What would prevent you from using such a platform?",
+    type: "textarea",
+    placeholder: "Tell us about any concerns, costs, trust issues, or other barriers.",
   },
 ];
 
 export const SPECIALIST_RESEARCH_QUESTIONS: ResearchQuestion[] = [
   {
-    id: "find_customers",
-    label: "How do you currently get jobs?",
+    id: "engineering_services",
+    label: "What engineering services do you provide?",
+    type: "textarea",
+    placeholder: "List your main trades, specialties, or technical services.",
+  },
+  {
+    id: "practice_duration",
+    label: "How long have you been practicing?",
+    type: "select",
+    options: ["Less than 1 year", "1–2 years", "3–5 years", "6–10 years", "More than 10 years"],
+  },
+  {
+    id: "how_find_clients",
+    label: "How do you currently find clients?",
     type: "select",
     options: [
-      "Word of mouth",
-      "WhatsApp referrals",
+      "Word of mouth / referrals",
+      "WhatsApp",
       "Facebook / Instagram",
+      "Google or online listings",
       "Walk-in / local customers",
-      "I struggle to find jobs",
-    ],
-  },
-
-  {
-    id: "job_consistency",
-    label: "How consistent is your work?",
-    type: "select",
-    options: [
-      "Very consistent (daily jobs)",
-      "Moderate (few jobs weekly)",
-      "Low (occasional jobs)",
-      "Very inconsistent",
-    ],
-  },
-
-  {
-    id: "hardest_part",
-    label: "Biggest challenge in your work?",
-    type: "select",
-    options: [
-      "Finding customers",
-      "Low payment",
-      "Customers not paying",
-      "Irregular jobs",
-      "Transport/logistics",
+      "Contractors or companies",
+      "Online service platforms",
     ],
     allowOther: true,
   },
-
   {
-    id: "platform_use",
-    label: "Have you used platforms/social media for clients?",
+    id: "monthly_clients",
+    label: "Approximately how many clients do you get each month?",
     type: "select",
-    options: [
-      "Yes — successfully",
-      "Yes — but not effective",
-      "Tried but stopped",
-      "No",
-    ],
+    options: ["0–2", "3–5", "6–10", "11–20", "More than 20", "It varies significantly"],
   },
-
   {
-    id: "would_join",
-    label: "Would you join an app that sends you jobs?",
-    type: "select",
-    options: ["Yes", "Maybe", "No"],
+    id: "client_acquisition_challenge",
+    label: "What is your biggest challenge in getting clients?",
+    type: "textarea",
+    placeholder: "Describe the main obstacle affecting your ability to find work.",
   },
-
   {
-    id: "trust_requirements",
-    label: "What would make you trust the platform?",
+    id: "would_register",
+    label: "Would you register on an online platform that connects you with customers?",
     type: "select",
-    options: [
-      "Guaranteed payments",
-      "Verified customers",
-      "Fair commission",
-      "Steady job flow",
-      "Platform support",
-      "All of the above",
-    ],
+    options: ["Yes, definitely", "Probably", "Not sure", "Probably not", "No"],
   },
-
   {
-    id: "pricing_model",
-    label: "Preferred pricing model?",
-    type: "select",
-    options: [
-      "I set my own prices",
-      "Platform sets prices",
-      "Both depending on job",
-    ],
+    id: "joining_benefits",
+    label: "What benefits would encourage you to join?",
+    type: "textarea",
+    placeholder: "For example: more clients, secure payments, visibility, training, or business tools.",
   },
-
   {
-    id: "commission_fair",
-    label: "What commission range feels fair?",
-    type: "select",
-    options: [
-      "0–5%",
-      "5–10%",
-      "10–15%",
-      "15%+",
-    ],
+    id: "joining_concerns",
+    label: "What concerns would stop you from joining?",
+    type: "textarea",
+    placeholder: "Tell us about commissions, trust, payments, verification, or other concerns.",
   },
-
   {
-    id: "tools_help",
-    label: "What would help you work better?",
-    type: "select",
-    options: [
-      "More job opportunities",
-      "Faster payments",
-      "Customer verification",
-      "Training/support",
-      "Navigation / maps",
-      "All of the above",
-    ],
-  },
-
-  {
-    id: "leave_reason",
-    label: "What would make you leave the platform?",
-    type: "select",
-    options: [
-      "No jobs",
-      "Delayed payments",
-      "High commission",
-      "Bad customers",
-      "Poor support",
-    ],
-    allowOther: true,
+    id: "helpful_platform_features",
+    label: "What platform features would help your business?",
+    type: "textarea",
+    placeholder: "Describe the tools or features that would be most valuable to you.",
   },
 ];
 
@@ -285,5 +184,5 @@ export function getResearchQuestions(role: ResearchRole) {
 }
 
 export function getResearchTitle(role: ResearchRole) {
-  return role === "user" ? "Customer research" : "Specialist research";
+  return role === "user" ? "Customer market research" : "Engineer market research";
 }

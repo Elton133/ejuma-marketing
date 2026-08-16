@@ -44,14 +44,16 @@ export function HeroBackground() {
       <div className="absolute inset-0">
         <Image
           ref={imageRef}
-          src={HERO_IMAGES[4]} // Using the primary image
+          src={HERO_IMAGES[9]} // Using the primary image
           alt=""
           fill
           priority
-          className="object-cover object-center"
+          className="object-contain object-center"
           sizes="100vw"
         />
         <div className="hero-image-overlay pointer-events-none absolute inset-0 z-10" />
+
+        
         <div className="hero-grain pointer-events-none absolute inset-0 z-10 opacity-40" />
       </div>
     </div>

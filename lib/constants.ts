@@ -23,6 +23,7 @@ export const HERO_IMAGES = [
   "/landing7.png",
   "/landing8.png",
   "/landing9.png",
+  "/landing10.png",
 ] as const;
 
 /** Five vertical strip panels shown on desktop hero — one per occupation */
@@ -57,6 +58,45 @@ export const HERO_PANELS = [
 export const NAV_LINKS = [
   { label: "About", href: "/about" },
   { label: "Features", href: "/features" },
+] as const;
+
+export const POLICY_LINKS = [
+  { label: "Privacy policy", href: "/privacy-policy" },
+  { label: "Terms of service", href: "/terms-of-service" },
+  { label: "Terms of use", href: "/terms-of-use" },
+  { label: "Data deletion", href: "/data-deletion" },
+] as const;
+
+export const SITE_LINK_GROUPS = [
+  {
+    title: "Product",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Features", href: "/features" },
+      { label: "Install app", href: INSTALL_PATH },
+      { label: "Join waitlist", href: WAITLIST_PATH },
+      { label: "Open app", href: COMING_SOON_PATH },
+    ],
+  },
+  {
+    title: "For specialists",
+    links: [
+      { label: "Join as a specialist", href: WAITLIST_PATH },
+      { label: "Install as specialist", href: COMING_SOON_PATH },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "Community Connect", href: "/faqs" },
+      { label: "About Beagine", href: "/about" },
+      { label: "Contact support", href: "mailto:support@beagine.com" },
+    ],
+  },
+  {
+    title: "Policies",
+    links: POLICY_LINKS,
+  },
 ] as const;
 
 export const COMPANY_LINKS = [

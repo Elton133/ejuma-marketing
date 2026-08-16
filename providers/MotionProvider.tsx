@@ -27,7 +27,6 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       smooth: 1.5,
       smoothTouch: 0.1, // gentle smoothing on touch devices (fixes jumpy mobile)
       effects: true, // enables data-speed (parallax) and data-lag on elements
-      normalizeScroll: true,
     });
 
     return () => {

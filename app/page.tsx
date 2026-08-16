@@ -35,14 +35,14 @@ export default function Home() {
         <ScrollReveal className="relative z-10 bg-black">
           <HowItWorks />
         </ScrollReveal>
-        <ScrollReveal className="relative z-20 bg-[#fafafa] shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
-          <TradesBar />
-        </ScrollReveal>
         <ScrollReveal className="relative z-30 bg-black">
           <TrustSection />
         </ScrollReveal>
         <ScrollReveal className="relative z-40 bg-black">
           <AboutSection />
+        </ScrollReveal>
+        <ScrollReveal className="relative z-50 bg-[#fafafa] shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
+          <TradesBar />
         </ScrollReveal>
       </main>
       <Footer />

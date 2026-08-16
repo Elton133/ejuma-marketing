@@ -35,7 +35,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://beagine.com"),
   title: {
-    default: "Beagine — The globally relevant engineering services platform",
+    default: "Beagine — The engineering ecosystem",
     template: "%s — Beagine",
   },
   description:
