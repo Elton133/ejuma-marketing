@@ -48,7 +48,7 @@ export function HeroBackground() {
           alt=""
           fill
           priority
-          className="object-contain object-center"
+          className="object-cover object-center md:object-contain"
           sizes="100vw"
         />
         <div className="hero-image-overlay pointer-events-none absolute inset-0 z-10" />
