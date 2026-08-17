@@ -105,13 +105,13 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
     >
       <div
         ref={panelRef}
-        className="beagine-scrollbar flex h-[100dvh] flex-col overflow-y-auto bg-black px-5 pb-6 pt-24 text-white md:px-10 md:pb-8 md:pt-28 lg:px-14"
+        className="mobile-menu-scroll beagine-scrollbar flex h-[100dvh] flex-col overflow-y-auto bg-black px-4 pb-5 pt-20 text-white sm:px-6 sm:pt-24 md:px-10 md:pb-8 md:pt-28 lg:px-14"
       >
         <div className="mx-auto flex w-full max-w-[1320px] flex-1 flex-col">
-          <div className="grid flex-1 gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
-            <section className="min-h-[430px] rounded-[1.5rem] border border-white/8 bg-[#111214] p-5 md:p-8 lg:p-9">
+          <div className="grid gap-3 sm:gap-4 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_320px]">
+            <section className="bg-black px-1 py-4 sm:min-h-[430px] sm:rounded-[1.5rem] sm:border sm:border-white/8 sm:bg-[#111214] sm:p-6 md:p-8 lg:p-9">
               <div
-                className="hide-scrollbar flex gap-2 overflow-x-auto pb-2"
+                className="grid grid-cols-2 gap-2 sm:flex sm:overflow-x-auto sm:pb-2"
                 role="tablist"
                 aria-label="Menu sections"
               >
@@ -123,7 +123,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                     aria-selected={activeGroup === index}
                     aria-controls={`menu-panel-${index}`}
                     onClick={() => setActiveGroup(index)}
-                    className={`shrink-0 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors md:px-5 ${
+                    className={`shrink-0 rounded-xl px-3 py-2.5 text-[13px] font-medium transition-colors sm:px-4 sm:text-sm md:px-5 ${
                       activeGroup === index
                         ? "bg-white text-black shadow-sm"
                         : "text-white/55 hover:bg-white/[0.07] hover:text-white"
@@ -138,15 +138,15 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 ref={contentRef}
                 id={`menu-panel-${activeGroup}`}
                 role="tabpanel"
-                className="mt-8"
+                className="mt-6 sm:mt-8"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
                   Explore {group.title}
                 </p>
-                <div className="mt-5 grid gap-x-10 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-3 grid grid-cols-2 gap-1 sm:mt-5 sm:gap-x-10 sm:gap-y-1 lg:grid-cols-3">
                   {group.links.map((link) => {
                     const external = link.href.startsWith("mailto:") || link.href.startsWith("http");
-                    const className = "rounded-xl px-3 py-3 text-[15px] font-medium text-white/70 transition-colors hover:bg-white/[0.07] hover:text-white";
+                    const className = "rounded-xl px-2.5 py-2.5 text-[13px] font-medium leading-snug text-white/70 transition-colors hover:bg-white/[0.07] hover:text-white sm:px-3 sm:py-3 sm:text-[15px]";
 
                     return external ? (
                       <a
@@ -174,11 +174,11 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               </div>
             </section>
 
-            <aside className="rounded-[1.5rem] border border-white/8 bg-[#111214] p-4 md:p-5">
+            <aside className="rounded-[1.25rem] border border-white/8 bg-[#111214] p-3 sm:rounded-[1.5rem] sm:p-4 md:p-5">
               <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/35">
                 Quick actions
               </p>
-              <div className="mt-1 grid gap-1 sm:grid-cols-2 lg:grid-cols-1">
+              <div className="mt-1 grid grid-cols-2 gap-1 lg:grid-cols-1">
                 {QUICK_ACTIONS.map((action, index) => {
                   const external = action.href.startsWith("mailto:") || action.href.startsWith("http");
                   const content = (
@@ -187,19 +187,19 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                         0{index + 1}
                       </span>
                       <span>
-                        <span className="block text-[11px] font-semibold uppercase tracking-[0.12em] text-white/35">
+                        <span className="hidden text-[11px] font-semibold uppercase tracking-[0.12em] text-white/35 sm:block">
                           {action.eyebrow}
                         </span>
                         <span className="mt-1 block text-sm font-semibold text-white/85">
                           {action.title}
                         </span>
-                        <span className="mt-1 block text-xs leading-relaxed text-white/40">
+                        <span className="mt-1 hidden text-xs leading-relaxed text-white/40 sm:block">
                           {action.description}
                         </span>
                       </span>
                     </>
                   );
-                  const className = "flex gap-3 rounded-2xl p-3 transition-colors hover:bg-white/[0.07]";
+                  const className = "flex items-center gap-2 rounded-xl p-2 transition-colors hover:bg-white/[0.07] sm:items-start sm:gap-3 sm:rounded-2xl sm:p-3";
 
                   return external ? (
                     <a key={action.title} href={action.href} onClick={onClose} className={className}>
@@ -215,8 +215,8 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             </aside>
           </div>
 
-          <div className="mt-5 flex flex-col gap-5 px-2 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-wrap gap-x-5 gap-y-2">
+          <div className="mt-4 flex flex-col gap-4 px-1 sm:mt-5 sm:flex-row sm:items-center sm:justify-between sm:px-2">
+            <div className="hidden flex-wrap gap-x-5 gap-y-2 sm:flex">
               {SOCIAL_LINKS.map((link) => (
                 <a
                   key={link.label}
@@ -229,18 +229,18 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 </a>
               ))}
             </div>
-            <div className="flex items-center gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:gap-3">
               <Link
                 href={WAITLIST_PATH}
                 onClick={onClose}
-                className="rounded-full border border-white/15 bg-white px-5 py-2.5 text-sm font-semibold text-black"
+                className="rounded-full border border-white/15 bg-white px-4 py-2.5 text-center text-sm font-semibold text-black sm:px-5"
               >
                 Join waitlist
               </Link>
               <Link
                 href={COMING_SOON_PATH}
                 onClick={onClose}
-                className="rounded-full bg-[#FF5F15] px-5 py-2.5 text-sm font-semibold text-black"
+                className="rounded-full bg-[#FF5F15] px-4 py-2.5 text-center text-sm font-semibold text-black sm:px-5"
               >
                 Open app
               </Link>
