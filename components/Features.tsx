@@ -206,15 +206,17 @@ function FeatureVisual({ feature }: { feature: (typeof CUSTOMER_FEATURE_ROWS)[nu
 
   if (image) {
     return (
-      <div className="relative h-full w-full">
+      <div className="relative h-full w-full overflow-hidden bg-linear-to-br from-[#fff8f3] via-[#f5f3f1] to-[#ffe3d5]">
+        <div className="absolute left-[12%] top-[10%] h-36 w-36 rounded-full bg-[#FF5F15]/12 blur-3xl" />
+        <div className="absolute bottom-[8%] right-[8%] h-48 w-48 rounded-full bg-white/80 blur-3xl" />
         <Image
           src={image}
           alt={imageAlt || ""}
           fill
-          className="object-cover object-center"
+          className="relative z-10 object-contain object-center p-6 sm:p-10 lg:p-12"
           sizes="(max-width: 1024px) 100vw, 560px"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-black/15 via-transparent to-transparent" />
+        <div className="absolute inset-x-[18%] bottom-[8%] h-10 rounded-[50%] bg-black/10 blur-2xl" />
       </div>
     );
   }

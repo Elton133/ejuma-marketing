@@ -71,6 +71,50 @@ h6 {
   color: #fff;
 }
 
+/* Branded scrollbars — global page scroll and compact overflow panels */
+html {
+  scrollbar-color: rgb(255 95 21 / 0.9) rgb(18 18 18);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(18 18 18);
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 44px;
+  border: 2px solid rgb(18 18 18);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ff7b3d, var(--beagine-orange));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7b3d;
+}
+
+.beagine-scrollbar {
+  scrollbar-color: rgb(255 95 21 / 0.85) transparent;
+  scrollbar-width: thin;
+}
+
+.beagine-scrollbar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.beagine-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.beagine-scrollbar::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
 /* Hero photo slideshow overlay */
 .hero-image-overlay {
   background:

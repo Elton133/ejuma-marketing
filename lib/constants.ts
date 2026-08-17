@@ -65,14 +65,22 @@ export const POLICY_LINKS = [
   { label: "Terms of service", href: "/terms-of-service" },
   { label: "Terms of use", href: "/terms-of-use" },
   { label: "Data deletion", href: "/data-deletion" },
+  { label: "Accessibility commitment", href: "/accessibility-commitment" },
+  { label: "Accessibility & inclusion", href: "/accessibility-inclusion" },
+  { label: "Community standards", href: "/community-standards" },
+  { label: "Dispute resolution", href: "/dispute-resolution" },
 ] as const;
 
 export const SITE_LINK_GROUPS = [
   {
     title: "Product",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Features", href: "/features" },
+      { label: "Platform overview", href: "/about" },
+      { label: "Customer features", href: "/features" },
+      { label: "How it works", href: "/#how-it-works" },
+      { label: "Find a plumber", href: "/hire/plumber" },
+      { label: "Find an electrician", href: "/hire/electrician" },
+      { label: "Find a mason", href: "/hire/mason" },
       { label: "Install app", href: INSTALL_PATH },
       { label: "Join waitlist", href: WAITLIST_PATH },
       { label: "Open app", href: COMING_SOON_PATH },
@@ -81,6 +89,10 @@ export const SITE_LINK_GROUPS = [
   {
     title: "For specialists",
     links: [
+      { label: "Specialist benefits", href: "/features#for-workers" },
+      { label: "Get discovered", href: "/features#for-workers" },
+      { label: "Build your profile", href: "/features#for-workers" },
+      { label: "Grow your business", href: "/features#for-workers" },
       { label: "Join as a specialist", href: WAITLIST_PATH },
       { label: "Install as specialist", href: COMING_SOON_PATH },
     ],
@@ -88,8 +100,12 @@ export const SITE_LINK_GROUPS = [
   {
     title: "Company",
     links: [
-      { label: "Community Connect", href: "/faqs" },
       { label: "About Beagine", href: "/about" },
+      { label: "Leadership", href: "/leadership" },
+      { label: "Our mission", href: "/#mission" },
+      { label: "Partners", href: "/#partners" },
+      { label: "Community Connect", href: "/faqs" },
+      { label: "Research", href: "/research" },
       { label: "Contact support", href: "mailto:support@beagine.com" },
     ],
   },
@@ -178,8 +194,8 @@ export const CUSTOMER_FEATURE_ROWS = [
       "Search by trade and location — browse verified workers near you on a map or list. See ratings, distance, and availability before you ever tap Book.",
     cta: { label: "Join the waitlist", href: WAITLIST_PATH },
     visualPosition: "right" as const,
-    image: "/landing3.png",
-    imageAlt: "Specialist worker ready for a job",
+    image: "/assets/features/customers/find-specialist.png",
+    imageAlt: "Search tool showing nearby verified specialists",
   },
   {
     icon: "mapTrack" as const,
@@ -189,8 +205,8 @@ export const CUSTOMER_FEATURE_ROWS = [
       "See exactly where your specialist is in real time. Follow status from accepted → en route → arrived → in progress → completed — so you're never left wondering.",
     cta: { label: "Open the app", href: APP_URL, external: true },
     visualPosition: "left" as const,
-    image: "/landing4.png",
-    imageAlt: "Live map tracking a specialist en route",
+    image: "/assets/features/customers/live-tracking.png",
+    imageAlt: "Phone displaying live specialist location tracking",
   },
   {
     icon: "notification" as const,
@@ -200,7 +216,8 @@ export const CUSTOMER_FEATURE_ROWS = [
       "Get instant SMS and email notifications the moment your booking is confirmed, when your specialist is on the way, and when the job is done.",
     cta: { label: "Join the waitlist", href: WAITLIST_PATH },
     visualPosition: "right" as const,
-    panelClass: "from-violet-50 via-[#fafafa] to-[#FF5F15]/8",
+    image: "/assets/features/customers/instant-alerts.png",
+    imageAlt: "Phone with email and notification alerts",
   },
   {
     icon: "easyUI" as const,
@@ -210,7 +227,8 @@ export const CUSTOMER_FEATURE_ROWS = [
       "No tech expertise needed. Book a specialist in under two minutes — choose your trade, pick a worker, set a time, and you're done.",
     cta: { label: "Open the app", href: APP_URL, external: true },
     visualPosition: "left" as const,
-    panelClass: "from-[#FF5F15]/8 via-amber-50/30 to-[#fafafa]",
+    image: "/assets/features/customers/easy-interface.png",
+    imageAlt: "Simple mobile interface with a completed selection",
   },
   {
     icon: "bio" as const,
@@ -220,7 +238,8 @@ export const CUSTOMER_FEATURE_ROWS = [
       "Every specialist has a full profile — bio, portfolio photos, verified trades, experience level, and customer ratings. Make an informed choice before you confirm.",
     cta: { label: "Join the waitlist", href: WAITLIST_PATH },
     visualPosition: "right" as const,
-    panelClass: "from-[#FF5F15]/8 via-amber-50/30 to-[#fafafa]",
+    image: "/assets/features/customers/specialist-profile.png",
+    imageAlt: "Verified specialist profile with services and ratings",
   },
 ] as const;
 
