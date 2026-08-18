@@ -56,8 +56,10 @@ export const HERO_PANELS = [
 ] as const;
 
 export const NAV_LINKS = [
-  { label: "About", href: "/about" },
-  { label: "Features", href: "/features" },
+  { label: "Customers", href: "/customers" },
+  { label: "Specialists", href: "/specialists" },
+  { label: "Vendors", href: "/vendors" },
+  { label: "Marketplace", href: "/marketplace" },
 ] as const;
 
 export const POLICY_LINKS = [
@@ -75,8 +77,12 @@ export const SITE_LINK_GROUPS = [
   {
     title: "Product",
     links: [
-      { label: "Platform overview", href: "/about" },
-      { label: "Customer features", href: "/features" },
+      { label: "For customers", href: "/customers" },
+      { label: "For specialists", href: "/specialists" },
+      { label: "For vendors", href: "/vendors" },
+      { label: "Marketplace", href: "/marketplace" },
+      { label: "Trust & safety", href: "/safety" },
+      { label: "All features", href: "/features" },
       { label: "How it works", href: "/#how-it-works" },
       { label: "Find a plumber", href: "/hire/plumber" },
       { label: "Find an electrician", href: "/hire/electrician" },
@@ -89,10 +95,11 @@ export const SITE_LINK_GROUPS = [
   {
     title: "For specialists",
     links: [
-      { label: "Specialist benefits", href: "/features#for-workers" },
-      { label: "Get discovered", href: "/features#for-workers" },
-      { label: "Build your profile", href: "/features#for-workers" },
-      { label: "Grow your business", href: "/features#for-workers" },
+      { label: "Specialist platform", href: "/specialists" },
+      { label: "Get discovered", href: "/specialists" },
+      { label: "Build your profile", href: "/specialists" },
+      { label: "Manage jobs", href: "/specialists" },
+      { label: "Trust & safety", href: "/safety" },
       { label: "Join as a specialist", href: WAITLIST_PATH },
       { label: "Install as specialist", href: COMING_SOON_PATH },
     ],
@@ -101,6 +108,7 @@ export const SITE_LINK_GROUPS = [
     title: "Company",
     links: [
       { label: "About Beagine", href: "/about" },
+      { label: "Engineering ecosystem", href: "/ecosystem" },
       { label: "Leadership", href: "/leadership" },
       { label: "Our mission", href: "/#mission" },
       { label: "Partners", href: "/#partners" },

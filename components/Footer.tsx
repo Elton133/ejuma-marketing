@@ -24,8 +24,8 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Logo size="lg" withBeaver={false} />
             <p className="mt-3 max-w-xs text-sm text-white/55">
-              The platform for skilled trades — find, book, and
-              track a verified specialist, right from your phone.
+              The engineering ecosystem connecting customers, skilled
+              specialists and local vendors around real work.
             </p>
           </div>
 
