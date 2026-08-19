@@ -121,6 +121,7 @@ export function WaitlistSection() {
     const { error } = await supabase.from("submissions").insert({
       type: "waitlist",
       role: form.role,
+      age_range: answers.age_range,
       waitlist: {
         name: form.name,
         phone: form.phone,

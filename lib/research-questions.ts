@@ -12,7 +12,25 @@ export type ResearchQuestion = {
   placeholder?: string;
 };
 
+export const AGE_RANGE_OPTIONS = [
+  "Under 18",
+  "18-24",
+  "25-34",
+  "35-44",
+  "45-54",
+  "55-64",
+  "65+",
+] as const;
+
+const AGE_RANGE_QUESTION: ResearchQuestion = {
+  id: "age_range",
+  label: "What is your age range?",
+  type: "select",
+  options: AGE_RANGE_OPTIONS,
+};
+
 export const USER_RESEARCH_QUESTIONS: ResearchQuestion[] = [
+  AGE_RANGE_QUESTION,
   {
     id: "hired_professional",
     label: "Have you ever hired an engineering or technical professional?",
@@ -114,6 +132,7 @@ export const USER_RESEARCH_QUESTIONS: ResearchQuestion[] = [
 ];
 
 export const SPECIALIST_RESEARCH_QUESTIONS: ResearchQuestion[] = [
+  AGE_RANGE_QUESTION,
   {
     id: "engineering_services",
     label: "What engineering services do you provide?",
