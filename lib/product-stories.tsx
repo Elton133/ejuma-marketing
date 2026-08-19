@@ -13,9 +13,11 @@ export type ProductStory = {
   primaryLabel: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  heroImage?: string;
 };
 
 export const customerStory: ProductStory = {
+  heroImage: "/landing3.png",
   eyebrow: "For customers",
   title: <>The right help.<br/><em className="not-italic text-[#FF5F15]">Right when you need it.</em></>,
   intro: "Discover trusted specialists, manage every detail of the job, and get the materials you need—all from one calm, connected experience.",
@@ -31,6 +33,7 @@ export const customerStory: ProductStory = {
 };
 
 export const specialistStory: ProductStory = {
+  heroImage: "/landing4.png",
   eyebrow: "For specialists",
   title: <>Your skill is the product.<br/><em className="not-italic text-[#FF5F15]">Build the business around it.</em></>,
   intro: "Receive nearby work, control how and when you operate, document professional results and grow a reputation that travels with you.",
@@ -46,6 +49,7 @@ export const specialistStory: ProductStory = {
 };
 
 export const vendorStory: ProductStory = {
+  heroImage: "/landing2.png",
   eyebrow: "For vendors",
   title: <>Your shop,<br/><em className="not-italic text-[#FF5F15]">connected to real demand.</em></>,
   intro: "Bring your catalogue online, receive orders from nearby customers and professionals, and manage sales and payouts from a focused vendor workspace.",
@@ -61,6 +65,7 @@ export const vendorStory: ProductStory = {
 };
 
 export const marketplaceStory: ProductStory = {
+  heroImage: "/landing6.png",
   eyebrow: "Beagine Marketplace",
   title: <>Book the work.<br/>Find the materials.<br/><em className="not-italic text-[#FF5F15]">Finish the job.</em></>,
   intro: "A local marketplace designed around the real relationship between customers, skilled specialists, shops and the materials that keep work moving.", audience: "Connected commerce",
@@ -74,6 +79,7 @@ export const marketplaceStory: ProductStory = {
 };
 
 export const safetyStory: ProductStory = {
+  heroImage: "/landing5.png",
   eyebrow: "Trust & safety",
   title: <>Confidence before,<br/>during and <em className="not-italic text-[#FF5F15]">after every job.</em></>,
   intro: "Trust is not a badge at the top of a profile. It is a system of identity, context, communication, consent, evidence and support around the entire service journey.", audience: "Safety system",
@@ -88,6 +94,7 @@ export const safetyStory: ProductStory = {
 };
 
 export const ecosystemStory: ProductStory = {
+  heroImage: "/landing10.png",
   eyebrow: "The engineering ecosystem",
   title: <>Three sides of work.<br/><em className="not-italic text-[#FF5F15]">One connected system.</em></>,
   intro: "Beagine connects the people who need skilled work, the professionals who deliver it and the local businesses that supply it.", audience: "Beagine ecosystem",
