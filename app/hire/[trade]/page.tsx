@@ -8,11 +8,12 @@ import { MicroLabel } from "@/components/MicroLabel";
 import Link from "next/link";
 import { WAITLIST_PATH, INSTALL_PATH } from "@/lib/constants";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { RotatingTrade } from "@/components/RotatingTrade";
 
 export function generateStaticParams() {
-  return TRADES.map((trade) => ({
+  return [...TRADES.map((trade) => ({
     trade: trade.toLowerCase().replace(/\s+/g, "-"),
-  }));
+  })), { trade: "specialist" }];
 }
 
 export async function generateMetadata({
@@ -23,6 +24,12 @@ export async function generateMetadata({
   const resolvedParams = await params;
   const trade = resolvedParams.trade.replace(/-/g, " ");
   const formattedTrade = trade.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  if (trade === "specialist") {
+    return {
+      title: "Find a Specialist - Beagine",
+      description: "Find, book, and manage trusted specialists for the job you need with Beagine.",
+    };
+  }
   const isValid = TRADES.some((t) => t.toLowerCase() === trade.toLowerCase());
   
   if (!isValid) return {};
@@ -41,8 +48,9 @@ export default async function TradeLandingPage({
   const resolvedParams = await params;
   const tradeParam = resolvedParams.trade.replace(/-/g, " ");
   const originalTrade = TRADES.find((t) => t.toLowerCase() === tradeParam.toLowerCase());
+  const isSpecialistPage = tradeParam.toLowerCase() === "specialist";
 
-  if (!originalTrade) {
+  if (!originalTrade && !isSpecialistPage) {
     notFound();
   }
 
@@ -54,10 +62,12 @@ export default async function TradeLandingPage({
           <div className="mx-auto max-w-[1200px] text-center">
             <MicroLabel>Hire a Pro</MicroLabel>
             <h1 className="mt-6 text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[0.95] tracking-tight">
-              The best <span className="text-[#FF5F15]">{originalTrade}</span> for your project.
+              {isSpecialistPage ? <>Find a <RotatingTrade /> for your project.</> : <>The best <span className="text-[#FF5F15]">{originalTrade}</span> for your project.</>}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[clamp(1.125rem,2vw,1.25rem)] leading-relaxed text-white/65">
-              Skip the hassle of asking around. Find, book, and track a verified {originalTrade} directly from your phone.
+              {isSpecialistPage
+                ? "Skip the hassle of asking around. Find, book, and track a verified specialist directly from your phone."
+                : <>Skip the hassle of asking around. Find, book, and track a verified {originalTrade} directly from your phone.</>}
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link
