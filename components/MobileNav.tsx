@@ -39,7 +39,7 @@ const QUICK_ACTIONS = [
     eyebrow: "Need help?",
     title: "Contact support",
     description: "Get help with bookings, accounts and platform questions.",
-    href: "mailto:support@beagine.com",
+    href: "/community/support",
   },
 ] as const;
 

@@ -1,0 +1,6 @@
+export const COMMUNITY_API_URL = process.env.NEXT_PUBLIC_API_URL ?? (process.env.NODE_ENV === "development" ? "http://localhost:4000/api/v1" : "https://beagine-mobile.onrender.com/api/v1");
+export type CommunityContent = { _id: string; kind: "update" | "article"; title: string; slug: string; excerpt?: string; body: string; topic: string; audience: string; pinned: boolean; authorName?: string; publishedAt?: string; createdAt?: string };
+export type CommunityQuestion = { _id: string; name: string; question: string; answer: string; topic: string; answeredByName?: string; answeredAt?: string; publishedAt?: string };
+async function getJson<T>(path: string, fallback: T): Promise<T> { try { const response = await fetch(`${COMMUNITY_API_URL}${path}`, { next: { revalidate: 60 } }); if (!response.ok) return fallback; return await response.json() as T; } catch { return fallback; } }
+export async function getCommunityContent(kind: "update" | "article", limit = 50) { return getJson<{ items: CommunityContent[] }>(`/community/content?kind=${kind}&limit=${limit}`, { items: [] }); }
+export async function getCommunityQuestions() { return getJson<{ questions: CommunityQuestion[] }>("/community/questions", { questions: [] }); }

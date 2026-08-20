@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { COMMUNITY_API_URL } from "@/lib/community-api";
 
 export function FAQForm() {
   const [loading, setLoading] = useState(false);
@@ -20,14 +20,12 @@ export function FAQForm() {
     setErrorMsg("");
 
     try {
-      const { error } = await supabase.from("community_faqs").insert({
-        name: form.name,
-        email: form.email,
-        question: form.question,
-        status: "pending",
+      const response = await fetch(`${COMMUNITY_API_URL}/community/questions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       });
-
-      if (error) throw error;
+      if (!response.ok) throw new Error("Question submission failed");
       
       setSuccess(true);
       setForm({ name: "", email: "", question: "" });

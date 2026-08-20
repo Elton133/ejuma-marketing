@@ -112,9 +112,9 @@ export const SITE_LINK_GROUPS = [
       { label: "Leadership", href: "/leadership" },
       { label: "Our mission", href: "/#mission" },
       { label: "Partners", href: "/#partners" },
-      { label: "Community Connect", href: "/faqs" },
+      { label: "Community Connect", href: "/community" },
       { label: "Research", href: "/research" },
-      { label: "Contact support", href: "mailto:support@beagine.com" },
+      { label: "Contact support", href: "/community/support" },
     ],
   },
   {

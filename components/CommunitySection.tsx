@@ -19,7 +19,7 @@ export function CommunitySection() {
             Browse real questions from people using Beagine, or ask your own and we&apos;ll answer it publicly.
           </p>
           <Link
-            href="/faqs"
+            href="/community"
             className="btn-premium mt-2 inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-8 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-9 md:text-base"
           >
             Visit Community Connect
