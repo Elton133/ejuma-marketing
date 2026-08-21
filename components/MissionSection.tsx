@@ -2,7 +2,7 @@ import { MicroLabel } from "./MicroLabel";
 
 export function MissionSection() {
   return (
-    <section id="mission" className="bg-white px-6 py-16 text-black md:py-24">
+    <section id="mission" className="bg-white px-6 py-16 text-black md:py-28">
       <div className="mx-auto max-w-[1300px]">
         <MicroLabel light>Mission</MicroLabel>
         <div className="mt-6 grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16">

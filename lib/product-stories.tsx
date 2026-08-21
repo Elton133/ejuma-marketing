@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
 import type { StoryFeature, StoryStat } from "@/components/ProductStoryPage";
+import type { ReactNode } from "react";
 
 export type ProductStory = {
   eyebrow: string;

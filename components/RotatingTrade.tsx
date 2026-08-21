@@ -1,35 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { TRADES } from "@/lib/constants";
-import { prefersReducedMotion } from "@/lib/motion/register-gsap";
+import { prefersReducedMotion, registerGsap } from "@/lib/motion/register-gsap";
 
 export function RotatingTrade() {
-  const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const wordRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
-
-    const interval = window.setInterval(() => {
-      setVisible(false);
-      window.setTimeout(() => {
-        setIndex((current) => (current + 1) % TRADES.length);
-        setVisible(true);
-      }, 280);
-    }, 2400);
-
-    return () => window.clearInterval(interval);
+    registerGsap();
+    if (!wordRef.current || prefersReducedMotion()) return;
+    const timeline = gsap.timeline({ repeat: -1, repeatDelay: 0.7 });
+    TRADES.slice(1).forEach((trade) => {
+      timeline
+        .to(wordRef.current, { text: "", duration: 0.35, ease: "none", delay: 1.25 })
+        .to(wordRef.current, { text: trade, duration: Math.max(0.45, trade.length * 0.07), ease: "none" });
+    });
+    return () => {
+      timeline.kill();
+    };
   }, []);
 
   return (
     <span
-      aria-live="polite"
-      className={`inline-block min-w-[9ch] text-[#FF5F15] transition-all duration-300 motion-reduce:transition-none ${
-        visible ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
-      }`}
+      ref={wordRef}
+      className="inline-block border-r-[.08em] border-[#FF5F15] pr-[.06em] text-[#FF5F15]"
     >
-      {TRADES[index]}
+      {TRADES[0]}
     </span>
   );
 }
