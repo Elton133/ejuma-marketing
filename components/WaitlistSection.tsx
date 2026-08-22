@@ -23,7 +23,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
 type FormRole = "customer" | "worker";
-type WaitlistStep = "choose" | "questionnaire" | "surprise" | "form" | "done";
+type WaitlistStep = "choose" | "questionnaire" | "form" | "done";
 
 type WaitlistData = {
   name: string;
@@ -64,7 +64,6 @@ export function WaitlistSection() {
   >({});
 
   const questionnaireRef = useRef<HTMLDivElement>(null);
-  const surpriseGiftRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     registerGsap();
@@ -103,11 +102,6 @@ export function WaitlistSection() {
 
   const handleQuestionnaireSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStep("surprise");
-    scrollTop();
-  };
-
-  const goToWaitlistForm = () => {
     setStep("form");
     scrollTop();
   };
@@ -172,26 +166,6 @@ export function WaitlistSection() {
     { dependencies: [step, path] }
   );
 
-  useGSAP(
-    () => {
-      if (step !== "surprise" || !surpriseGiftRef.current) return;
-
-      if (prefersReducedMotion()) return;
-
-      gsap.fromTo(
-        surpriseGiftRef.current,
-        { scale: 0, rotation: -12 },
-        {
-          scale: 1,
-          rotation: 0,
-          duration: 0.7,
-          ease: "back.out(2)",
-        }
-      );
-    },
-    { dependencies: [step] }
-  );
-
   const toggleTrade = (trade: string) => {
     setForm((prev) => ({
       ...prev,
@@ -204,6 +178,12 @@ export function WaitlistSection() {
   return (
     <section className="bg-black px-6 pb-20 pt-28 text-white md:pb-28 md:pt-32">
       <div className="mx-auto max-w-2xl">
+        {step !== "done" && (
+          <WaitlistProgress
+            current={step === "choose" ? 1 : step === "questionnaire" ? 2 : 3}
+          />
+        )}
+
         {step === "choose" && (
           <AnimatedStep stepKey="choose">
             <MicroLabel>Research</MicroLabel>
@@ -267,52 +247,31 @@ export function WaitlistSection() {
                   data-question-field
                   className="btn-premium w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black hover:bg-[#FF7335]"
                 >
-                  Submit answers
+                  Continue to contact details
                 </button>
               </form>
             </div>
           </AnimatedStep>
         )}
 
-        {step === "surprise" && (
-          <AnimatedStep stepKey="surprise">
-            <div className="py-6 text-center md:py-10">
-              <p
-                ref={surpriseGiftRef}
-                className="inline-block text-5xl"
-                aria-hidden
-              >
-                🎁
-              </p>
-              <div className="mt-8">
-                <MicroLabel>One more thing</MicroLabel>
-              </div>
-              <h2 className="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight tracking-tight">
-                We have a surprise for you
-              </h2>
-              <p className="mx-auto mt-5 max-w-md text-lg leading-relaxed text-white/70">
-                Join the waitlist — don&apos;t miss out on early access when
-                Beagine launches in your area.
-              </p>
-              <button
-                type="button"
-                onClick={goToWaitlistForm}
-                className="btn-premium mt-10 w-full rounded-full bg-[#FF5F15] py-4 text-sm font-semibold text-black hover:bg-[#FF7335] sm:w-auto sm:px-12"
-              >
-                Join the waitlist
-              </button>
-            </div>
-          </AnimatedStep>
-        )}
-
         {step === "form" && (
           <AnimatedStep stepKey="form">
-            <MicroLabel>Almost there</MicroLabel>
+            <button
+              type="button"
+              onClick={() => {
+                setStep("questionnaire");
+                scrollTop();
+              }}
+              className="text-sm text-white/50 transition-colors hover:text-white"
+            >
+              ← Back to answers
+            </button>
+            <MicroLabel className="mt-6">Final step</MicroLabel>
             <h2 className="mt-3 text-[clamp(2rem,4vw,2.75rem)] font-semibold tracking-tight">
-              Join the community
+              Join the waitlist
             </h2>
             <p className="mt-3 text-white/65">
-              Leave your details so we can reach you when Beagine opens near you.
+              Your research answers are ready. Add your contact details to complete your registration.
             </p>
 
             <form onSubmit={handleWaitlistSubmit} className="mt-10 space-y-5">
@@ -509,3 +468,39 @@ function SelectField({
 
 const inputClass =
   "w-full rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-shadow placeholder:text-white/35 focus:border-[#FF5F15]/50 focus:ring-2 focus:ring-[#FF5F15]/30";
+
+function WaitlistProgress({ current }: { current: 1 | 2 | 3 }) {
+  const labels = ["Choose", "Questions", "Join"];
+
+  return (
+    <div className="mb-10" aria-label={`Step ${current} of 3`}>
+      <div className="flex items-center gap-2" aria-hidden>
+        {labels.map((label, index) => {
+          const stepNumber = (index + 1) as 1 | 2 | 3;
+          const reached = stepNumber <= current;
+
+          return (
+            <div key={label} className="flex min-w-0 flex-1 items-center gap-2">
+              <span
+                className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
+                  reached ? "bg-[#FF5F15] text-black" : "bg-white/10 text-white/45"
+                }`}
+              >
+                {stepNumber}
+              </span>
+              <span className={`truncate text-xs ${reached ? "text-white" : "text-white/40"}`}>
+                {label}
+              </span>
+              {stepNumber < 3 && (
+                <span className={`h-px min-w-2 flex-1 ${stepNumber < current ? "bg-[#FF5F15]" : "bg-white/15"}`} />
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <p className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-white/45">
+        Step {current} of 3
+      </p>
+    </div>
+  );
+}
