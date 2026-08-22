@@ -62,6 +62,8 @@ export function WaitlistSection() {
   const [specialistAnswers, setSpecialistAnswers] = useState<
     Record<string, string>
   >({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
 
   const questionnaireRef = useRef<HTMLDivElement>(null);
 
@@ -108,32 +110,42 @@ export function WaitlistSection() {
 
   const handleWaitlistSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmissionError("");
+
     const answers =
       path === "customer" ? userAnswers : specialistAnswers;
-  
-    const { error } = await supabase.from("submissions").insert({
-      type: "waitlist",
-      role: form.role,
-      age_range: answers.age_range,
-      waitlist: {
-        name: form.name,
-        phone: form.phone,
-        email: form.email,
-        area: form.area,
-        trades: form.trades,
-        hearAbout: form.hearAbout,
-      },
-      answers,
-    });
-  
-    if (error) {
-      console.error("Supabase error:", error.message);
-      return;
+
+    try {
+      const { error } = await supabase.from("submissions").insert({
+        type: "waitlist",
+        role: form.role,
+        age_range: answers.age_range,
+        waitlist: {
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          area: form.area,
+          trades: form.trades,
+          hearAbout: form.hearAbout,
+        },
+        answers,
+      });
+
+      if (error) throw error;
+
+      setStep("done");
+      scrollTop();
+    } catch (error) {
+      console.error("Supabase error:", error);
+      setSubmissionError(
+        "We couldn't complete your registration. Check your connection and try again. Your answers are still here."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-  
-    setStep("done");
-    scrollTop();
   };
 
   useGSAP(
@@ -258,11 +270,12 @@ export function WaitlistSection() {
           <AnimatedStep stepKey="form">
             <button
               type="button"
+              disabled={isSubmitting}
               onClick={() => {
                 setStep("questionnaire");
                 scrollTop();
               }}
-              className="text-sm text-white/50 transition-colors hover:text-white"
+              className="text-sm text-white/50 transition-colors hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
             >
               ← Back to answers
             </button>
@@ -274,7 +287,11 @@ export function WaitlistSection() {
               Your research answers are ready. Add your contact details to complete your registration.
             </p>
 
-            <form onSubmit={handleWaitlistSubmit} className="mt-10 space-y-5">
+            <form
+              onSubmit={handleWaitlistSubmit}
+              className="mt-10 space-y-5"
+              aria-busy={isSubmitting}
+            >
               <Field label="Full name" required>
                 <input
                   required
@@ -355,10 +372,29 @@ export function WaitlistSection() {
 
               <button
                 type="submit"
-                className="btn-premium w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black hover:bg-[#FF7335]"
+                disabled={isSubmitting}
+                className="btn-premium flex w-full items-center justify-center gap-2 rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black hover:bg-[#FF7335] disabled:cursor-wait disabled:opacity-70"
               >
-                Join waitlist
+                {isSubmitting && (
+                  <span
+                    className="h-4 w-4 animate-spin rounded-full border-2 border-black/25 border-t-black"
+                    aria-hidden
+                  />
+                )}
+                {isSubmitting ? "Joining waitlist…" : "Join waitlist"}
               </button>
+
+              <div className="min-h-6" aria-live="polite" aria-atomic="true">
+                {isSubmitting ? (
+                  <p className="text-center text-sm text-white/65">
+                    Saving your answers and contact details…
+                  </p>
+                ) : submissionError ? (
+                  <p className="text-center text-sm text-red-300" role="alert">
+                    {submissionError}
+                  </p>
+                ) : null}
+              </div>
 
               <p className="text-center text-xs text-white/50">
                 By joining you agree to be contacted about Beagine. We don&apos;t
