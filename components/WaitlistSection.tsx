@@ -11,7 +11,10 @@ import {
 import { prefersReducedMotion, registerGsap } from "@/lib/motion/register-gsap";
 import { INSTALL_PATH } from "@/lib/constants";
 import { WAITLIST_PATH } from "@/lib/research-questions";
-import { ResearchQuestionsGroup } from "./research/ResearchQuestionsGroup";
+import {
+  ResearchQuestionsGroup,
+  type ResearchAnswer,
+} from "./research/ResearchQuestionsGroup";
 import { SurveyShareBlock } from "./research/SurveyShareBlock";
 import { AnimatedStep } from "./waitlist/AnimatedStep";
 import {
@@ -58,9 +61,9 @@ export function WaitlistSection() {
   const [path, setPath] = useState<SurveyPath | null>(null);
   const [cardsExiting, setCardsExiting] = useState(false);
   const [form, setForm] = useState<WaitlistData>(emptyForm);
-  const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
+  const [userAnswers, setUserAnswers] = useState<Record<string, ResearchAnswer>>({});
   const [specialistAnswers, setSpecialistAnswers] = useState<
-    Record<string, string>
+    Record<string, ResearchAnswer>
   >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
@@ -122,7 +125,8 @@ export function WaitlistSection() {
       const { error } = await supabase.from("submissions").insert({
         type: "waitlist",
         role: form.role,
-        age_range: answers.age_range,
+        age_range:
+          typeof answers.age_range === "string" ? answers.age_range : null,
         waitlist: {
           name: form.name,
           phone: form.phone,

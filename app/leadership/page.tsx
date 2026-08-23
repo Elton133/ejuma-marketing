@@ -49,12 +49,12 @@ export default function LeadershipPage() {
           <div className="mx-auto flex max-w-7xl flex-col gap-12 md:flex-row md:gap-24">
             <div className="flex-1">
               <p data-split-words className="text-2xl font-bold leading-snug md:text-3xl">
-                Beagine's leadership team brings together bold thinkers, builders, and problem-solvers from around the world.
+                Beagine&apos;s leadership team brings together bold thinkers, builders, and problem-solvers from around the world.
               </p>
             </div>
             <div className="flex-1">
               <p data-split-words className="text-lg leading-relaxed text-black/70 md:text-xl">
-                With deep experience spanning technology, trades, operations, and product, they're united by one mission — to build the infrastructure that makes finding and hiring skilled specialists effortless. They lead teams worldwide in transforming how millions of people manage local engineering services and commercial projects.
+                With deep experience spanning technology, trades, operations, and product, they&apos;re united by one mission — to build the infrastructure that makes finding and hiring skilled specialists effortless. They lead teams worldwide in transforming how millions of people manage local engineering services and commercial projects.
               </p>
             </div>
           </div>

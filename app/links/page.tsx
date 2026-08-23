@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { WAITLIST_PATH, COMING_SOON_PATH } from "@/lib/constants";

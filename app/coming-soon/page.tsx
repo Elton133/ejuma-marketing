@@ -42,7 +42,7 @@ export default function ComingSoonPage() {
             </div>
 
             <h1 data-reveal-item className="mt-6 text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.05] tracking-tight">
-              We're building <br />
+              We&apos;re building <br />
               <em className="text-[#FF5F15] not-italic">something special</em>
             </h1>
             
@@ -56,7 +56,7 @@ export default function ComingSoonPage() {
                 className="btn-premium inline-flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[#FF5F15] px-8 text-[15px] font-semibold text-black hover:bg-[#FF7335] sm:w-auto"
               >
                 <HugeiconsIcon icon={Notification03Icon} size={20} color="black" />
-                Notify me when it's ready
+                Notify me when it&apos;s ready
               </Link>
               <Link
                 href="/"

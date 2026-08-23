@@ -29,7 +29,7 @@ export function FAQForm() {
       
       setSuccess(true);
       setForm({ name: "", email: "", question: "" });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error submitting question:", error);
       setErrorMsg("Something went wrong. Please try again.");
     } finally {
@@ -64,7 +64,7 @@ export function FAQForm() {
       <div className="mb-8">
         <h3 className="text-2xl font-semibold text-white">Ask the team</h3>
         <p className="mt-2 text-white/60">
-          Have a question about how Beagine works? Ask below and we'll post the answer here for everyone.
+          Have a question about how Beagine works? Ask below and we&apos;ll post the answer here for everyone.
         </p>
       </div>
 

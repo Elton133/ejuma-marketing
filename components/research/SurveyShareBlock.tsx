@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
+
+const subscribeToOrigin = () => () => undefined;
 
 export function SurveyShareBlock({
   sharePath,
@@ -12,12 +14,13 @@ export function SurveyShareBlock({
   title?: string;
   description?: string;
 }) {
-  const [shareUrl, setShareUrl] = useState("");
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    setShareUrl(`${window.location.origin}${sharePath}`);
-  }, [sharePath]);
+  const origin = useSyncExternalStore(
+    subscribeToOrigin,
+    () => window.location.origin,
+    () => ""
+  );
+  const shareUrl = origin ? `${origin}${sharePath}` : "";
 
   const qrSrc =
     shareUrl &&

@@ -65,7 +65,7 @@ export default function DataDeletion() {
                   </a>{" "}
                   from the email address associated with your Beagine account.
                 </li>
-                <li>Use the subject line: <strong>"Account Deletion Request"</strong>.</li>
+                <li>Use the subject line: <strong>&ldquo;Account Deletion Request&rdquo;</strong>.</li>
                 <li>
                   Include your full name and phone number associated with the
                   account to help us verify your identity.

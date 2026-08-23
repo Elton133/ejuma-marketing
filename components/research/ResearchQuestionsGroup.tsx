@@ -12,10 +12,12 @@ const inputClass =
 
 type Props = {
   role: ResearchRole;
-  answers: Record<string, any>;
-  onChange: (answers: Record<string, any>) => void;
+  answers: Record<string, ResearchAnswer>;
+  onChange: (answers: Record<string, ResearchAnswer>) => void;
   startIndex?: number;
 };
+
+export type ResearchAnswer = string | { answer: "Other"; other: string };
 
 export function ResearchQuestionsGroup({
   role,
@@ -57,7 +59,7 @@ export function ResearchQuestionsGroup({
     setOtherValues(updated);
 
     // sync into main answers if currently "Other"
-    if (answers[id]?.answer === "Other") {
+    if (typeof answers[id] === "object" && answers[id].answer === "Other") {
       onChange({
         ...answers,
         [id]: {
@@ -131,7 +133,7 @@ export function ResearchQuestionsGroup({
                 <textarea
                   required
                   rows={4}
-                  value={value ?? ""}
+                  value={typeof value === "string" ? value : ""}
                   onChange={(e) => setAnswer(q.id, e.target.value)}
                   className={`${inputClass} min-h-[100px] resize-y bg-black text-white`}
                   placeholder={q.placeholder}
@@ -140,7 +142,7 @@ export function ResearchQuestionsGroup({
                 <input
                   required
                   type="text"
-                  value={value ?? ""}
+                  value={typeof value === "string" ? value : ""}
                   onChange={(e) => setAnswer(q.id, e.target.value)}
                   className={`${inputClass} bg-black text-white`}
                   placeholder={q.placeholder}
