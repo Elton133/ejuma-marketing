@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useSyncExternalStore } from "react";
+import posthog from "posthog-js";
 
 const subscribeToOrigin = () => () => undefined;
 
@@ -32,6 +33,7 @@ export function SurveyShareBlock({
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
+      posthog.capture("share_link_copied", { share_path: sharePath });
     } catch {
       /* fallback ignored */
     }
