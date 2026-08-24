@@ -19,7 +19,7 @@ export type ProductStory = {
 export const customerStory: ProductStory = {
   heroImage: "/landing3.png",
   eyebrow: "For customers",
-  title: <>The right help.<br/><em className="not-italic text-[#FF5F15]">Right when you need it.</em></>,
+  title: <>You&apos;re here!<br/><em className="not-italic text-[#FF5F15]">Let&apos;s find you the right specialist.</em></>,
   intro: "Discover trusted specialists, manage every detail of the job, and get the materials you need—all from one calm, connected experience.",
   audience: "Customer app",
   stats: [{ value: "Now", label: "Book immediately or schedule ahead" }, { value: "Live", label: "Status, location and communication" }, { value: "One", label: "Record from request to receipt" }, { value: "24/7", label: "Safety tools when they matter" }],
@@ -35,7 +35,7 @@ export const customerStory: ProductStory = {
 export const specialistStory: ProductStory = {
   heroImage: "/landing4.png",
   eyebrow: "For specialists",
-  title: <>Your skill is the product.<br/><em className="not-italic text-[#FF5F15]">Build the business around it.</em></>,
+  title: <>Your skill is the product.<br/><em className="not-italic text-[#FF5F15]">Beagine is your assistant.</em></>,
   intro: "Receive nearby work, control how and when you operate, document professional results and grow a reputation that travels with you.",
   audience: "Specialist app",
   stats: [{ value: "Your", label: "Rates, schedule and service radius" }, { value: "Live", label: "Nearby requests while online" }, { value: "Proof", label: "Before-and-after job records" }, { value: "MoMo", label: "Straightforward payout requests" }],
@@ -45,7 +45,7 @@ export const specialistStory: ProductStory = {
     { eyebrow: "Professional record", title: "Let completed work speak for you", description: "Upload before-and-after evidence, complete a clear checklist and turn verified milestones, reviews and performance into shareable Spotlight cards.", points: ["Completion proof", "Verified portfolio", "Customer reviews", "Shareable achievements"], visualLabel: "Completion proof", image: "/images/products/specialists/completion-proof.png" },
     { eyebrow: "Growth", title: "See the business behind the work", description: "Follow daily and long-term earnings, request payouts and strengthen a verified profile customers can trust before they make contact.", points: ["Earnings overview", "Payout history", "Verified professional profile", "Learning resources"], visualLabel: "Earnings and payouts" },
   ],
-  closingTitle: "Built for a career, not just the next job.", closingBody: "Beagine helps skilled professionals turn visibility, reliable operations and strong work into lasting professional value.", primaryLabel: "Install specialist app", secondaryHref: "/ecosystem", secondaryLabel: "See the ecosystem",
+  closingTitle: "Build your career with Beagine, not just the next job.", closingBody: "Beagine helps skilled professionals turn visibility, reliable operations and strong work into lasting professional value.", primaryLabel: "Install specialist app", secondaryHref: "/ecosystem", secondaryLabel: "See the ecosystem",
 };
 
 export const vendorStory: ProductStory = {
