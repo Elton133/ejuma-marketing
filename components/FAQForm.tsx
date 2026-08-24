@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { COMMUNITY_API_URL } from "@/lib/community-api";
+import posthog from "posthog-js";
 
 export function FAQForm() {
   const [loading, setLoading] = useState(false);
@@ -26,11 +27,13 @@ export function FAQForm() {
         body: JSON.stringify(form),
       });
       if (!response.ok) throw new Error("Question submission failed");
-      
+
+      posthog.capture("faq_question_submitted");
       setSuccess(true);
       setForm({ name: "", email: "", question: "" });
     } catch (error: unknown) {
       console.error("Error submitting question:", error);
+      posthog.captureException(error);
       setErrorMsg("Something went wrong. Please try again.");
     } finally {
       setLoading(false);

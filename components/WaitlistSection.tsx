@@ -24,6 +24,7 @@ import {
 import { MicroLabel } from "./MicroLabel";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import posthog from "posthog-js";
 
 type FormRole = "customer" | "worker";
 type WaitlistStep = "choose" | "questionnaire" | "form" | "done";
@@ -94,6 +95,8 @@ export function WaitlistSection() {
       return;
     }
 
+    posthog.capture("waitlist_role_selected", { role: selected });
+
     setCardsExiting(true);
     gsap.delayedCall(0.38, go);
   };
@@ -107,6 +110,7 @@ export function WaitlistSection() {
 
   const handleQuestionnaireSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    posthog.capture("waitlist_survey_submitted", { role: path });
     setStep("form");
     scrollTop();
   };
@@ -140,10 +144,18 @@ export function WaitlistSection() {
 
       if (error) throw error;
 
+      posthog.capture("waitlist_joined", {
+        role: form.role,
+        area: form.area,
+        hear_about: form.hearAbout,
+        trades_count: form.trades.length,
+      });
+
       setStep("done");
       scrollTop();
     } catch (error) {
       console.error("Supabase error:", error);
+      posthog.captureException(error);
       setSubmissionError(
         "We couldn't complete your registration. Check your connection and try again. Your answers are still here."
       );
