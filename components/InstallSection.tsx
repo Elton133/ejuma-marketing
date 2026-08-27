@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { APP_URL, COMING_SOON_PATH } from "@/lib/constants";
 import { MicroLabel } from "./MicroLabel";
+import posthog from "posthog-js";
 
 const QR_IMAGE = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(APP_URL)}&bgcolor=ffffff&color=000000`;
 
@@ -101,12 +104,14 @@ function InstallCard({
         <Link
           href={appleHref}
           className="btn-premium inline-flex rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
+          onClick={() => posthog.capture("app_install_clicked", { store: "app_store", audience: title })}
         >
           App Store
         </Link>
         <Link
           href={googleHref}
           className="btn-premium inline-flex rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black hover:bg-[#FF7335]"
+          onClick={() => posthog.capture("app_install_clicked", { store: "google_play", audience: title })}
         >
           Google Play
         </Link>
