@@ -14,9 +14,9 @@ export function Hero() {
               data-split-text-hero
               className="text-[clamp(2.5rem,6vw,4.75rem)] font-semibold leading-[1.02] tracking-tight"
             >
-              Find the right engineering{" "}
-              <em className="text-[#FF5F15] not-italic">expertise</em>, to
-              solve everyday technical problems.
+              Engineering{" "}
+              <em className="text-[#FF5F15] not-italic">expertise</em> for
+              everyday problems.
             </h1>
 
             <p
