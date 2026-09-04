@@ -53,8 +53,6 @@ export function HeroBackground() {
         />
         <div className="hero-image-overlay pointer-events-none absolute inset-0 z-10" />
 
-        
-        <div className="hero-grain pointer-events-none absolute inset-0 z-10 opacity-40" />
       </div>
     </div>
   );

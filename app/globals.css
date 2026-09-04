@@ -29,17 +29,6 @@ body {
   font-family: var(--font-google-sans-flex), system-ui, sans-serif;
 }
 
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.25;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 /* Default: all headings use Google Sans Flex */
 h1,
 h2,
@@ -131,13 +120,6 @@ html {
   background:
     linear-gradient(to top, rgb(0 0 0 / 0.76) 0%, rgb(0 0 0 / 0.4) 45%, rgb(0 0 0 / 0.2) 100%),
     linear-gradient(to right, rgb(0 0 0 / 0.42) 0%, transparent 55%);
-}
-
-.hero-grain {
-  opacity: 0.3;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* How it works — faint watermark step numbers */
