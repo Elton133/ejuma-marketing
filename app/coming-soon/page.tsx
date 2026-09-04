@@ -28,7 +28,6 @@ export default function ComingSoonPage() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
-          <div className="hero-grain absolute inset-0 opacity-50 pointer-events-none" />
         </div>
 
         <div className="relative z-10 w-full max-w-2xl" data-reveal-stagger>

@@ -30,7 +30,6 @@ export default function LeadershipPage() {
               />
             </div>
             <div className="hero-image-overlay absolute inset-0" />
-            <div className="hero-grain absolute inset-0 pointer-events-none opacity-30" />
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-[1200px]" data-reveal-stagger>

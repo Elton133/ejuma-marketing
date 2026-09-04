@@ -32,7 +32,6 @@ export default function AboutPage() {
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
-            <div className="hero-grain absolute inset-0 opacity-50 pointer-events-none" />
           </div>
 
           <div className="relative z-10 w-full mx-auto max-w-[1440px] md:px-10 lg:px-14">
