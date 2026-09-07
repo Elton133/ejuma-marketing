@@ -42,7 +42,7 @@ export default function ComingSoonPage() {
 
             <h1 data-reveal-item className="mt-6 text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.05] tracking-tight">
               We&apos;re building <br />
-              <em className="text-[#FF5F15] not-italic">something special</em>
+              <em className="font-accent text-[#FF5F15] not-italic">something special</em>
             </h1>
             
             <p data-reveal-item className="mt-6 max-w-md text-[17px] leading-relaxed text-white/60">

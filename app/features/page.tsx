@@ -40,7 +40,7 @@ export default function FeaturesPage() {
               className="mt-4 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-[1.05] tracking-tight"
             >
               Built to make finding help{" "}
-              <em className="text-[#FF5F15] not-italic">effortless</em>
+              <em className="font-accent text-[#FF5F15] not-italic">effortless</em>
             </h1>
             <p
               data-split-words

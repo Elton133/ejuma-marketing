@@ -25,7 +25,7 @@ export function RotatingTrade() {
   return (
     <span
       ref={wordRef}
-      className="inline-block border-r-[.08em] border-[#FF5F15] pr-[.06em] text-[#FF5F15]"
+      className="font-accent inline-block border-r-[.08em] border-[#FF5F15] pr-[.06em] text-[#FF5F15]"
     >
       {TRADES[0]}
     </span>

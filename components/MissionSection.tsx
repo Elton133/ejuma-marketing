@@ -11,7 +11,7 @@ export function MissionSection() {
           </p>
           <h2 className="font-heading text-[clamp(1.75rem,4vw,3.25rem)] leading-[1.1]">
             Access plumbers, electricians, masons, and more -{" "}
-            <em className="text-[#FF5F15] not-italic">all in one place </em>
+            <em className="font-accent text-[#FF5F15] not-italic">all in one place </em>
             with flexible booking for how, where, and when you need work done.
           </h2>
         </div>
