@@ -103,7 +103,7 @@ export function Features() {
             <MicroLabel light>For customers</MicroLabel>
             <h2 data-reveal-item className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
               Everything you need,{" "}
-              <span className="text-[#FF5F15]">right in your pocket</span>
+              <span className="font-accent text-[#FF5F15]">right in your pocket</span>
             </h2>
             <p data-reveal-item className="mt-4 max-w-xl text-base leading-relaxed text-black/55 md:text-lg">
               From finding the right specialist to tracking their arrival —
@@ -184,9 +184,9 @@ export function Features() {
           <MicroLabel>For specialists</MicroLabel>
           <h2 data-reveal className="mt-3 max-w-2xl text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
             Get{" "}
-            <em className="text-[#FF5F15] not-italic">verified</em>, get{" "}
-            <em className="text-[#FF5F15] not-italic">discovered</em> and{" "}
-            <em className="text-[#FF5F15] not-italic">earn</em>
+            <em className="font-accent text-[#FF5F15] not-italic">verified</em>, get{" "}
+            <em className="font-accent text-[#FF5F15] not-italic">discovered</em> and{" "}
+            <em className="font-accent text-[#FF5F15] not-italic">earn</em>
           </h2>
           <p data-reveal className="mt-4 max-w-xl text-white/60">
           Set up your profile once, join the ecosystem and start earning. 

@@ -15,7 +15,7 @@ export function Hero() {
               className="text-[clamp(2.5rem,6vw,4.75rem)] font-semibold leading-[1.02] tracking-tight"
             >
               Engineering{" "}
-              <em className="text-[#FF5F15] not-italic">expertise</em> for
+              <em className="font-accent text-[#FF5F15] not-italic">expertise</em> for
               everyday problems.
             </h1>
 
