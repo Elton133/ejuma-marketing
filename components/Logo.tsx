@@ -24,8 +24,8 @@ export function Logo({
 
   return (
     <Link href="/" className={`group flex items-center gap-2 ${className}`}>
-      <span className={`${currentSize.text} font-normal tracking-tight text-white`}>
-        beag<span className="relative inline-block text-white">
+      <span className={`${currentSize.text} font-normal tracking-tight text-current`}>
+        beag<span className="relative inline-block">
           ine
           <svg
             className="absolute left-[8%] top-[75%] h-[12px] w-[92%] overflow-visible text-[#FF5F15]"

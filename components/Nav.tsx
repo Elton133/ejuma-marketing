@@ -20,11 +20,16 @@ export function Nav() {
 
   return (
     <>
-    <header className="fixed inset-x-0 top-0 z-50 bg-transparent pt-[env(safe-area-inset-top)]">
-      <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
-        <div className="flex shrink-0 items-center mix-blend-difference text-white" onClick={() => setOpen(false)}>
+    {/* Blend this fixed layer directly with the page, outside the header stacking context. */}
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-[51] pt-[env(safe-area-inset-top)] text-white mix-blend-difference">
+      <div className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
+        <div className="pointer-events-auto flex h-11 shrink-0 items-center" onClick={() => setOpen(false)}>
           <Logo size="md" />
         </div>
+      </div>
+    </div>
+    <header className="fixed inset-x-0 top-0 z-50 bg-transparent pt-[env(safe-area-inset-top)]">
+      <nav className="mx-auto flex max-w-[1440px] items-center px-6 py-4 md:px-10 lg:px-14">
 
         <div className="ml-auto flex items-center gap-5 md:gap-8">
           <div className="hidden items-center gap-6 lg:flex mix-blend-difference text-white">
