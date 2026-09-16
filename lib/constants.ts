@@ -106,6 +106,7 @@ export const SITE_LINK_GROUPS = [
     title: "Company",
     links: [
       { label: "About Beagine", href: "/about" },
+      { label: "The Beagine Project", href: "/project" },
       { label: "Engineering ecosystem", href: "/ecosystem" },
       { label: "Leadership", href: "/leadership" },
       { label: "Our mission", href: "/#mission" },
