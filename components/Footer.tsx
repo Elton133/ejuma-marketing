@@ -90,7 +90,6 @@ export function Footer() {
       })}
     </div>
   </div>
-</div>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <Logo size="lg" withBeaver={false} />
