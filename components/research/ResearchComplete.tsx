@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { WAITLIST_PATH } from "@/lib/research-questions";
+import { RESEARCH_PATH, WAITLIST_PATH } from "@/lib/research-questions";
 import { SurveyShareBlock } from "./SurveyShareBlock";
 import { MicroLabel } from "../MicroLabel";
 
@@ -24,7 +24,12 @@ export function ResearchComplete() {
           below.
         </p>
 
-        <SurveyShareBlock sharePath={WAITLIST_PATH} />
+        <SurveyShareBlock
+          sharePath={RESEARCH_PATH}
+          title="Share the research survey"
+          description="Know someone whose experience could help us? Send them the link or QR code."
+          qrLabel="Scan to take the survey"
+        />
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Link

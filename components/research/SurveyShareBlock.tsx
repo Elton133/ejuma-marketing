@@ -10,10 +10,12 @@ export function SurveyShareBlock({
   sharePath,
   title = "Share with others",
   description = "Know someone who should join? Send them the link or QR code.",
+  qrLabel = "Scan to open",
 }: {
   sharePath: string;
   title?: string;
   description?: string;
+  qrLabel?: string;
 }) {
   const [copied, setCopied] = useState(false);
   const origin = useSyncExternalStore(
@@ -63,13 +65,13 @@ export function SurveyShareBlock({
         <div className="mt-8 flex flex-col items-center border-t border-white/10 pt-8 sm:items-start">
           <Image
             src={qrSrc}
-            alt="QR code to join waitlist"
+            alt={`QR code: ${qrLabel}`}
             width={180}
             height={180}
             className="rounded-xl bg-white p-2"
             unoptimized
           />
-          <p className="mt-3 text-sm text-white/55">Scan to join the waitlist</p>
+          <p className="mt-3 text-sm text-white/55">{qrLabel}</p>
         </div>
       )}
     </div>

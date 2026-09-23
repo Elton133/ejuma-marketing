@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import posthog from "posthog-js";
 import {
   getResearchQuestions,
   getResearchTitle,
   RESEARCH_PATH,
   type ResearchRole,
 } from "@/lib/research-questions";
+import { getSupabaseClient } from "@/lib/supabase";
 import { MicroLabel } from "../MicroLabel";
 
 const inputClass =
@@ -21,6 +23,8 @@ export function ResearchForm({ role }: { role: ResearchRole }) {
     Record<string, string | { answer: "Other"; other: string }>
   >({});
   const [otherValues, setOtherValues] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
 
   const setAnswer = (id: string, value: string) => {
     if (value === "Other") {
@@ -41,11 +45,36 @@ export function ResearchForm({ role }: { role: ResearchRole }) {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: send to API / database when backend is ready
-    console.info("Research submission", { role, answers });
-    router.push(`${RESEARCH_PATH}/complete?role=${role}`);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmissionError("");
+
+    try {
+      const ageRange = answers.age_range;
+      const { error } = await getSupabaseClient().from("submissions").insert({
+        type: "research",
+        role: role === "user" ? "customer" : "worker",
+        age_range: typeof ageRange === "string" ? ageRange : null,
+        waitlist: {},
+        answers,
+      });
+
+      if (error) throw error;
+
+      posthog.capture("research_survey_submitted", { role });
+      router.push(`${RESEARCH_PATH}/complete?role=${role}`);
+    } catch (error) {
+      console.error("Supabase error:", error);
+      posthog.captureException(error);
+      setSubmissionError(
+        "We couldn't save your answers. Check your connection and try again — your answers are still here."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -133,10 +162,25 @@ export function ResearchForm({ role }: { role: ResearchRole }) {
 
           <button
             type="submit"
-            className="w-full rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+            disabled={isSubmitting}
+            className="flex w-full items-center justify-center gap-2 rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-90 disabled:cursor-wait disabled:opacity-70"
           >
-            Submit answers
+            {isSubmitting && (
+              <span
+                className="h-4 w-4 animate-spin rounded-full border-2 border-black/25 border-t-black"
+                aria-hidden
+              />
+            )}
+            {isSubmitting ? "Submitting…" : "Submit answers"}
           </button>
+
+          <div className="min-h-6" aria-live="polite" aria-atomic="true">
+            {submissionError ? (
+              <p className="text-center text-sm text-red-300" role="alert">
+                {submissionError}
+              </p>
+            ) : null}
+          </div>
         </form>
       </div>
     </section>
