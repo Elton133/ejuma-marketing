@@ -32,7 +32,7 @@ const LEADERS: Leader[] = [
     name: "Leslie Paul Ajayi",
     title: "CTO · Chief Technology Officer",
     bio: "Leslie leads Engine’s engineering team and builds the systems behind the platform. He has a talent for spotting the detail hiding inside the bigger problem—and making sure it gets solved properly. Backend engineering is his territory, and he takes that responsibility seriously.",
-    imageUrl: "/landing3.png",
+    imageUrl: "/leslie.jpeg",
   },
   {
     id: "joyce-elli",
@@ -67,7 +67,7 @@ const LEADERS: Leader[] = [
     name: "Marietha Appiah",
     title: "Head of Marketing",
     bio: "Marietha Appiah leads Beagine’s marketing, bringing together experience in marketing and people relations with a natural instinct for understanding audiences. She asks a lot of questions, knows how to turn ideas into stories, and isn't afraid of being the face of one either.",
-    imageUrl: "/landing8.png",
+    imageUrl: "/marrieta.jpeg",
   },
   {
     id: "harry",
