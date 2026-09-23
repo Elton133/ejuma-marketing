@@ -8,7 +8,8 @@ type Leader = {
   name: string;
   title: string;
   bio: string;
-  imageUrl: string;
+  imageUrl?: string;
+  imagePosition?: string;
 };
 
 const LEADERS: Leader[] = [
@@ -32,6 +33,22 @@ const LEADERS: Leader[] = [
     title: "CTO · Chief Technology Officer",
     bio: "Leslie leads Engine’s engineering team and builds the systems behind the platform. He has a talent for spotting the detail hiding inside the bigger problem—and making sure it gets solved properly. Backend engineering is his territory, and he takes that responsibility seriously.",
     imageUrl: "/leslie.png",
+  },
+  {
+    id: "samuel-susukpor",
+    name: "Samuel Susukpor",
+    title: "Engineering Operations Manager",
+    bio: "Sam brings together his experience in civil engineering and architecture to keep Engine’s engineering operations moving smoothly. He’s practical, detail-minded, and brings a good amount of fun to the work—proof that you don’t need to be the tallest person in the room to make a big impact.",
+    imageUrl: "/samuel.jpg",
+    imagePosition: "center 36%",
+  },
+  {
+    id: "theresah-terabo-amana",
+    name: "Theresah Terabo Amana",
+    title: "Assistant Engineering Operations Manager",
+    bio: "Smart, energetic, and always ready to get involved. Theresah brings her marine engineering background to Engine’s engineering operations, helping keep specialists, vendors, and technical work moving in the right direction. She’s sharp, naturally curious, and brings enough energy to make even the serious engineering work a little more fun.",
+    imageUrl: "/theresah.jpg",
+    imagePosition: "center 35%",
   },
   {
     id: "joyce-elli",
@@ -101,13 +118,23 @@ export function TeamGrid() {
                   aria-pressed={selectedId === leader.id}
                   style={{ zIndex: selectedId === leader.id ? 20 : index + 1 }}
                 >
-                  <Image
-                    src={leader.imageUrl}
-                    alt={`Portrait of ${leader.name}`}
-                    fill
-                    sizes="(min-width: 768px) 96px, 80px"
-                    className="pointer-events-none object-cover"
-                  />
+                  {leader.imageUrl ? (
+                    <Image
+                      src={leader.imageUrl}
+                      alt={`Portrait of ${leader.name}`}
+                      fill
+                      sizes="(min-width: 768px) 96px, 80px"
+                      className="pointer-events-none object-cover"
+                      style={{ objectPosition: leader.imagePosition ?? "center" }}
+                    />
+                  ) : (
+                    <span
+                      className="flex h-full w-full items-center justify-center bg-[#FF5F15]/15 text-lg font-bold tracking-tight text-[#C83F00] md:text-xl"
+                      aria-hidden
+                    >
+                      {getInitials(leader.name)}
+                    </span>
+                  )}
                 </button>
               ))}
             </div>
@@ -132,4 +159,13 @@ export function TeamGrid() {
 
     </section>
   );
+}
+
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 }
