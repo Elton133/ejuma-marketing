@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useState } from "react";
 
 type Leader = {
   id: string;
@@ -32,7 +31,7 @@ const LEADERS: Leader[] = [
     name: "Leslie Paul Ajayi",
     title: "CTO · Chief Technology Officer",
     bio: "Leslie leads Engine’s engineering team and builds the systems behind the platform. He has a talent for spotting the detail hiding inside the bigger problem—and making sure it gets solved properly. Backend engineering is his territory, and he takes that responsibility seriously.",
-    imageUrl: "/leslie.jpeg",
+    imageUrl: "/leslie.png",
   },
   {
     id: "joyce-elli",
@@ -80,25 +79,7 @@ const LEADERS: Leader[] = [
 
 export function TeamGrid() {
   const [selectedId, setSelectedId] = useState(LEADERS[0].id);
-  const [modalLeader, setModalLeader] = useState<Leader | null>(null);
   const selectedLeader = LEADERS.find((leader) => leader.id === selectedId) ?? LEADERS[0];
-
-  useEffect(() => {
-    if (!modalLeader) return;
-
-    const previousOverflow = document.body.style.overflow;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setModalLeader(null);
-    };
-
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", closeOnEscape);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", closeOnEscape);
-    };
-  }, [modalLeader]);
 
   return (
     <section className="w-full bg-[#fafafa]">
@@ -110,16 +91,13 @@ export function TeamGrid() {
                 <button
                   key={leader.id}
                   type="button"
-                  onClick={() => {
-                    setSelectedId(leader.id);
-                    setModalLeader(leader);
-                  }}
+                  onClick={() => setSelectedId(leader.id)}
                   className={`group relative h-20 w-20 shrink-0 touch-manipulation overflow-hidden rounded-full border-4 border-[#fafafa] bg-zinc-200 transition-all duration-300 md:h-24 md:w-24 ${
                     selectedId === leader.id
                       ? "z-20 ring-2 ring-[#FF5F15] ring-offset-2 ring-offset-[#fafafa]"
                       : "z-10 hover:z-30 hover:-translate-y-2 hover:shadow-xl"
                   } focus-visible:z-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF5F15]`}
-                  aria-label={`View ${leader.name}’s full profile`}
+                  aria-label={`View ${leader.name}’s profile`}
                   aria-pressed={selectedId === leader.id}
                   style={{ zIndex: selectedId === leader.id ? 20 : index + 1 }}
                 >
@@ -152,56 +130,6 @@ export function TeamGrid() {
         </div>
       </div>
 
-      {modalLeader ? createPortal(
-        <div
-          className="fixed inset-0 z-[10000] flex items-end justify-center overflow-y-auto overscroll-contain bg-black/80 p-0 backdrop-blur-sm sm:items-center sm:p-6"
-          role="presentation"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) setModalLeader(null);
-          }}
-        >
-          <section
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="leader-dialog-title"
-            className="relative grid max-h-[92dvh] w-full max-w-5xl overflow-y-auto rounded-t-[2rem] bg-[#111] text-white shadow-2xl sm:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)] sm:rounded-[2rem]"
-          >
-            <button
-              type="button"
-              onClick={() => setModalLeader(null)}
-              className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/65 text-xl text-white backdrop-blur transition hover:bg-[#FF5F15] hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              aria-label="Close profile"
-              autoFocus
-            >
-              ×
-            </button>
-
-            <div className="relative min-h-[52dvh] bg-black sm:min-h-[620px]">
-              <Image
-                src={modalLeader.imageUrl}
-                alt={`Full portrait of ${modalLeader.name}`}
-                fill
-                sizes="(min-width: 640px) 55vw, 100vw"
-                className="object-contain"
-                priority
-              />
-            </div>
-
-            <div className="flex flex-col justify-end p-7 sm:p-10 lg:p-12">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#FF7B3D]">
-                Meet the team
-              </p>
-              <h3 id="leader-dialog-title" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-                {modalLeader.name}
-              </h3>
-              <p className="mt-2 font-semibold text-[#FF7B3D]">{modalLeader.title}</p>
-              <p className="mt-7 text-base leading-relaxed text-white/65 sm:text-lg">
-                {modalLeader.bio}
-              </p>
-            </div>
-          </section>
-        </div>
-        , document.body) : null}
     </section>
   );
 }
