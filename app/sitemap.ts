@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     })),
     { url: `${base}/waitlist`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/research`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/install`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     ...tradeRoutes,
   ];

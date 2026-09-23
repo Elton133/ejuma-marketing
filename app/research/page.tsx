@@ -1,6 +1,20 @@
-import { redirect } from "next/navigation";
-import { WAITLIST_PATH } from "@/lib/research-questions";
+import type { Metadata } from "next";
+import { Footer } from "@/components/Footer";
+import { ResearchLanding } from "@/components/research/ResearchLanding";
+
+export const metadata: Metadata = {
+  title: "Research",
+  description:
+    "Help Beagine build a better way for customers and skilled specialists to find each other.",
+};
 
 export default function ResearchPage() {
-  redirect(WAITLIST_PATH);
+  return (
+    <>
+      <main>
+        <ResearchLanding />
+      </main>
+      <Footer />
+    </>
+  );
 }
