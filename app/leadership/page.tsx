@@ -53,7 +53,7 @@ export default function LeadershipPage() {
             </div>
             <div className="flex-1">
               <p data-split-words className="text-lg leading-relaxed text-black/70 md:text-xl">
-                With deep experience spanning technology, trades, operations, and product, they&apos;re united by one mission — to build the infrastructure that makes finding and hiring skilled specialists effortless. They lead teams worldwide in transforming how millions of people manage local engineering services and commercial projects.
+                With deep experience spanning technology, trades, operations, and product, they&apos;re united by one mission - to build the infrastructure that makes finding and hiring skilled specialists effortless. They lead teams worldwide in transforming how millions of people manage local engineering services and commercial projects.
               </p>
             </div>
           </div>
