@@ -72,13 +72,6 @@ const LEADERS: Leader[] = [
     imageUrl: "/irene.jpg",
   },
   {
-    id: "yayra-sunnu",
-    name: "Yayra Sunnu",
-    title: "Head of Community",
-    bio: "Yayra looks after the people who make Beagine what it is - customers, specialists, vendors, and everyone in between. With experience in customer relationships, security programmes, and policy, she brings structure to the community while keeping the human side firmly in focus. And fortunately, she’s one of the easier people on the team to talk to.",
-    imageUrl: "/yayra.jpg",
-  },
-  {
     id: "marietha-appiah",
     name: "Marietha Appiah",
     title: "Head of Marketing",
