@@ -43,14 +43,6 @@ const LEADERS: Leader[] = [
     imagePosition: "center 36%",
   },
   {
-    id: "theresah-terabo-amana",
-    name: "Theresah Terabo Amana",
-    title: "Assistant Engineering Operations Manager",
-    bio: "Smart, energetic, and always ready to get involved. Theresah brings her marine engineering background to Beagine’s engineering operations, helping keep specialists, vendors, and technical work moving in the right direction. She’s sharp, naturally curious, and brings enough energy to make even the serious engineering work a little more fun.",
-    imageUrl: "/theresah.jpg",
-    imagePosition: "center 35%",
-  },
-  {
     id: "joyce-elli",
     name: "Joyce Elli",
     title: "Head of Product",
@@ -70,6 +62,13 @@ const LEADERS: Leader[] = [
     title: "Head of Research",
     bio: "Irene leads research at Beagine, turning questions into insight and insight into better decisions. With years of research experience, she has a talent for looking past the obvious and finding the detail that changes the picture. Quiet, thoughtful, and rarely willing to accept the first answer.",
     imageUrl: "/irene.jpg",
+  },
+  {
+    id: "yayra-sunnu",
+    name: "Yayra Sunnu",
+    title: "Head of Community",
+    bio: "Yayra looks after the people who make Beagine what it is - customers, specialists, vendors, and everyone in between. With experience in customer relationships, security programmes, and policy, she brings structure to the community while keeping the human side firmly in focus. And fortunately, she’s one of the easier people on the team to talk to.",
+    imageUrl: "/yayra.jpg",
   },
   {
     id: "marietha-appiah",
