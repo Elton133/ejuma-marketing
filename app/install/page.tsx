@@ -5,7 +5,7 @@ import { InstallSection } from "@/components/InstallSection";
 export const metadata: Metadata = {
   title: "Install the app",
   description:
-    "Download the Beagine app for iOS and Android. Available for both customers and specialists on the App Store and Google Play.",
+    "Download Beagine (for customers) and Beagine Pro (for specialists) on the App Store. Android is coming soon.",
 };
 
 export default function InstallPage() {

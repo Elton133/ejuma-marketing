@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { APP_URL, COMING_SOON_PATH } from "@/lib/constants";
+import { APP_STORE_CUSTOMER_URL, APP_STORE_PRO_URL, WAITLIST_PATH } from "@/lib/constants";
 import { MicroLabel } from "./MicroLabel";
 import posthog from "posthog-js";
 
-const QR_IMAGE = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(APP_URL)}&bgcolor=ffffff&color=000000`;
+const QR_IMAGE = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(APP_STORE_CUSTOMER_URL)}&bgcolor=ffffff&color=000000`;
 
 export function InstallSection({ className = "" }: { className?: string }) {
   return (
@@ -20,22 +20,22 @@ export function InstallSection({ className = "" }: { className?: string }) {
           Get Beagine on your phone
         </h2>
         <p className="mt-4 max-w-xl text-white/60">
-          Download the Beagine app for iOS or Android. Available now on the App Store and Google Play.
+          Live now on iPhone. Android is on its way: join the list and we’ll tell you the day it’s out.
         </p>
 
         {/* Customer + worker cards */}
         <div className="mt-12 grid gap-4 md:grid-cols-2 md:gap-6">
           <InstallCard
-            title="For customers"
-            description="Book faster, track jobs, and get updates when your specialist is on the way."
-            appleHref={COMING_SOON_PATH}
-            googleHref={COMING_SOON_PATH}
+            title="Beagine"
+            audience="For customers"
+            description="Book a verified specialist, track them on the way, and pay safely in the app."
+            appleHref={APP_STORE_CUSTOMER_URL}
           />
           <InstallCard
-            title="For workers"
-            description="Dashboard, job alerts, and payouts — one tap from your home screen."
-            appleHref={COMING_SOON_PATH}
-            googleHref={COMING_SOON_PATH}
+            title="Beagine Pro"
+            audience="For specialists"
+            description="Get job requests near you, set your own prices, and get paid straight to MoMo."
+            appleHref={APP_STORE_PRO_URL}
           />
         </div>
 
@@ -68,14 +68,16 @@ export function InstallSection({ className = "" }: { className?: string }) {
               unoptimized
             />
             <p className="mt-4 text-center text-sm font-medium text-white">
-              Scan to download
+              Scan with your iPhone camera
             </p>
-            <Link
-              href={COMING_SOON_PATH}
+            <a
+              href={APP_STORE_CUSTOMER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-2 text-sm text-[#FF5F15] hover:underline"
             >
-              Scan to install
-            </Link>
+              Or open the App Store
+            </a>
           </div>
         </div>
       </div>
@@ -85,35 +87,38 @@ export function InstallSection({ className = "" }: { className?: string }) {
 
 function InstallCard({
   title,
+  audience,
   description,
   appleHref,
-  googleHref,
 }: {
   title: string;
+  audience: string;
   description: string;
   appleHref: string;
-  googleHref: string;
 }) {
   return (
     <div className="glass-panel flex flex-col rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 md:p-8">
-      <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
+      <p className="text-xs font-semibold uppercase tracking-wider text-[#FF5F15]">{audience}</p>
+      <h3 className="mt-1 text-xl font-semibold tracking-tight">{title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">
         {description}
       </p>
       <div className="mt-6 flex flex-wrap gap-3">
-        <Link
+        <a
           href={appleHref}
-          className="btn-premium inline-flex rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
-          onClick={() => posthog.capture("app_install_clicked", { store: "app_store", audience: title })}
-        >
-          App Store
-        </Link>
-        <Link
-          href={googleHref}
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-premium inline-flex rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black hover:bg-[#FF7335]"
-          onClick={() => posthog.capture("app_install_clicked", { store: "google_play", audience: title })}
+          onClick={() => posthog.capture("app_install_clicked", { store: "app_store", audience })}
         >
-          Google Play
+          Download on the App Store
+        </a>
+        <Link
+          href={WAITLIST_PATH}
+          className="btn-premium inline-flex rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
+          onClick={() => posthog.capture("android_notify_clicked", { audience })}
+        >
+          Android: notify me
         </Link>
       </div>
     </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
-import { HERO_IMAGES, WAITLIST_PATH } from "@/lib/constants";
+import { HERO_IMAGES, INSTALL_PATH, WAITLIST_PATH } from "@/lib/constants";
 import { MicroLabel } from "@/components/MicroLabel";
 import { TiltCard } from "@/components/TiltCard";
 
@@ -109,10 +109,10 @@ export default function AboutPage() {
               </p>
                <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
               <Link
-                href={WAITLIST_PATH}
+                href={INSTALL_PATH}
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
-                Join our mission
+                Get the app
               </Link>
             </div>
             </div>
@@ -179,7 +179,7 @@ export default function AboutPage() {
                   <h3 className="mb-4 text-2xl font-bold tracking-tight">Safety</h3>
                   <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
               <Link
-                href={WAITLIST_PATH}
+                href="/safety"
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
                 Safety at Beagine

@@ -6,7 +6,7 @@ import { WaitlistSection } from "@/components/WaitlistSection";
 import { TrustSection } from "@/components/TrustSection";
 import { MicroLabel } from "@/components/MicroLabel";
 import Link from "next/link";
-import { WAITLIST_PATH, INSTALL_PATH } from "@/lib/constants";
+import { APP_STORE_CUSTOMER_URL, WAITLIST_PATH } from "@/lib/constants";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RotatingTrade } from "@/components/RotatingTrade";
 
@@ -70,17 +70,19 @@ export default async function TradeLandingPage({
                 : <>Skip the hassle of asking around. Find, book, and track a verified {originalTrade} directly from your phone.</>}
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href={WAITLIST_PATH}
+              <a
+                href={APP_STORE_CUSTOMER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-14 items-center justify-center rounded-full bg-[#FF5F15] px-8 text-base font-semibold text-black transition-opacity hover:opacity-90"
               >
-                Join the waitlist
-              </Link>
+                Download on the App Store
+              </a>
               <Link
-                href={INSTALL_PATH}
+                href={WAITLIST_PATH}
                 className="flex h-14 items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 text-base font-semibold text-white transition-colors hover:bg-white/10"
               >
-                Download App
+                On Android? Get notified
               </Link>
             </div>
           </div>

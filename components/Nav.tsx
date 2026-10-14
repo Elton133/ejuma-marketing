@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { COMING_SOON_PATH, NAV_LINKS, WAITLIST_PATH } from "@/lib/constants";
+import { APP_STORE_PRO_URL, INSTALL_PATH, NAV_LINKS } from "@/lib/constants";
 import { MobileNav } from "./MobileNav";
 import { Logo } from "./Logo";
 
@@ -42,19 +42,21 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href={COMING_SOON_PATH}
+            <a
+              href={APP_STORE_PRO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm font-medium transition-opacity hover:opacity-70"
             >
-              Open app
-            </Link>
+              Beagine Pro
+            </a>
           </div>
 
           <Link
-            href={WAITLIST_PATH}
+            href={INSTALL_PATH}
             className="hidden rounded-full bg-[#FF5F15] px-5 py-2 text-sm font-semibold text-black transition-opacity hover:opacity-90 sm:inline-flex"
           >
-            Join waitlist
+            Get the app
           </Link>
 
           <button

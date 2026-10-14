@@ -5,9 +5,9 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import {
-  COMING_SOON_PATH,
+  APP_STORE_PRO_URL,
+  INSTALL_PATH,
   SITE_LINK_GROUPS,
-  WAITLIST_PATH,
 } from "@/lib/constants";
 import { prefersReducedMotion } from "@/lib/motion/register-gsap";
 
@@ -230,19 +230,21 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               ))}
             </div>
             <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:gap-3">
-              <Link
-                href={WAITLIST_PATH}
+              <a
+                href={APP_STORE_PRO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={onClose}
                 className="rounded-full border border-white/15 bg-white px-4 py-2.5 text-center text-sm font-semibold text-black sm:px-5"
               >
-                Join waitlist
-              </Link>
+                Beagine Pro
+              </a>
               <Link
-                href={COMING_SOON_PATH}
+                href={INSTALL_PATH}
                 onClick={onClose}
                 className="rounded-full bg-[#FF5F15] px-4 py-2.5 text-center text-sm font-semibold text-black sm:px-5"
               >
-                Open app
+                Get the app
               </Link>
             </div>
           </div>

@@ -22,7 +22,7 @@ export default function Home() {
             url: "https://beagine.com",
             logo: "https://beagine.com/logo.png",
             description:
-              "Find, book, and track verified engineering professionals globally. Join the waitlist or install the app.",
+              "Find, book, and track verified engineering professionals. Get the Beagine app on the App Store.",
             sameAs: [
               "https://www.linkedin.com/company/beagine-app/",
               "https://www.instagram.com/beagine.hq?igsh=MWtjNW4zY3kzczZlMQ==",

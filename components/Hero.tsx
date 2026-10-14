@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_URL, WAITLIST_PATH } from "@/lib/constants";
+import { APP_STORE_CUSTOMER_URL, APP_STORE_PRO_URL, WAITLIST_PATH } from "@/lib/constants";
 import { HeroBackground } from "./HeroBackground";
 
 export function Hero() {
@@ -30,21 +30,29 @@ export function Hero() {
               data-hero-animate
               className="mt-8 flex flex-wrap gap-3 md:mt-10"
             >
-              <Link
-                href={WAITLIST_PATH}
+              <a
+                href={APP_STORE_CUSTOMER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
-                Join the waitlist
-              </Link>
-              <Link
-                href={APP_URL}
+                Download on the App Store
+              </a>
+              <a
+                href={APP_STORE_PRO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/15 md:h-[52px] md:px-8 md:text-base"
               >
-                Open app
-              </Link>
+                I&apos;m a specialist
+              </a>
             </div>
+            <p data-hero-animate className="mt-4 text-sm text-white/60">
+              Live now on iPhone.{" "}
+              <Link href={WAITLIST_PATH} className="text-white underline underline-offset-4 hover:text-[#FF7335]">
+                On Android? Get notified
+              </Link>
+            </p>
           </div>
         </div>
       </div>
