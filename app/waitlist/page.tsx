@@ -3,9 +3,9 @@ import { Footer } from "@/components/Footer";
 import { WaitlistSection } from "@/components/WaitlistSection";
 
 export const metadata: Metadata = {
-  title: "Join the waitlist",
+  title: "Get notified",
   description:
-    "Be first when Beagine opens in your area. Join the waitlist for early access in Tema, Dawhenya, Prampram and nearby.",
+    "Beagine is live on iPhone. On Android, or outside our areas? Leave your details and we’ll tell you as soon as it’s ready for you.",
 };
 
 export default function WaitlistPage() {

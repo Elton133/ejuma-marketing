@@ -104,12 +104,12 @@ export function WaitlistSection() {
       <div className="mx-auto max-w-2xl">
         {!isComplete ? (
           <AnimatedStep stepKey="waitlist-form">
-            <MicroLabel>Early access</MicroLabel>
+            <MicroLabel>Get notified</MicroLabel>
             <h1 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
-              Join the waitlist
+              Android is on its way
             </h1>
             <p className="mt-4 max-w-lg text-white/65">
-              Be among the first to use Beagine when we open in your area.
+              Beagine is live on iPhone now. On Android, or not in our area yet? Leave your details and we&apos;ll tell you the day it&apos;s ready for you.
             </p>
 
             <form
