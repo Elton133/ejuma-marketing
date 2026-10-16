@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import { MicroLabel } from "@/components/MicroLabel";
-import { APP_STORE_CUSTOMER_URL, HERO_IMAGES } from "@/lib/constants";
+import { HERO_IMAGES, WAITLIST_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Features",
@@ -50,14 +50,12 @@ export default function FeaturesPage() {
               feature is built for how people actually get things done.
             </p>
             <div data-hero-animate className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={APP_STORE_CUSTOMER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={WAITLIST_PATH}
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
-                Download on the App Store
-              </a>
+                Join the waitlist
+              </Link>
             </div>
           </div>
         </section>

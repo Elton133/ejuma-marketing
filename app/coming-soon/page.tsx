@@ -46,7 +46,7 @@ export default function ComingSoonPage() {
             </h1>
             
             <p data-reveal-item className="mt-6 max-w-md text-[17px] leading-relaxed text-white/60">
-              This feature is currently in active development. Our engineering team is working hard to bring it to you very soon on the App Store and Google Play.
+              This feature is currently in active development. Our engineering team is working hard to bring it to you very soon.
             </p>
 
             <div data-reveal-item className="mt-10 flex w-full flex-col items-center gap-6">

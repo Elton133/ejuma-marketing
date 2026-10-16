@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s — Beagine",
   },
   description:
-    "Find, book, and track verified engineering professionals. Get the Beagine app on the App Store.",
+    "Find, book, and track verified engineering professionals globally. Join the waitlist.",
   keywords: ["engineering", "specialists", "trades", "booking", "Beagine", "home services", "contractors", "verified professionals"],
   openGraph: {
     title: "Beagine — The Engineering Ecosystem",
