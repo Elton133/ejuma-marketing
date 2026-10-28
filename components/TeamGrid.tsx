@@ -84,6 +84,20 @@ const LEADERS: Leader[] = [
     bio: "A marketer with an engineer’s attention to detail. Harry brings a technical background to marketing and social media, giving him a slightly different way of looking at content, campaigns, and the details that make them work. Methodical, curious, and always looking for the better version, he makes sure Beagine has something worth saying - and says it well.",
     imageUrl: "/harry.jpg",
   },
+  {
+    id: "james-dorkey",
+    name: "James Dorkey",
+    title: "Head of Growth & New Markets",
+    bio: "James is passionate about growth and development, with a genuine interest in people, ideas, and the issues shaping society. He enjoys engaging with people at all levels, researching new ideas, and turning his thoughts into writing that informs and inspires. Calm, curious, and thoughtful. Yes! James is all about Growth.",
+    imageUrl: "/james.jpg",
+  },
+  {
+    id: "prince-kofi-gatsey",
+    name: "Prince Kofi Gatsey",
+    title: "Quality Assurance Engineer",
+    bio: "Prince Kofi Gatsey approaches quality with a curious mind and a keen eye for detail. He takes the time to look beyond the obvious, often catching the little things others miss. Thoughtful in his approach, he brings good intuition and fresh ideas to the table, always looking for ways to make products better. Whether he’s testing features, exploring new ideas, or writing code when needed, Prince is driven by a desire to understand more and keep learning.",
+    imageUrl: "/prince.jpg",
+  },
 ];
 
 export function TeamGrid() {
