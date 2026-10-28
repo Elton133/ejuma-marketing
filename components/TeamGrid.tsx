@@ -35,14 +35,6 @@ const LEADERS: Leader[] = [
     imageUrl: "/leslie.png",
   },
   {
-    id: "samuel-susukpor",
-    name: "Samuel Susukpor",
-    title: "Engineering Operations Manager",
-    bio: "Sam brings together his experience in civil engineering and architecture to keep Beagine’s engineering operations moving smoothly. He’s practical, detail-minded, and brings a good amount of fun to the work - proof that you don’t need to be the tallest person in the room to make a big impact.",
-    imageUrl: "/samuel.jpg",
-    imagePosition: "center 36%",
-  },
-  {
     id: "joyce-elli",
     name: "Joyce Elli",
     title: "Head of Product",
