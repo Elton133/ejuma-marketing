@@ -1,4 +1,3 @@
-import { APP_STORE_PRO_URL, WAITLIST_PATH } from "@/lib/constants";
 import type { StoryFeature, StoryStat } from "@/components/ProductStoryPage";
 import type { ReactNode } from "react";
 
@@ -12,8 +11,6 @@ export type ProductStory = {
   closingTitle: string;
   closingBody: string;
   primaryLabel: string;
-  /** Where the main button goes: an App Store page, or the waitlist for apps not out yet. Defaults to the customer app. */
-  primaryHref?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
   heroImage?: string;
@@ -32,7 +29,7 @@ export const customerStory: ProductStory = {
     { eyebrow: "Complete with confidence", title: "A clear record after the work is done", description: "Review completion proof, keep receipts and service records, report issues and rate the experience without losing the history of what happened.", points: ["Before-and-after proof", "Receipts and reports", "Verified reviews", "Spotlight sharing controls"], visualLabel: "Completion and receipt", image: "/images/products/customers/completion-and-receipt1.png" },
     { eyebrow: "Everything around the job", title: "Services and supplies in one ecosystem", description: "Browse local shops, order products and materials, manage your cart and follow marketplace orders alongside the service that created the need.", points: ["Nearby shops", "Product search", "Cart and checkout", "Order tracking"], visualLabel: "Customer marketplace" },
   ],
-  closingTitle: "A better way to get important work done.", closingBody: "Beagine brings discovery, trust, communication, safety and commerce into one thoughtfully designed customer journey.", primaryLabel: "Get the Beagine app",
+  closingTitle: "A better way to get important work done.", closingBody: "Beagine brings discovery, trust, communication, safety and commerce into one thoughtfully designed customer journey.", primaryLabel: "Join the waitlist",
 };
 
 export const specialistStory: ProductStory = {
@@ -48,7 +45,7 @@ export const specialistStory: ProductStory = {
     { eyebrow: "Professional record", title: "Let completed work speak for you", description: "Upload before-and-after evidence, complete a clear checklist and turn verified milestones, reviews and performance into shareable Spotlight cards.", points: ["Completion proof", "Verified portfolio", "Customer reviews", "Shareable achievements"], visualLabel: "Completion proof", image: "/images/products/specialists/completion-proof.png" },
     { eyebrow: "Growth", title: "See the business behind the work", description: "Follow daily and long-term earnings, request payouts and strengthen a verified profile customers can trust before they make contact.", points: ["Earnings overview", "Payout history", "Verified professional profile", "Learning resources"], visualLabel: "Earnings and payouts" },
   ],
-  closingTitle: "Build your career with Beagine, not just the next job.", closingBody: "Beagine helps skilled professionals turn visibility, reliable operations and strong work into lasting professional value.", primaryLabel: "Get Beagine Pro", primaryHref: APP_STORE_PRO_URL, secondaryHref: "/ecosystem", secondaryLabel: "See the ecosystem",
+  closingTitle: "Build your career with Beagine, not just the next job.", closingBody: "Beagine helps skilled professionals turn visibility, reliable operations and strong work into lasting professional value.", primaryLabel: "Join the waitlist", secondaryHref: "/ecosystem", secondaryLabel: "See the ecosystem",
 };
 
 export const vendorStory: ProductStory = {
@@ -64,7 +61,7 @@ export const vendorStory: ProductStory = {
     { eyebrow: "Fulfil", title: "Handle incoming orders with clarity", description: "Review customer orders, understand items and totals, accept work you can fulfil and keep order status organised from the same app.", points: ["Order filters", "Accept or decline", "Order detail", "Recent activity"], visualLabel: "Vendor orders", image: "/images/products/vendors/vendor-orders.png" },
     { eyebrow: "Earn", title: "See what the shop is generating", description: "Monitor sales, available and pending balances, review transactions and request withdrawals directly to MoMo.", points: ["Sales overview", "Available balance", "Payout requests", "Transaction history"], visualLabel: "Wallet and sales" },
   ],
-  closingTitle: "Local supply belongs in the digital service journey.", closingBody: "Vendors become a visible, measurable part of how customers and specialists source what every job needs.", primaryLabel: "Get notified when it’s out", primaryHref: WAITLIST_PATH, secondaryHref: "/marketplace", secondaryLabel: "Explore marketplace",
+  closingTitle: "Local supply belongs in the digital service journey.", closingBody: "Vendors become a visible, measurable part of how customers and specialists source what every job needs.", primaryLabel: "Join the waitlist", secondaryHref: "/marketplace", secondaryLabel: "Explore marketplace",
 };
 
 export const marketplaceStory: ProductStory = {
@@ -78,7 +75,7 @@ export const marketplaceStory: ProductStory = {
     { eyebrow: "Purchase", title: "A straightforward path from product to order", description: "Build a cart, review the order, check out and follow fulfilment through a clear mobile flow.", points: ["Product detail", "Cart", "Checkout", "Order history"], visualLabel: "Cart and checkout", image: "/images/products/marketplace/cart-and-checkout.png" },
     { eyebrow: "Supply", title: "Put vendors where demand already exists", description: "The marketplace connects shops to customers and professionals who are already planning, completing or maintaining real work.", points: ["Vendor storefronts", "Order management", "Sales visibility", "Local reach"], visualLabel: "Vendor order dashboard", image: "/images/products/marketplace/vendor-order-dashboard.png" },
   ],
-  closingTitle: "Commerce that understands the job behind the purchase.", closingBody: "Beagine Marketplace is designed to close the gap between needing skilled work and sourcing what that work requires.", primaryLabel: "Shop in the Beagine app", secondaryHref: "/vendors", secondaryLabel: "Sell on Beagine",
+  closingTitle: "Commerce that understands the job behind the purchase.", closingBody: "Beagine Marketplace is designed to close the gap between needing skilled work and sourcing what that work requires.", primaryLabel: "Join the waitlist", secondaryHref: "/vendors", secondaryLabel: "Sell on Beagine",
 };
 
 export const safetyStory: ProductStory = {
@@ -93,7 +90,7 @@ export const safetyStory: ProductStory = {
     { eyebrow: "Respond", title: "Emergency support when normal flow breaks", description: "SOS tools, live-location sharing and manual emergency contact options give both sides a clearer response path during field work.", points: ["SOS activation", "Live location", "Emergency contacts", "Clear cancellation state"], visualLabel: "SOS and emergency flow", image: "/images/products/safety/sos-and-emergency-flow.png" },
     { eyebrow: "Accountability", title: "Keep evidence and consent attached", description: "Completion proof, scope-change history, receipts, reports and Spotlight permissions create a stronger record without turning private work into public content by default.", points: ["Before-and-after proof", "Scope history", "Reports and disputes", "Sharing consent"], visualLabel: "Completion record" },
   ],
-  closingTitle: "Trust should be designed into the workflow.", closingBody: "Beagine combines prevention, visibility, response and accountability so every role has more context and control.", primaryLabel: "Get the Beagine app", secondaryHref: "/community-standards", secondaryLabel: "Community standards",
+  closingTitle: "Trust should be designed into the workflow.", closingBody: "Beagine combines prevention, visibility, response and accountability so every role has more context and control.", primaryLabel: "Join the waitlist", secondaryHref: "/community-standards", secondaryLabel: "Community standards",
 };
 
 export const ecosystemStory: ProductStory = {
@@ -108,5 +105,5 @@ export const ecosystemStory: ProductStory = {
     { eyebrow: "Vendors", title: "Local supply meets active demand", description: "Shops can digitise products and operations while participating directly in the ecosystem that creates demand for tools and materials.", points: ["Digital storefront", "Product catalogue", "Orders", "Payouts"], visualLabel: "Vendor storefront" },
     { eyebrow: "Community", title: "Every completed job can strengthen the next one", description: "Reviews, Spotlight achievements, referrals, service data and learning turn individual transactions into stronger professional and local-market infrastructure.", points: ["Recognition", "Trust signals", "Organic sharing", "Learning and advancement"], visualLabel: "Spotlight achievement" },
   ],
-  closingTitle: "Infrastructure for the hands-on economy.", closingBody: "The long-term opportunity is bigger than matching supply and demand. It is building the digital layer through which skilled work earns trust, visibility and value.", primaryLabel: "Get the Beagine app", secondaryHref: "/about", secondaryLabel: "About Beagine",
+  closingTitle: "Infrastructure for the hands-on economy.", closingBody: "The long-term opportunity is bigger than matching supply and demand. It is building the digital layer through which skilled work earns trust, visibility and value.", primaryLabel: "Join the waitlist", secondaryHref: "/about", secondaryLabel: "About Beagine",
 };

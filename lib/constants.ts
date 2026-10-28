@@ -8,10 +8,6 @@ export const WAITLIST_PATH = "/waitlist";
 export const INSTALL_PATH = "/install";
 export const COMING_SOON_PATH = "/coming-soon";
 
-/** Live on the App Store (iPhone). Android isn't out yet: the waitlist collects interest. */
-export const APP_STORE_CUSTOMER_URL = "https://apps.apple.com/gh/app/beagine/id6788364908";
-export const APP_STORE_PRO_URL = "https://apps.apple.com/gh/app/beagine-pro/id6788364574";
-
 export const APP_URL = "https://app.beagine.com";
 export const INSTALL_URL = `${APP_URL}/install`;
 export const INSTALL_CUSTOMER = `${APP_URL}/install?role=customer`;

@@ -22,7 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${base}/waitlist`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/research`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/install`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     ...tradeRoutes,
   ];
 }

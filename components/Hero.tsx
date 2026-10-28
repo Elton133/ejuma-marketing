@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_STORE_CUSTOMER_URL, APP_STORE_PRO_URL, WAITLIST_PATH } from "@/lib/constants";
+import { WAITLIST_PATH } from "@/lib/constants";
 import { HeroBackground } from "./HeroBackground";
 
 export function Hero() {
@@ -30,29 +30,19 @@ export function Hero() {
               data-hero-animate
               className="mt-8 flex flex-wrap gap-3 md:mt-10"
             >
-              <a
-                href={APP_STORE_CUSTOMER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={WAITLIST_PATH}
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full bg-[#FF5F15] px-7 text-sm font-semibold text-black hover:bg-[#FF7335] md:h-[52px] md:px-8 md:text-base"
               >
-                Download on the App Store
-              </a>
-              <a
-                href={APP_STORE_PRO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                Join the waitlist
+              </Link>
+              <Link
+                href="/features"
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/15 md:h-[52px] md:px-8 md:text-base"
               >
-                I&apos;m a specialist
-              </a>
-            </div>
-            <p data-hero-animate className="mt-4 text-sm text-white/60">
-              Live now on iPhone.{" "}
-              <Link href={WAITLIST_PATH} className="text-white underline underline-offset-4 hover:text-[#FF7335]">
-                On Android? Get notified
+                See how it works
               </Link>
-            </p>
+            </div>
           </div>
         </div>
       </div>

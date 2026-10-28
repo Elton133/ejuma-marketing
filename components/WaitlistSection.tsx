@@ -5,7 +5,6 @@ import { useState } from "react";
 import posthog from "posthog-js";
 import {
   HEAR_ABOUT_OPTIONS,
-  INSTALL_PATH,
   PILOT_AREAS,
   TRADES,
 } from "@/lib/constants";
@@ -104,12 +103,12 @@ export function WaitlistSection() {
       <div className="mx-auto max-w-2xl">
         {!isComplete ? (
           <AnimatedStep stepKey="waitlist-form">
-            <MicroLabel>Get notified</MicroLabel>
+            <MicroLabel>Early access</MicroLabel>
             <h1 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
-              Android is on its way
+              Join the waitlist
             </h1>
             <p className="mt-4 max-w-lg text-white/65">
-              Beagine is live on iPhone now. On Android, or not in our area yet? Leave your details and we&apos;ll tell you the day it&apos;s ready for you.
+              Be among the first to use Beagine when we open in your area.
             </p>
 
             <form
@@ -271,12 +270,6 @@ export function WaitlistSection() {
               />
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-                <Link
-                  href={INSTALL_PATH}
-                  className="inline-flex justify-center rounded-full bg-[#FF5F15] px-6 py-3 text-sm font-semibold text-black"
-                >
-                  Install the app
-                </Link>
                 <Link
                   href="/"
                   className="inline-flex justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
