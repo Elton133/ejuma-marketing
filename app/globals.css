@@ -46,6 +46,11 @@ h6 {
   letter-spacing: 0.02em;
 }
 
+/* Lora — orange emphasis words inside headlines */
+.font-accent {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-hero-animate],
   [data-reveal],

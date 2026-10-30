@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Big_Shoulders, Google_Sans_Flex, Imperial_Script } from "next/font/google";
+import { Big_Shoulders, Google_Sans_Flex, Imperial_Script, Lora } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Nav } from "@/components/Nav";
@@ -22,6 +22,12 @@ const imperialScript = Imperial_Script({
   variable: "--font-imperial-script",
   subsets: ["latin"],
   weight: ["400"],
+});
+
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 export const viewport: Viewport = {
@@ -71,7 +77,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bigShoulders.variable} ${googleSansFlex.variable} ${imperialScript.variable}`}
+      className={`${bigShoulders.variable} ${googleSansFlex.variable} ${imperialScript.variable} ${lora.variable}`}
     >
       <body className="bg-black font-sans text-white antialiased">
         <CustomCursor />

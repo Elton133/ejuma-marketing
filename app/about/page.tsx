@@ -37,7 +37,7 @@ export default function AboutPage() {
           <div className="relative z-10 w-full mx-auto max-w-[1440px] md:px-10 lg:px-14">
           <MicroLabel>About Us</MicroLabel>
             <h1 data-split-lines className="mt-6 text-[clamp(2.5rem,5vw,3.75rem)] font-semibold leading-none tracking-tight text-white">
-              About <span className="text-[#FF5F15]">Beagine</span>
+              About <span className="font-accent text-[#FF5F15]">Beagine</span>
             </h1>
             <p data-split-lines className="mt-8 max-w-3xl text-lg leading-relaxed text-white/65">
               Beagine is a technology-enabled engineering marketplace that connects people, businesses, and organizations with the right engineering professionals — to solve their everyday technical problems.

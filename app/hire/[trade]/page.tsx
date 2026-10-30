@@ -62,7 +62,7 @@ export default async function TradeLandingPage({
           <div className="mx-auto max-w-[1200px] text-center">
             <MicroLabel>Hire a Pro</MicroLabel>
             <h1 className="mt-6 text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[0.95] tracking-tight">
-              {isSpecialistPage ? <>Find a <RotatingTrade /> for your project.</> : <>The best <span className="text-[#FF5F15]">{originalTrade}</span> for your project.</>}
+              {isSpecialistPage ? <>Find a <RotatingTrade /> for your project.</> : <>The best <span className="font-accent text-[#FF5F15]">{originalTrade}</span> for your project.</>}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[clamp(1.125rem,2vw,1.25rem)] leading-relaxed text-white/65">
               {isSpecialistPage

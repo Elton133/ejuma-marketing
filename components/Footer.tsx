@@ -23,7 +23,7 @@ export function Footer() {
       </span>
       <div className="relative mx-auto max-w-[1440px]">
         <div className="mb-16 grid gap-10 border-b border-white/10 pb-16 lg:grid-cols-[minmax(0,1fr)_1.25fr] lg:items-end md:mb-20 md:pb-20">
-          <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-[#FF7B3D]">One ecosystem. Three ways in.</p><h2 className="mt-4 max-w-xl text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[.98] tracking-[-.04em]">Where do you fit in the <Link href="/community" className="font-heading text-[#FF5F15] transition-colors hover:text-[#FF7335]">community</Link>?</h2><p className="mt-5 max-w-lg text-base leading-relaxed text-white/50">Choose your side of Beagine and see the experience designed around what you need to accomplish.</p></div>
+          <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-[#FF7B3D]">One ecosystem. Three ways in.</p><h2 className="mt-4 max-w-xl text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[.98] tracking-[-.04em]">Where do you fit in the <Link href="/community" className="font-accent font-bold tracking-[0.02em] text-[#FF5F15] transition-colors hover:text-[#FF7335]">community</Link>?</h2><p className="mt-5 max-w-lg text-base leading-relaxed text-white/50">Choose your side of Beagine and see the experience designed around what you need to accomplish.</p></div>
           <EcosystemPicker />
         </div>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
