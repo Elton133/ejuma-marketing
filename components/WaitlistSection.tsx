@@ -1,20 +1,21 @@
 "use client";
 
+import { gsap } from "gsap";
 import Link from "next/link";
-import { useState } from "react";
 import posthog from "posthog-js";
-import {
-  HEAR_ABOUT_OPTIONS,
-  PILOT_AREAS,
-  TRADES,
-} from "@/lib/constants";
+import { useEffect, useRef, useState } from "react";
+import { HEAR_ABOUT_OPTIONS, PILOT_AREAS, TRADES } from "@/lib/constants";
+import { prefersReducedMotion, registerGsap } from "@/lib/motion/register-gsap";
 import { WAITLIST_PATH } from "@/lib/research-questions";
 import { getSupabaseClient } from "@/lib/supabase";
-import { MicroLabel } from "./MicroLabel";
 import { SurveyShareBlock } from "./research/SurveyShareBlock";
-import { AnimatedStep } from "./waitlist/AnimatedStep";
+import { CAST, Character } from "./story/Character";
+import { BackButton, Chip, NextButton, Progress, Question, fieldClass, usePops } from "./story/Controls";
+import { idleCast, nod, wave } from "./story/motion";
+import { Typewriter } from "./story/Typewriter";
 
 type FormRole = "customer" | "worker";
+type Step = "role" | "name" | "contact" | "area" | "trades" | "hear" | "done";
 
 type WaitlistData = {
   name: string;
@@ -36,25 +37,67 @@ const emptyForm: WaitlistData = {
   hearAbout: "",
 };
 
+const ROLES = [
+  { role: "customer", look: CAST.customer, title: "I need things fixed", body: "Hire plumbers, electricians and more, near you." },
+  { role: "worker", look: CAST.specialist, title: "I fix things", body: "Get jobs near you as a specialist." },
+] as const;
+
+const firstName = (name: string) => name.trim().split(/\s+/)[0] ?? "";
+const digits = (value: string) => value.replace(/\D/g, "").length;
+
+/**
+ * Waitlist sign-up as a short conversation: one question at a time, with the
+ * customer and specialist characters. Saves the same row to Supabase
+ * `submissions` as the old form did.
+ */
 export function WaitlistSection() {
+  const [step, setStep] = useState<Step>("role");
   const [form, setForm] = useState<WaitlistData>(emptyForm);
+  const [otherArea, setOtherArea] = useState(false);
+  const [picking, setPicking] = useState<FormRole | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
-  const [isComplete, setIsComplete] = useState(false);
 
-  const showTrades = form.role === "worker";
+  const stageRef = useRef<HTMLElement>(null);
+  const rolesRef = useRef<HTMLDivElement>(null);
 
-  const toggleTrade = (trade: string) => {
-    setForm((prev) => ({
-      ...prev,
-      trades: prev.trades.includes(trade)
-        ? prev.trades.filter((item) => item !== trade)
-        : [...prev.trades, trade],
-    }));
+  useEffect(() => {
+    registerGsap();
+  }, []);
+
+  usePops(stageRef, [step]);
+
+  const steps: Step[] = form.role === "worker" ? ["role", "name", "contact", "area", "trades", "hear"] : ["role", "name", "contact", "area", "hear"];
+  const index = steps.indexOf(step);
+  const go = (next: Step) => {
+    setStep(next);
+    stageRef.current?.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+  };
+  const next = () => go(steps[index + 1]);
+  const back = () => go(steps[Math.max(0, index - 1)]);
+  const set = (patch: Partial<WaitlistData>) => setForm((current) => ({ ...current, ...patch }));
+  const role = ROLES.find((item) => item.role === form.role)!;
+  const first = firstName(form.name);
+
+  const pickRole = (selected: FormRole) => {
+    if (picking) return;
+    set({ role: selected, trades: selected === "worker" ? form.trades : [] });
+    posthog.capture("waitlist_role_selected", { role: selected === "worker" ? "specialist" : "customer" });
+    const card = rolesRef.current?.querySelector(`[data-role="${selected}"]`);
+    if (prefersReducedMotion() || !card) return go("name");
+    setPicking(selected);
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setPicking(null);
+        go("name");
+      },
+    });
+    tl.to(card, { scale: 1.05, duration: 0.2, ease: "power2.out" }).to(card, { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.45)" });
+    nod(tl, card, 0.05);
+    wave(tl, card, 0.05, 2);
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     if (isSubmitting) return;
 
     setIsSubmitting(true);
@@ -66,10 +109,10 @@ export function WaitlistSection() {
         role: form.role,
         age_range: null,
         waitlist: {
-          name: form.name,
-          phone: form.phone,
-          email: form.email,
-          area: form.area,
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          area: form.area.trim(),
           trades: form.role === "worker" ? form.trades : [],
           hearAbout: form.hearAbout,
         },
@@ -85,263 +128,264 @@ export function WaitlistSection() {
         trades_count: form.role === "worker" ? form.trades.length : 0,
       });
 
-      setIsComplete(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      go("done");
     } catch (error) {
       console.error("Supabase error:", error);
       posthog.captureException(error);
-      setSubmissionError(
-        "We couldn't complete your registration. Check your connection and try again. Your details are still here."
-      );
+      setSubmissionError("We couldn't complete your registration. Check your connection and try again. Your details are still here.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  /** Each text step is a tiny form, so Enter moves on. */
+  const nextIf = (event: React.FormEvent, ready: boolean) => {
+    event.preventDefault();
+    if (ready) next();
+  };
+
   return (
-    <section className="bg-black px-6 pb-20 pt-28 text-white md:pb-28 md:pt-32">
-      <div className="mx-auto max-w-2xl">
-        {!isComplete ? (
-          <AnimatedStep stepKey="waitlist-form">
-            <MicroLabel>Early access</MicroLabel>
-            <h1 className="mt-3 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-tight">
-              Join the waitlist
-            </h1>
-            <p className="mt-4 max-w-lg text-white/65">
-              Be among the first to use Beagine when we open in your area.
-            </p>
+    <section ref={stageRef} className="scroll-mt-24 bg-black px-6 pb-20 pt-28 text-white md:pb-28 md:pt-32">
+      <div className="mx-auto min-h-[60svh] max-w-2xl">
+        {step !== "done" ? <Progress value={index / steps.length} /> : null}
 
-            <form
-              onSubmit={handleSubmit}
-              className="mt-10 space-y-5"
-              aria-busy={isSubmitting}
-            >
-              <SelectField
-                label="I want to join as a"
-                required
-                value={form.role}
-                onChange={(role) =>
-                  setForm({
-                    ...form,
-                    role: role as FormRole,
-                    trades: role === "worker" ? form.trades : [],
-                  })
-                }
-                options={[
-                  { value: "customer", label: "Customer" },
-                  { value: "worker", label: "Specialist" },
-                ]}
-              />
+        {step !== "role" && step !== "done" ? (
+          <div className="mb-8 flex items-center justify-between gap-4">
+            <BackButton onClick={back} />
+            <div data-pop className="mb-6 flex min-w-0 items-center gap-2 rounded-full border border-white/10 bg-white/[.04] py-1 pl-1 pr-4 text-xs text-white/55">
+              <span className="h-8 w-8 shrink-0 overflow-hidden rounded-full bg-white/10">
+                <Character look={role.look} className="h-full w-full" />
+              </span>
+              <span className="truncate">
+                {[form.role === "worker" ? "Specialist" : "Customer", first, form.area].filter(Boolean).join(" · ")}
+              </span>
+            </div>
+          </div>
+        ) : null}
 
-              <Field label="Full name" required>
-                <input
-                  required
-                  autoComplete="name"
-                  value={form.name}
-                  onChange={(event) => setForm({ ...form, name: event.target.value })}
-                  className={inputClass}
-                  placeholder="Your name"
-                />
-              </Field>
-
-              <Field label="Phone" required>
-                <input
-                  required
-                  type="tel"
-                  autoComplete="tel"
-                  value={form.phone}
-                  onChange={(event) => setForm({ ...form, phone: event.target.value })}
-                  className={inputClass}
-                  placeholder="e.g. +233 20 123 4567"
-                />
-              </Field>
-
-              <Field label="Email">
-                <input
-                  type="email"
-                  autoComplete="email"
-                  value={form.email}
-                  onChange={(event) => setForm({ ...form, email: event.target.value })}
-                  className={inputClass}
-                  placeholder="Optional"
-                />
-              </Field>
-
-              <Field label="City / area" required>
-                <input
-                  required
-                  type="text"
-                  value={form.area}
-                  onChange={(event) => setForm({ ...form, area: event.target.value })}
-                  className={inputClass}
-                  placeholder="e.g. Tema, Dawhenya, Accra"
-                  list="waitlist-areas"
-                  autoComplete="address-level2"
-                />
-                <datalist id="waitlist-areas">
-                  {PILOT_AREAS.map((area) => (
-                    <option key={area} value={area} />
-                  ))}
-                </datalist>
-              </Field>
-
-              {showTrades && (
-                <Field label="Trade interest">
-                  <div className="flex flex-wrap gap-2">
-                    {TRADES.map((trade) => (
-                      <button
-                        key={trade}
-                        type="button"
-                        onClick={() => toggleTrade(trade)}
-                        className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                          form.trades.includes(trade)
-                            ? "bg-[#FF5F15] text-black"
-                            : "bg-white/10 text-white ring-1 ring-white/15"
-                        }`}
-                      >
-                        {trade}
-                      </button>
-                    ))}
-                  </div>
-                </Field>
-              )}
-
-              <SelectField
-                label="How did you hear about us?"
-                required
-                value={form.hearAbout}
-                onChange={(hearAbout) => setForm({ ...form, hearAbout })}
-                options={HEAR_ABOUT_OPTIONS.map((option) => ({
-                  value: option,
-                  label: option,
-                }))}
-                placeholder="Select…"
-              />
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-premium flex w-full items-center justify-center gap-2 rounded-full bg-[#FF5F15] py-3.5 text-sm font-semibold text-black hover:bg-[#FF7335] disabled:cursor-wait disabled:opacity-70"
-              >
-                {isSubmitting && (
-                  <span
-                    className="h-4 w-4 animate-spin rounded-full border-2 border-black/25 border-t-black"
-                    aria-hidden
-                  />
-                )}
-                {isSubmitting ? "Joining waitlist…" : "Join waitlist"}
-              </button>
-
-              <div className="min-h-6" aria-live="polite" aria-atomic="true">
-                {submissionError ? (
-                  <p className="text-center text-sm text-red-300" role="alert">
-                    {submissionError}
-                  </p>
-                ) : null}
-              </div>
-
-              <p className="text-center text-xs text-white/50">
-                By joining you agree to be contacted about Beagine. We don&apos;t
-                sell your data.
-              </p>
-            </form>
-          </AnimatedStep>
-        ) : (
-          <AnimatedStep stepKey="waitlist-complete">
-            <div className="text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#FF5F15]/20 text-2xl text-[#FF5F15]">
-                ✓
-              </div>
-              <div className="mt-6">
-                <MicroLabel>All done</MicroLabel>
-              </div>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight">
-                You&apos;re on the waitlist.
-              </h2>
-              <p className="mt-4 text-white/65">
-                We&apos;ll be in touch when Beagine opens in your area.
-              </p>
-
-              <SurveyShareBlock
-                sharePath={WAITLIST_PATH}
-                title="Share the waitlist"
-                description="Invite friends, neighbours, or colleagues to join."
-                qrLabel="Scan to join the waitlist"
-              />
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-                <Link
-                  href="/"
-                  className="inline-flex justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+        {step === "role" && (
+          <div>
+            <Typewriter
+              lines={["Early access.", "Are you hiring, or are you the one fixing?"]}
+              speed={34}
+              delay={300}
+              className="font-semibold leading-[1.05] tracking-[-.03em]"
+              lineClassName={(i) => (i === 0 ? "text-sm font-bold uppercase tracking-[.18em] text-[#FF5F15]" : "mt-3 text-[clamp(2rem,6vw,3.4rem)]")}
+            />
+            <div ref={rolesRef} className="mt-10 grid gap-4 sm:grid-cols-2">
+              {ROLES.map((item) => (
+                <button
+                  key={item.role}
+                  type="button"
+                  data-pop
+                  data-role={item.role}
+                  onClick={() => pickRole(item.role)}
+                  className={`group flex items-center gap-4 rounded-[1.75rem] border p-4 text-left transition-[border-color,background-color,opacity] duration-300 sm:flex-col sm:items-start sm:p-6 ${
+                    picking === item.role
+                      ? "border-[#FF5F15] bg-[#FF5F15]/10"
+                      : picking
+                        ? "border-white/5 opacity-30"
+                        : "border-white/10 bg-white/[.04] hover:border-white/30"
+                  }`}
                 >
-                  Back to home
-                </Link>
+                  <span className="h-20 w-20 shrink-0 overflow-hidden rounded-[1.25rem] bg-gradient-to-b from-white/10 to-white/[.02] sm:h-28 sm:w-28">
+                    <Character look={item.look} className="h-full w-full" />
+                  </span>
+                  <span>
+                    <span className="block text-lg font-semibold">{item.title}</span>
+                    <span className="mt-1 block text-sm text-white/55">{item.body}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+            <IdleCast scope={rolesRef} />
+          </div>
+        )}
+
+        {step === "name" && (
+          <form onSubmit={(event) => nextIf(event, form.name.trim().length >= 2)}>
+            <Question text="Nice. What's your name?" />
+            <input
+              data-pop
+              autoFocus
+              autoComplete="name"
+              aria-label="Full name"
+              value={form.name}
+              onChange={(event) => set({ name: event.target.value })}
+              placeholder="Your full name"
+              className={fieldClass}
+            />
+            <NextButton type="submit" disabled={form.name.trim().length < 2} />
+          </form>
+        )}
+
+        {step === "contact" && (
+          <form onSubmit={(event) => nextIf(event, digits(form.phone) >= 9)}>
+            <Question text={`Hi ${first}! What number can we reach you on?`} hint="We'll text you when Beagine opens near you." />
+            <input
+              data-pop
+              autoFocus
+              type="tel"
+              autoComplete="tel"
+              aria-label="Phone"
+              value={form.phone}
+              onChange={(event) => set({ phone: event.target.value })}
+              placeholder="e.g. 024 123 4567"
+              className={fieldClass}
+            />
+            <input
+              data-pop
+              type="email"
+              autoComplete="email"
+              aria-label="Email (optional)"
+              value={form.email}
+              onChange={(event) => set({ email: event.target.value })}
+              placeholder="Email (optional)"
+              className={`mt-3 ${fieldClass}`}
+            />
+            <NextButton type="submit" disabled={digits(form.phone) < 9} />
+          </form>
+        )}
+
+        {step === "area" && (
+          <form onSubmit={(event) => nextIf(event, Boolean(form.area.trim()))}>
+            <Question text="Where are you based?" hint="We're starting in a few areas first." />
+            <div className="flex flex-wrap gap-2.5">
+              {PILOT_AREAS.map((area) => {
+                const active = area === "Other" ? otherArea : !otherArea && form.area === area;
+                return (
+                  <Chip
+                    key={area}
+                    active={active}
+                    onClick={() => {
+                      setOtherArea(area === "Other");
+                      set({ area: area === "Other" ? "" : area });
+                    }}
+                  >
+                    {area}
+                  </Chip>
+                );
+              })}
+            </div>
+            {otherArea ? (
+              <input
+                autoFocus
+                autoComplete="address-level2"
+                aria-label="Your area"
+                value={form.area}
+                onChange={(event) => set({ area: event.target.value })}
+                placeholder="Type your town or area"
+                className={`mt-5 ${fieldClass}`}
+              />
+            ) : null}
+            <NextButton type="submit" disabled={!form.area.trim()} />
+          </form>
+        )}
+
+        {step === "trades" && (
+          <div>
+            <Question text="What kind of work do you do?" hint="Choose all that apply." />
+            <div className="flex flex-wrap gap-2.5">
+              {TRADES.map((trade) => (
+                <Chip
+                  key={trade}
+                  active={form.trades.includes(trade)}
+                  onClick={() => set({ trades: form.trades.includes(trade) ? form.trades.filter((item) => item !== trade) : [...form.trades, trade] })}
+                >
+                  {trade}
+                </Chip>
+              ))}
+            </div>
+            <NextButton onClick={next}>{form.trades.length ? "Next" : "Skip"}</NextButton>
+          </div>
+        )}
+
+        {step === "hear" && (
+          <div>
+            <Question text="Last one. How did you hear about us?" />
+            <div className="flex flex-wrap gap-2.5">
+              {HEAR_ABOUT_OPTIONS.map((option) => (
+                <Chip key={option} active={form.hearAbout === option} onClick={() => set({ hearAbout: option })}>
+                  {option}
+                </Chip>
+              ))}
+            </div>
+            <div className="min-h-6" aria-live="polite" aria-atomic="true">
+              {submissionError ? (
+                <p className="mt-6 text-sm text-red-300" role="alert">
+                  {submissionError}
+                </p>
+              ) : null}
+            </div>
+            <NextButton disabled={!form.hearAbout || isSubmitting} onClick={handleSubmit}>
+              {isSubmitting ? "Joining…" : "Join the waitlist"}
+            </NextButton>
+            <p className="mt-5 text-xs text-white/45">By joining you agree to be contacted about Beagine. We don&apos;t sell your data.</p>
+          </div>
+        )}
+
+        {step === "done" && (
+          <div className="text-center">
+            <div data-pop className="mx-auto w-fit">
+              <div ref={rolesRef} className="h-36 w-36 overflow-hidden rounded-[2rem] bg-gradient-to-b from-white/10 to-white/[.02]">
+                <Character look={role.look} className="h-full w-full" />
               </div>
             </div>
-          </AnimatedStep>
+            <Celebrate scope={rolesRef} />
+            <Typewriter
+              lines={[`You're in${first ? `, ${first}` : ""}.`]}
+              speed={55}
+              delay={400}
+              className="mt-8 text-[clamp(2.4rem,8vw,4.5rem)] font-semibold leading-none tracking-[-.04em]"
+            />
+            <p data-pop className="mt-5 text-white/65">
+              We&apos;ll text you when Beagine opens{form.area ? ` in ${form.area}` : " in your area"}.
+            </p>
+
+            <SurveyShareBlock
+              sharePath={WAITLIST_PATH}
+              title="Share the waitlist"
+              description="Invite friends, neighbours, or colleagues to join."
+              qrLabel="Scan to join the waitlist"
+            />
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+              <Link
+                href="/"
+                className="inline-flex justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                Back to home
+              </Link>
+            </div>
+          </div>
         )}
       </div>
     </section>
   );
 }
 
-function Field({
-  label,
-  required,
-  children,
-}: {
-  label: string;
-  required?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className="block">
-      <span className="text-sm font-medium text-white/85">
-        {label}
-        {required && <span className="text-[#FF5F15]"> *</span>}
-      </span>
-      <div className="mt-1.5">{children}</div>
-    </label>
-  );
+/** Characters in `scope` blink and bob while it's on screen. */
+function IdleCast({ scope }: { scope: React.RefObject<HTMLElement | null> }) {
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    const ctx = gsap.context(() => idleCast(scope.current), scope);
+    return () => ctx.revert();
+  }, [scope]);
+  return null;
 }
 
-function SelectField({
-  label,
-  required,
-  value,
-  onChange,
-  options,
-  placeholder,
-}: {
-  label: string;
-  required?: boolean;
-  value: string;
-  onChange: (value: string) => void;
-  options: { value: string; label: string }[];
-  placeholder?: string;
-}) {
-  return (
-    <Field label={label} required={required}>
-      <select
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className={inputClass}
-        required={required}
-      >
-        {placeholder && (
-          <option value="" disabled>
-            {placeholder}
-          </option>
-        )}
-        {options.map((option) => (
-          <option key={option.value} value={option.value} className="bg-black text-white">
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </Field>
-  );
+/** The character in `scope` jumps and waves. */
+function Celebrate({ scope }: { scope: React.RefObject<HTMLElement | null> }) {
+  useEffect(() => {
+    if (prefersReducedMotion() || !scope.current) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.4 });
+      tl.fromTo(scope.current, { y: 0 }, { y: -18, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 });
+      nod(tl, scope.current, 0);
+      wave(tl, scope.current, 0.1, 4);
+      idleCast(scope.current);
+    }, scope);
+    return () => ctx.revert();
+  }, [scope]);
+  return null;
 }
-
-const inputClass =
-  "w-full rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-shadow placeholder:text-white/35 focus:border-[#FF5F15]/50 focus:ring-2 focus:ring-[#FF5F15]/30";
