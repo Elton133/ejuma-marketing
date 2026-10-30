@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
-import { ResearchLanding } from "@/components/research/ResearchLanding";
+import { ResearchConversation } from "@/components/research/ResearchConversation";
 
 export const metadata: Metadata = {
   title: "Research",
@@ -12,7 +12,7 @@ export default function ResearchPage() {
   return (
     <>
       <main>
-        <ResearchLanding />
+        <ResearchConversation />
       </main>
       <Footer />
     </>

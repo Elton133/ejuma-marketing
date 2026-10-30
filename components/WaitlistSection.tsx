@@ -11,7 +11,8 @@ import { getSupabaseClient } from "@/lib/supabase";
 import { SurveyShareBlock } from "./research/SurveyShareBlock";
 import { CAST, Character } from "./story/Character";
 import { BackButton, Chip, NextButton, Progress, Question, fieldClass, usePops } from "./story/Controls";
-import { idleCast, nod, wave } from "./story/motion";
+import { Celebrate, IdleCast } from "./story/CastEffects";
+import { nod, wave } from "./story/motion";
 import { Typewriter } from "./story/Typewriter";
 
 type FormRole = "customer" | "worker";
@@ -362,30 +363,4 @@ export function WaitlistSection() {
       </div>
     </section>
   );
-}
-
-/** Characters in `scope` blink and bob while it's on screen. */
-function IdleCast({ scope }: { scope: React.RefObject<HTMLElement | null> }) {
-  useEffect(() => {
-    if (prefersReducedMotion()) return;
-    const ctx = gsap.context(() => idleCast(scope.current), scope);
-    return () => ctx.revert();
-  }, [scope]);
-  return null;
-}
-
-/** The character in `scope` jumps and waves. */
-function Celebrate({ scope }: { scope: React.RefObject<HTMLElement | null> }) {
-  useEffect(() => {
-    if (prefersReducedMotion() || !scope.current) return;
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.4 });
-      tl.fromTo(scope.current, { y: 0 }, { y: -18, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 });
-      nod(tl, scope.current, 0);
-      wave(tl, scope.current, 0.1, 4);
-      idleCast(scope.current);
-    }, scope);
-    return () => ctx.revert();
-  }, [scope]);
-  return null;
 }
