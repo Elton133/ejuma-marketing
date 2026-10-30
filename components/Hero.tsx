@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { WAITLIST_PATH } from "@/lib/constants";
+import { HIRE_SURVEY_PATH } from "@/lib/hire-survey";
 import { HeroBackground } from "./HeroBackground";
 
 export function Hero() {
@@ -37,10 +38,10 @@ export function Hero() {
                 Join the waitlist
               </Link>
               <Link
-                href="/features"
+                href={HIRE_SURVEY_PATH}
                 className="btn-premium inline-flex h-12 items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/15 md:h-[52px] md:px-8 md:text-base"
               >
-                See how it works
+                Take the 3-min survey
               </Link>
             </div>
           </div>
