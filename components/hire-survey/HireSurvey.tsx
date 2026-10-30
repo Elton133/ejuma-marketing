@@ -66,6 +66,7 @@ function shuffled<T>(list: T[]) {
 }
 
 const blank = (value: string) => value.trim() || null;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /** One row of public.hire_survey_responses; each situation's columns are prefixed with its key (ac_, electrician_). */
 function toRow(answers: ScenarioAnswer[], ageRange: string, contact: { name: string; phone: string; email: string }) {
@@ -237,7 +238,7 @@ export function HireSurvey() {
   );
 
   const submit = async () => {
-    if (submitting) return;
+    if (submitting || !phoneOk || !emailOk) return;
     setSubmitting(true);
     setError("");
     try {
@@ -256,6 +257,8 @@ export function HireSurvey() {
     }
   };
 
+  const phoneOk = contact.phone.replace(/\D/g, "").length >= 9;
+  const emailOk = EMAIL_PATTERN.test(contact.email.trim());
   const showCards = step === "pick";
   const progress = step === "intro" ? 0 : step === "contact" || step === "done" ? 1 : (scenarioIndex + 0.5) / SCENARIOS.length;
 
@@ -276,7 +279,7 @@ export function HireSurvey() {
           {introDone && (
             <div>
               <p data-pop className="mt-8 max-w-xl text-base leading-7 text-white/60 md:text-lg">
-                We&apos;ll show you two everyday problems and three specialists for each. Pick who you&apos;d hire and tell us why. About 3 minutes. No sign-up.
+                We&apos;ll show you two everyday problems and three specialists for each. Pick who you&apos;d hire and tell us why. About 3 minutes.
               </p>
               <div data-pop className="mt-8 flex -space-x-4">
                 {[...SCENARIOS[0].pros, ...SCENARIOS[1].pros].map((pro) => (
@@ -481,7 +484,7 @@ export function HireSurvey() {
 
       {step === "contact" && (
         <div className="max-w-2xl">
-          <Question text="Last bit. All of this is optional." hint="Leave your number or email if you'd like to hear when Beagine launches. We won't share it." />
+          <Question text="Last bit. How can we reach you?" hint="So we can follow up on your answers and tell you when Beagine launches. We won't share your details." />
           <p data-pop className="mb-3 text-sm font-semibold text-white/70">
             Your age range
           </p>
@@ -495,7 +498,7 @@ export function HireSurvey() {
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {(
               [
-                ["name", "Your name", "text", "name"],
+                ["name", "Your name (optional)", "text", "name"],
                 ["phone", "Phone number", "tel", "tel"],
                 ["email", "Email", "email", "email"],
               ] as const
@@ -507,18 +510,26 @@ export function HireSurvey() {
                 autoComplete={autoComplete}
                 placeholder={label}
                 aria-label={label}
+                required={field !== "name"}
+                aria-invalid={field === "phone" ? Boolean(contact.phone) && !phoneOk : field === "email" ? Boolean(contact.email) && !emailOk : undefined}
                 value={contact[field]}
                 onChange={(event) => setContact((current) => ({ ...current, [field]: event.target.value }))}
                 className={`rounded-2xl border border-white/15 bg-white/[.04] px-4 py-3.5 text-sm text-white outline-none placeholder:text-white/30 focus:border-[#FF5F15] ${field === "name" ? "sm:col-span-2" : ""}`}
               />
             ))}
           </div>
+          {(contact.phone && !phoneOk) || (contact.email && !emailOk) ? (
+            <p className="mt-3 text-sm text-white/50">
+              {contact.phone && !phoneOk ? "Check your phone number. " : ""}
+              {contact.email && !emailOk ? "Check your email address." : ""}
+            </p>
+          ) : null}
           {error ? (
             <p role="alert" className="mt-5 rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
               {error}
             </p>
           ) : null}
-          <NextButton disabled={submitting} onClick={submit}>
+          <NextButton disabled={submitting || !phoneOk || !emailOk} onClick={submit}>
             {submitting ? "Sending…" : "Send my answers"}
           </NextButton>
         </div>
