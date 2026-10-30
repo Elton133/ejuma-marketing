@@ -1,6 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
-import { APP_ICONS } from "@/lib/app-icons";
+import { EcosystemPicker } from "./EcosystemPicker";
 import { SITE_LINK_GROUPS } from "@/lib/constants";
 import { Logo } from "./Logo";
 
@@ -10,11 +9,6 @@ const SOCIAL = [
   { label: "TikTok", href: "https://www.tiktok.com/@beagine.hq?_r=1&_t=ZS-9820A2s6kWf" },
 ];
 
-const APP_ENTRY_POINTS = [
-  { role: "Customer", line: "Find trusted help", href: "/customers", accent: "bg-[#FF5F15] text-black" },
-  { role: "Specialist", line: "Turn skill into opportunity", href: "/specialists", accent: "bg-white text-black" },
-  { role: "Vendor", line: "Bring your shop online", href: "/vendors", accent: "bg-[#1c1c1e] text-white" },
-] as const;
 
 export function Footer() {
   return (
@@ -30,15 +24,7 @@ export function Footer() {
       <div className="relative mx-auto max-w-[1440px]">
         <div className="mb-16 grid gap-10 border-b border-white/10 pb-16 lg:grid-cols-[minmax(0,1fr)_1.25fr] lg:items-end md:mb-20 md:pb-20">
           <div><p className="text-xs font-semibold uppercase tracking-[.16em] text-[#FF7B3D]">One ecosystem. Three ways in.</p><h2 className="mt-4 max-w-xl text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[.98] tracking-[-.04em]">Where do you fit in the <Link href="/community" className="font-heading text-[#FF5F15] transition-colors hover:text-[#FF7335]">community</Link>?</h2><p className="mt-5 max-w-lg text-base leading-relaxed text-white/50">Choose your side of Beagine and see the experience designed around what you need to accomplish.</p></div>
-          <div className="grid grid-cols-3 gap-3">
-            {APP_ENTRY_POINTS.map((app) => (
-              <Link key={app.role} href={app.href} className="group min-w-0 rounded-[1.6rem] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF5F15] motion-reduce:transform-none">
-                <Image src={APP_ICONS[app.role.toLowerCase() as keyof typeof APP_ICONS]} alt={`Beagine ${app.role} app icon`} width={256} height={256} sizes="(min-width: 1024px) 240px, 30vw" className="aspect-square w-full rounded-[1.6rem] object-contain ring-1 ring-white/10" />
-                <p className="mt-4 text-sm font-semibold sm:text-xl">{app.role}<span aria-hidden className="ml-2 inline-block transition-transform group-hover:translate-x-1">↗</span></p>
-                <p className="mt-1 text-xs text-white/55">{app.line}</p>
-              </Link>
-            ))}
-          </div>
+          <EcosystemPicker />
         </div>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
