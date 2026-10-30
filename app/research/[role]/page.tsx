@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
-import { ResearchForm } from "@/components/research/ResearchForm";
+import { ResearchConversation } from "@/components/research/ResearchConversation";
 import { getResearchTitle, type ResearchRole } from "@/lib/research-questions";
 
 const researchRoles: ResearchRole[] = ["user", "specialist"];
@@ -41,7 +41,7 @@ export default async function ResearchRolePage({
   return (
     <>
       <main>
-        <ResearchForm role={role} />
+        <ResearchConversation initialRole={role} />
       </main>
       <Footer />
     </>

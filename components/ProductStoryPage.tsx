@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ClosingCta } from "@/components/ClosingCta";
 import { Footer } from "@/components/Footer";
 import { InteractivePhonePrototype } from "@/components/InteractivePhonePrototype";
 import { MicroLabel } from "@/components/MicroLabel";
@@ -24,14 +25,7 @@ export function ProductStoryPage({ eyebrow, title, intro, audience, features, cl
 
       {!hideFinalShowcase ? <FinalProductShowcase features={features} audience={audience} cta={primaryLabel}/> : null}
 
-      <section className="relative isolate overflow-hidden bg-[#FF5F15] px-6 py-20 text-black md:px-10 md:py-28">
-        <div aria-hidden className="pointer-events-none absolute -right-20 -top-36 h-[420px] w-[420px] rounded-full border border-black/10 md:h-[620px] md:w-[620px]"/><div aria-hidden className="pointer-events-none absolute -right-6 -top-16 h-[260px] w-[260px] rounded-full border border-black/10 md:h-[420px] md:w-[420px]"/>
-        <p aria-hidden className="pointer-events-none absolute -bottom-[.16em] -left-[.03em] select-none whitespace-nowrap text-[clamp(8rem,24vw,22rem)] font-semibold leading-none tracking-[-.08em] text-black/[.055]">beagine</p>
-        <div className="relative z-10 mx-auto grid max-w-[1300px] gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-end lg:gap-20">
-          <div><MicroLabel light>Built for real work</MicroLabel><h2 className="mt-5 max-w-4xl text-[clamp(2.75rem,6vw,5.75rem)] font-semibold leading-[.96] tracking-[-.045em]">{closingTitle}</h2><p className="mt-7 max-w-2xl text-base leading-relaxed text-black/70 md:text-lg">{closingBody}</p><div className="mt-10 flex flex-wrap gap-3"><Link href={WAITLIST_PATH} className="btn-premium inline-flex h-13 items-center rounded-full bg-black px-8 text-sm font-semibold text-white md:text-base">Join the waitlist <span aria-hidden className="ml-3">↗</span></Link></div></div>
-          <div className="group relative overflow-hidden rounded-[2rem] border border-black/15 bg-black p-7 text-white shadow-[0_28px_70px_rgba(0,0,0,.18)] transition-transform duration-500 hover:-translate-y-1 motion-reduce:transform-none md:p-8"><div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#FF5F15]/25 blur-2xl transition-transform duration-700 group-hover:scale-125 motion-reduce:transform-none"/><div className="relative"><div className="flex items-center justify-between"><span className="text-[11px] font-semibold uppercase tracking-[.16em] text-white/45">Your next chapter</span><span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[#FF7B3D]">↗</span></div><p className="mt-16 text-2xl font-semibold leading-tight tracking-tight">Join the people building a better way to get work done.</p><div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-5"><span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FF5F15] opacity-60 motion-reduce:animate-none"/><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#FF5F15]"/></span><span className="text-sm text-white/55">{audience} · early access</span></div></div></div>
-        </div>
-      </section>
+      <ClosingCta closingTitle={closingTitle} closingBody={closingBody} audience={audience} />
     </main><Footer />
   </>;
 }

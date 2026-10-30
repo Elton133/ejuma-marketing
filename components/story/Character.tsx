@@ -73,4 +73,5 @@ export const CAST = {
   customer: { skin: "#7A4A26", hair: "puff", beard: false, glasses: false, shirt: "#2F6FED" },
   specialist: { skin: "#5A3318", hair: "cap", beard: true, glasses: false, shirt: "#FF5F15" },
   support: { skin: "#8D5524", hair: "short", beard: false, glasses: true, shirt: "#1F9D6B", headset: true },
+  vendor: { skin: "#6B3E1F", hair: "fade", beard: false, glasses: true, shirt: "#E0A100" },
 } satisfies Record<string, Look>;
